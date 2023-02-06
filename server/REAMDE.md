@@ -1,9 +1,9 @@
-❯ docker build -t easyeatsapp .
+❯ docker build -t easyeatsbackapp .
 
-❯ docker run -it -p 7000:4000 easyeatsapp
+❯ docker run -it -p 7000:4000 easyeatsbackapp
 
 # Como un proceso
-❯ docker run -it -p 7000:4000 -d easyeatsapp
+❯ docker run -it -p 7000:4000 -d easyeatsbackapp
 
 # Para verlo
 ❯ docker container ls
