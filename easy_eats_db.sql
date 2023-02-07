@@ -1,6 +1,7 @@
-CREATE DATABASE easy_eats_db
+CREATE DATABASE IF NOT EXISTS easy_eats_db
   DEFAULT CHARACTER SET utf8mb4
   COLLATE utf8mb4_general_ci;
+
 
 USE easy_eats_db;
 

@@ -1,3 +1,4 @@
+import mysql.connector
 from flask import session, jsonify
 from .sql_strings import Sql_Strings as SQL_STRINGS
 
@@ -8,7 +9,7 @@ def sql(rawSQL, sqlVars={}):
         assert type(rawSQL)==str
         assert type(sqlVars)==dict
         res = db.session.execute(rawSQL, sqlVars)
-        db.session.commit()
+        response = db.session.commit()
     except Exception as e:
         print("Ha ocurrido el siguiente error en @sql.misc/{}".format(e))
 

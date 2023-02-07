@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  client:
+    build: 
+      context: ./client
+    container_name: easyeats_frontend
+    ports:
+      - "5000:8080"
+  server:
+    build:
+      context: ./server
+    container_name: easyeats_backend
+    ports:
+      - "4000:4000"
+    links: 
+      - bd
+    restart: always
+  bd:
+    image: mariadb:10.10.3
+    restart: always
+    container_name: easyeats_db
+    hostname: easy_eats_database
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD : admin
+      MARIADB_MYSQL_LOCALHOST_USUARIO: easy_eats_us
+      MARIADB_ROOT_HOST: easy_eats_database
+      MARIADB_DATABASE: easy_eats_db
+    volumes:
+      - ./easy_eats_db.sql:/docker-entrypoint-initdb.d/easy_eats_db.sql
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   container_name: "easy_eats_phpmyadmin"
+  #   links:
+  #     - bd
+  #   environment:
+  #     - PMA_HOST: bd
+  #     - PMA_PORT: 3000
+  #   ports:
+  #     - "3001:80"
+    
+
