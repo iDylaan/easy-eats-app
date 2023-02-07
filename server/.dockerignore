@@ -1,2 +1,3 @@
 .dockerignore
 Dockerfile
+easy-eats_venv

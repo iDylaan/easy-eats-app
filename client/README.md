@@ -20,7 +20,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ### DOCKER ###
-cd ..
+cd /client/
 
 docker build -t easyeatsfrontapp .
 
