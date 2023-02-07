@@ -1,6 +1,6 @@
 ❯ docker build -t easyeatsbackapp .
 
-❯ docker run -it -p 7000:4000 easyeatsbackapp
+❯ docker run -it -p 4000:4000 easyeatsbackapp
 
 # Como un proceso
 ❯ docker run -it -p 7000:4000 -d easyeatsbackapp

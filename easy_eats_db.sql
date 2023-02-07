@@ -5,6 +5,10 @@ CREATE DATABASE IF NOT EXISTS easy_eats_db
 
 USE easy_eats_db;
 
+CREATE USER 'easy_eats_us'@'%' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON easy_eats_db.* TO 'easy_eats_us'@'%';
+FLUSH PRIVILEGES;
+
 CREATE TABLE rols (
   id INT NOT NULL,
   name VARCHAR(5) NOT NULL,
@@ -206,3 +210,7 @@ CREATE TABLE favorite_recipes (
   CONSTRAINT fk_favorite_recipes_recipe_id FOREIGN KEY(id_recipe) REFERENCES recipes(id),
   CONSTRAINT fk_favorite_recipes_user_id FOREIGN KEY(id_user) REFERENCES users(id)
 );
+
+INSERT INTO easy_eats_db.favorite_recipes (id_recipe, id_user) VALUES
+(1, 1),
+(2, 1);

@@ -6,6 +6,8 @@ services:
     container_name: easyeats_frontend
     ports:
       - "5000:8080"
+    networks:
+      - my-network
   server:
     build:
       context: ./server
@@ -15,29 +17,38 @@ services:
     links: 
       - bd
     restart: always
+    networks:
+      - my-network
   bd:
-    image: mariadb:10.10.3
+    image: mariadb/server:10.3
     restart: always
     container_name: easyeats_db
     hostname: easy_eats_database
     ports:
       - "3306:3306"
     environment:
-      MARIADB_ROOT_PASSWORD : admin
-      MARIADB_MYSQL_LOCALHOST_USUARIO: easy_eats_us
-      MARIADB_ROOT_HOST: easy_eats_database
+      MARIADB_ROOT_PASSWORD: password
       MARIADB_DATABASE: easy_eats_db
     volumes:
       - ./easy_eats_db.sql:/docker-entrypoint-initdb.d/easy_eats_db.sql
-  # phpmyadmin:
-  #   image: phpmyadmin/phpmyadmin
-  #   container_name: "easy_eats_phpmyadmin"
-  #   links:
-  #     - bd
-  #   environment:
-  #     - PMA_HOST: bd
-  #     - PMA_PORT: 3000
-  #   ports:
-  #     - "3001:80"
+    networks:
+      - my-network
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: easyeats_phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    networks:
+      - my-network
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=easyeats_db
+      - PMA_PORT=3306
+      - PMA_USER=easy_eats_us
+      - PMA_PASSWORD=admin
+networks:
+  my-network:
+    driver: bridge
     
 
