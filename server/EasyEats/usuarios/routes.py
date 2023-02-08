@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .schemas import user_schema
 from .users_demo import users
 from .sql_strings import Sql_Strings as SQL_STRINGS
-from EasyEats.config.conf_maria import big_query, small_query
+from EasyEats.config.conf_maria import query
 
 # MODULE
 mod = Blueprint('usuarios', __name__, 
@@ -32,14 +32,12 @@ def users_list():
     users_dict = {}
     users_json = None
     try:
-        response = small_query(SQL_STRINGS.USERS_LIST)
-        # response = query("SELECT (1 + 1)")
-        print(response)
-        return jsonify({"message": "Ya me canse de que no retorne nada..."}, {"response": response})
-        users_dict = [dict(row) for row in response]
-        print(users_dict)
-        return 'as'
-        users_json = json.dumps()
-        print(users_json)
+        result = query(SQL_STRINGS.USERS_LIST)
+        if result:
+            users_dict = [dict(row) for row in result]
+            return jsonify(users_dict)
+        else:
+            print("No hay resultados")
+            return jsonify({"message": "No results"})
     except Exception as e:
         print("Ha ocurrido un error en @users_list/{}".format(e))
