@@ -5,6 +5,8 @@
 npm install
 ```
 
+npm install -g sass-loader node-sass
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
