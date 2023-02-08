@@ -8,19 +8,19 @@ services:
   #     - "5000:8080"
   #   networks:
   #     - my-network
-  # server:
-  #   build:
-  #     context: ./server
-  #   container_name: easyeats_backend
-  #   ports:
-  #     - "4000:4000"
-  #   links: 
-  #     - bd
-  #   restart: always
-  #   networks:
-  #     - my-network
+  server:
+    build:
+      context: ./server
+    container_name: easyeats_backend
+    ports:
+      - "4000:4000"
+    links: 
+      - bd
+    restart: always
+    networks:
+      - my-network
   bd:
-    image: mariadb/server:10.3
+    image: mariadb:10.10.3
     restart: always
     container_name: easyeats_db
     hostname: easy_eats_database
@@ -45,8 +45,8 @@ services:
       - PMA_ARBITRARY=1
       - PMA_HOST=easyeats_db
       - PMA_PORT=3306
-      - PMA_USER=easy_eats_us
-      - PMA_PASSWORD=admin
+      - PMA_USER=root
+      - PMA_PASSWORD=password
 networks:
   my-network:
     driver: bridge

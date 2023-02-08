@@ -2,31 +2,62 @@
   <h1>Usuarios registrados</h1>
   <ul>
     <template v-for="user in users" :key="user.id">
-        <li v-if="user.rol === 2">{{ user.name }} <button @click="eliminarUser(user.id)">Eliminar</button></li>
+        <li v-if="user.id_rol === 2">{{ user.name }} {{ user.username }}#{{ user.tagline }} <button @click="eliminarUser(user.id)">Eliminar</button></li>
     </template>
   </ul>
   <h1>Admins registrados</h1>
   <ul>
     <template v-for="user in users" :key="user.id">
-        <li v-if="user.rol === 1">{{ user.name }} <button @click="eliminarUser(user.id)">Eliminar</button></li>
+        <li v-if="user.id_rol === 1">{{ user.name }} {{ user.username }}#{{ user.tagline }} <button @click="eliminarUser(user.id)">Eliminar</button></li>
     </template>
   </ul>
+
+  <button @click="agregarUserPrueba()">Usuario de prueba</button>
 </template>
 
 <script>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import axios from 'axios';
 export default {
 
     setup() {
-        let users = ref( [
-            {id: 1, name: "Daniel", rol: 2},
-            {id: 2, name: "Ana Lilia", rol: 2},
-            {id: 3, name: "Brandon", rol: 2},
-            {id: 4, name: "Lucero", rol: 2},
-            {id: 5, name: "Jesús", rol: 2},
-            {id: 6, name: "Admin todopoderoso", rol: 1},
-            {id: 7, name: "Otro admin", rol: 1}
-        ] );
+        let users = ref( [] );
+
+        let user_post =  {
+            username: "userprueba",
+            tagline: "7FHE2",
+            image: "imagen-prueba.jpg",
+            name: "Prueba POST",
+            email: "prueba@correo.com",
+            password: "jhfuiehfsi",
+            birth_of_date: "2023-02-08",
+            birth_of_date: "2023-02-08",
+            id_rol: 2
+          }
+
+        onMounted(async () => {
+          const response = await axios.get('http://localhost:4000/users');
+          users.value = response.data
+        })
+
+        const agregarUserPrueba = async () => {
+          try {
+            const response = await axios({
+              method: 'POST',
+              url: 'http://localhost:4000/users',
+              data: user_post
+            });
+
+            if (response.statusText !== 'OK') {
+                throw new Error({
+                    message: 'Error'
+                })
+            }
+            console.log(response.data);
+          } catch (error) {
+            console.log(error);
+          }
+        }
 
         const eliminarUser = (id) => {
           console.log(users.value['target'])
@@ -42,7 +73,7 @@ export default {
           console.log(users)
         }
 
-        return { users, eliminarUser };
+        return { users, eliminarUser, user_post, agregarUserPrueba };
     }
 };
 </script>
