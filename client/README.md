@@ -4,6 +4,8 @@
 ```
 npm install
 ```
+## CLI Vue
+npm install -g @vue/cli
 
 npm install -g sass-loader node-sass
 
