@@ -1,26 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg='Welcome to Your Vue.js App'/>
+  <h1>Pagina de bienvenida para <span class="easy-eats__title">Easy Eats</span> desde <span class="easy-eats__title">VueJs</span></h1>
+  <Bienvenida />
+  <Usuarios />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Bienvenida from "./components/Bienvenida.vue";
+import Usuarios from "./components/Usuarios.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    Bienvenida,
+    Usuarios
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  @import "@/assets/styles/main.scss";
 </style>

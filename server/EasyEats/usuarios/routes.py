@@ -17,6 +17,16 @@ mod = Blueprint('usuarios', __name__,
 # CORS acces to "users"
 CORS(mod)
 
+# CORS Configure Parameters
+@mod.route('/users', methods=['OPTIONS'])
+def handle_options():
+    return "", 200, {
+        "Access-Control-Allow-Origin": "*", # "*"
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+        "Access-Control-Allow-Headers": "Content-Type"
+    }
+
+
 
 # Schemas validate
 def val_req_data(data, schema): # validate request data
@@ -27,7 +37,7 @@ def val_req_data(data, schema): # validate request data
 
 
 # =========== ROUTES ===========
-@mod.route('/users_list', methods=["GET", "POST"])
+@mod.route('/users', methods=["GET"])
 def users_list():
     users_dict = {}
     users_json = None
@@ -41,3 +51,22 @@ def users_list():
             return jsonify({"message": "No results"})
     except Exception as e:
         print("Ha ocurrido un error en @users_list/{}".format(e))
+
+@mod.route('/users', methods=['POST'])
+def create_user():
+    try:
+        user_data = request.get_json()
+
+        print(user_data)
+
+        response = {
+            "status": "success",
+            "message": "Usuario registrado exitosamente.",
+            "recived": user_data
+        }
+        return jsonify(response)
+
+    except Exception as e:
+        print("Ha ocurrido el siguiente error: ", e)
+        return None
+
