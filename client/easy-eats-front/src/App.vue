@@ -1,26 +1,23 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg='Welcome to Your Vue.js App'/>
-</template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+<script setup>
+  const name = 'vue dinamico';
+  const styleColor = "color: blue";
+  const arrayColores = ["blue","red","peru"];
+  const activo = true;
 </script>
 
+<template>
+  <h1>Hola {{name.toUpperCase}}</h1>
+  <h2 :style="styleColor">Soy azul</h2>
+  <h2>
+    {{ activo ? "Estoy activo" : "Estoy inactivo" }}
+
+    <p v-if="activo">Estoy activo</p>
+    <p v-else>Estoy inactivo</p>
+  </h2>
+</template>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+h1{
+  color: red;
 }
 </style>
