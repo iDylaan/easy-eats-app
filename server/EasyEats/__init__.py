@@ -32,6 +32,9 @@ app.config['MARIA_DB'] = os.getenv("MARIA_DB")
 app.config['MARIA_PORT'] = os.getenv("MARIA_PORT")
 app.config['MARIA_CHARSET'] = os.getenv("MARIA_CHARSET")
 
+### DIRECTORIES ###
+app.config['USER_IMAGES'] = os.getenv("USER_IMAGES")
+
 ### ROUTER ###
 from EasyEats.usuarios.routes import mod as mod_usuarios
 
