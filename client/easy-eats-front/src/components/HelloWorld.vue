@@ -1,7 +1,6 @@
 <template>
   <h1>Hola mundo</h1>
 </template>
-<<<<<<< Updated upstream
 
 <script>
 export default {
@@ -29,6 +28,3 @@ a {
   color: #42b983;
 }
 </style>
-=======
-  
->>>>>>> Stashed changes
