@@ -5,10 +5,6 @@ CREATE DATABASE IF NOT EXISTS easy_eats_db
 
 USE easy_eats_db;
 
-CREATE USER 'easy_eats_us'@'%' IDENTIFIED BY 'admin';
-GRANT ALL PRIVILEGES ON easy_eats_db.* TO 'easy_eats_us'@'%';
-FLUSH PRIVILEGES;
-
 CREATE TABLE rols (
   id INT NOT NULL,
   name VARCHAR(5) NOT NULL,

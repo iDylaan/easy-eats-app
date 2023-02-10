@@ -36,6 +36,10 @@ def val_req_data(data, schema): # validate request data
     return None
 
 
+
+
+
+
 # =========== ROUTES ===========
 @mod.route('/users', methods=["GET"])
 def users_list():
