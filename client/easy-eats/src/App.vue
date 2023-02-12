@@ -1,7 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/login">Iniciar Sesión</router-link>
-  </nav>
   <router-view/>
 </template>
+<script>
+import { onMounted, computed } from 'vue';
+import { useStore } from 'vuex';
+
+export default {
+  name: 'App',
+  setup() {
+    const store = useStore();
+    const user = computed(() => store.state.user);
+
+    onMounted(() => {
+      console.log(user.value);
+    });
+
+    return {
+      user,
+    }
+  }
+}
+</script>

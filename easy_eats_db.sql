@@ -5,9 +5,6 @@ CREATE DATABASE IF NOT EXISTS easy_eats_db
 
 USE easy_eats_db;
 
-CREATE USER 'easy_eats_us'@'%' IDENTIFIED BY 'admin';
-GRANT ALL PRIVILEGES ON easy_eats_db.* TO 'easy_eats_us'@'%';
-FLUSH PRIVILEGES;
 
 CREATE TABLE rols (
   id INT NOT NULL,
@@ -58,11 +55,11 @@ INSERT INTO ingredients (name, description, price, image) VALUES
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(15) NOT NULL,
-  tagline VARCHAR(5) NOT NULL,
-  image VARCHAR(25) NOT NULL,
-  name VARCHAR(60) NOT NULL,
+  tagline VARCHAR(9) NOT NULL,
+  image VARCHAR(25) DEFAULT NULL,
+  name VARCHAR(60) DEFAULT NULL,
   email VARCHAR(60) NOT NULL,
-  password VARCHAR(50) NOT NULL,
+  password VARCHAR(102) NOT NULL,
   date_of_birth DATE NOT NULL,
   height INT DEFAULT NULL,
   weight NUMERIC(5,2) DEFAULT NULL,
@@ -214,3 +211,9 @@ CREATE TABLE favorite_recipes (
 INSERT INTO easy_eats_db.favorite_recipes (id_recipe, id_user) VALUES
 (1, 1),
 (2, 1);
+
+
+-- INDICES --
+CREATE INDEX idx_email ON users (email);
+CREATE INDEX idx_auth ON users (id, email, password, id_rol);
+CREATE INDEX idx_username_tagline ON users (username, tagline);
