@@ -20,6 +20,7 @@ packaging==23.0
 platformdirs==2.6.2
 protobuf==3.20.3
 pycodestyle==2.9.1
+PyJWT==2.6.0
 pymongo==4.3.3
 PyMySQL==1.0.2
 python-dotenv==0.21.1
