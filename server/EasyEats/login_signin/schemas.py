@@ -53,7 +53,7 @@ user_schema = {
         "empty": True,
         "nullable": True
     },
-    "weight": {
+    "width": {
         "type": "integer",
         "required": False,
         "empty": True,

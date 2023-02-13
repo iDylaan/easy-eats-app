@@ -5,6 +5,7 @@ CREATE DATABASE IF NOT EXISTS easy_eats_db
 
 USE easy_eats_db;
 
+
 CREATE TABLE rols (
   id INT NOT NULL,
   name VARCHAR(5) NOT NULL,
@@ -39,7 +40,7 @@ CREATE TABLE ingredients (
   name VARCHAR(100) NOT NULL,
   description VARCHAR(300) NOT NULL,
   price NUMERIC(11, 2) DEFAULT NULL,
-  image VARCHAR(40) DEFAULT NULL,
+  image VARCHAR(25) DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_General_ci;
 
@@ -54,11 +55,11 @@ INSERT INTO ingredients (name, description, price, image) VALUES
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(15) NOT NULL,
-  tagline VARCHAR(5) NOT NULL,
-  image VARCHAR(40) NOT NULL,
-  name VARCHAR(60) NOT NULL,
+  tagline VARCHAR(9) NOT NULL,
+  image VARCHAR(25) DEFAULT NULL,
+  name VARCHAR(60) DEFAULT NULL,
   email VARCHAR(60) NOT NULL,
-  password VARCHAR(50) NOT NULL,
+  password VARCHAR(102) NOT NULL,
   date_of_birth DATE NOT NULL,
   height INT DEFAULT NULL,
   weight NUMERIC(5,2) DEFAULT NULL,
@@ -80,7 +81,7 @@ CREATE TABLE recipes (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
   description VARCHAR(300) NOT NULL,
-  image VARCHAR(40) NOT NULL,
+  image VARCHAR(25) NOT NULL,
   cooking_time INT NOT NULL,
   dinners INT NOT NULL,
   update_date DATE DEFAULT CURRENT_DATE,
@@ -177,7 +178,7 @@ INSERT INTO recipe_ingredients(amount, type_mount, id_recipe, id_ingredient) VAL
 CREATE TABLE utensils (
   id INT AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
-  image VARCHAR(40) DEFAULT NULL,
+  image VARCHAR(25) DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_General_ci;
 
@@ -210,3 +211,9 @@ CREATE TABLE favorite_recipes (
 INSERT INTO easy_eats_db.favorite_recipes (id_recipe, id_user) VALUES
 (1, 1),
 (2, 1);
+
+
+-- INDICES --
+CREATE INDEX idx_email ON users (email);
+CREATE INDEX idx_auth ON users (id, email, password, id_rol, username, tagline);
+CREATE INDEX idx_username_tagline ON users (username, tagline);
