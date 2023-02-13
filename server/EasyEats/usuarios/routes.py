@@ -2,12 +2,16 @@ import json
 from datetime import datetime
 from flask import Blueprint, request, jsonify, Response
 from flask_cors import CORS
-from cerberus import Validator
 from werkzeug.security import generate_password_hash, check_password_hash
 from .schemas import user_schema
 from .sql_strings import Sql_Strings as SQL_STRINGS
 from EasyEats.config.conf_maria import query, sql
-from EasyEats.utils.misc import validate_user_exist, validate_email_exist
+from EasyEats.utils.misc import (
+    validate_user_exist, 
+    validate_email_exist, 
+    val_req_data,
+    login_required
+)
 
 # MODULE
 mod = Blueprint('usuarios', __name__, 
@@ -26,14 +30,6 @@ def handle_options():
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
         "Access-Control-Allow-Headers": "Content-Type, Authorization"
     }
-
-
-# Schemas validate
-def val_req_data(data, schema): # validate request data
-    v = Validator(schema)
-    if not v.validate(data):
-        return v.errors
-    return None
 
 
 # =========== ROUTES ===========
@@ -62,7 +58,7 @@ def get_users():
             }
             return jsonify(respose), 500
     except Exception as e:
-        print("Ha ocurrido un error en @users_list/{}".format(e))
+        print("Ha ocurrido un error en @users_list/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500

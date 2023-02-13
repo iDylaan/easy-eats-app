@@ -215,5 +215,5 @@ INSERT INTO easy_eats_db.favorite_recipes (id_recipe, id_user) VALUES
 
 -- INDICES --
 CREATE INDEX idx_email ON users (email);
-CREATE INDEX idx_auth ON users (id, email, password, id_rol);
+CREATE INDEX idx_auth ON users (id, email, password, id_rol, username, tagline);
 CREATE INDEX idx_username_tagline ON users (username, tagline);

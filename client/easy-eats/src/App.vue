@@ -1,18 +1,22 @@
 <template>
-  <router-view/>
+  <div class="app">
+    <router-view/>
+  </div>
 </template>
 <script>
-import { onMounted, computed } from 'vue';
-import { useStore } from 'vuex';
+import { onMounted, ref } from 'vue'
+// import validateJwt from './utils/misc';
+// import store from './store/store'
 
 export default {
   name: 'App',
   setup() {
-    const store = useStore();
-    const user = computed(() => store.state.user);
+    const user = ref( null );
 
     onMounted(() => {
-      console.log(user.value);
+      if (!user) {
+        this.$router.push('/login');
+      }
     });
 
     return {
@@ -21,3 +25,10 @@ export default {
   }
 }
 </script>
+
+
+<style lang="scss">
+@import './assets/styles/main.scss';
+</style>
+
+<meta>
