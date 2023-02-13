@@ -21,12 +21,13 @@ import axios from 'axios';
 export default {
 
     setup() {
+        const formData = new FormData()
+
         let users = ref( [] );
 
         let user_post =  {
             username: "userprueba",
             tagline: "7FHE2",
-            image: "imagen-prueba.jpg",
             name: "Prueba POST",
             email: "prueba@correo.com",
             password: "jhfuiehfsi",
@@ -34,6 +35,7 @@ export default {
             birth_of_date: "2023-02-08",
             id_rol: 2
           }
+        formData.append('data', JSON.stringify(user_post))
 
         onMounted(async () => {
           const response = await axios.get('http://localhost:4000/users');
@@ -45,7 +47,7 @@ export default {
             const response = await axios({
               method: 'POST',
               url: 'http://localhost:4000/users',
-              data: user_post
+              data: formData
             });
 
             if (response.statusText !== 'OK') {
@@ -72,7 +74,6 @@ export default {
           }) 
           console.log(users)
         }
-
         return { users, eliminarUser, user_post, agregarUserPrueba };
     }
 };

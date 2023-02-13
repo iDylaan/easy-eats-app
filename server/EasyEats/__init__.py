@@ -9,7 +9,7 @@ load_dotenv(".env")
 app = Flask(__name__)
 
 ### CORS (Cross-Origin Resource Sharing) ### 
-# CORS(app, supports_credentials=True, origins="*", methods=["GET", "POST", "PUT", "DELETE"], headers="*")
+# CORS(app, supports_credentials=True, origins="*")
 CORS(app)
 
 ### SQL ALCHEMY ###
@@ -32,8 +32,13 @@ app.config['MARIA_DB'] = os.getenv("MARIA_DB")
 app.config['MARIA_PORT'] = os.getenv("MARIA_PORT")
 app.config['MARIA_CHARSET'] = os.getenv("MARIA_CHARSET")
 
+### JWT ###
+app.config['SECRET_JWT_KEY'] = os.getenv("SECRET_JWT_KEY")
+
 ### ROUTER ###
+from EasyEats.login_signin.routes import mod as mod_login_signin
 from EasyEats.usuarios.routes import mod as mod_usuarios
 
 ### BLUEPRINTS ###
+app.register_blueprint(mod_login_signin)
 app.register_blueprint(mod_usuarios)
