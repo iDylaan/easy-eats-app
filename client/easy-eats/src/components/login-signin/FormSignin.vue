@@ -16,16 +16,16 @@
                 <div class="input__form-container">
                     <label for="username">Nombre de Usuario <span class="required__text">*</span></label>
                     <div class="inputs_username-container">
-                        <input v-model="username" @input="validarUsername" type="text" name="username" id="username"
+                        <input v-model="username" autocomplete="off" @input="validarUsername" type="text" name="username" id="username"
                             placeholder="Username"> #
-                        <input v-model="tagline" @input="validarTagline" type="text" name="tagline" id="tagline"
+                        <input v-model="tagline" autocomplete="off" @input="validarTagline" type="text" name="tagline" id="tagline"
                             placeholder="Tag">
                     </div>
                 </div>
 
                 <div class="input__form-container">
                     <label for="name">Nombre</label>
-                    <input v-model="name" @input="validarName" type="text" name="nombre" id="nombre"
+                    <input v-model="name"  @input="validarName" autocomplete="off" type="text" name="nombre" id="nombre"
                         placeholder="Nombre Completo">
                 </div>
 
@@ -55,7 +55,6 @@
 
                 <input v-model="id_rol" @input="validarId_rol" type="hidden" name="id_rol" id="id_rol">
             </div>
-
 
             <div class="form__terminos">
                 <input type="checkbox" id="cbx" style="display: none;">
