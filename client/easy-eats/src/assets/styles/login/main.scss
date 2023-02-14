@@ -9,9 +9,10 @@ $color-oscuro: #261A1A;
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-image: url('@/assets/imgs/BG-Login.jpg');
+    background-image: url('@/assets/imgs/BG-Login2.png');
     background-size: cover;
-    background-position: center;
+    background-position: left;
+    background-repeat: no-repeat;
 
     *::selection {
         background: $color-primario;
@@ -30,19 +31,15 @@ $color-oscuro: #261A1A;
     }
 
     .alert-success {
-        @include alert(
-            $color-terciario,
+        @include alert($color-terciario,
             lighten($color-terciario, 12%),
-            white
-        );
+            white);
     }
-    
+
     .alert-error {
-        @include alert(
-            darken(red, 17%),
+        @include alert(darken(red, 17%),
             lighten(red, 12%),
-            white
-        );
+            white);
     }
 
     .bg-darken {
@@ -52,6 +49,7 @@ $color-oscuro: #261A1A;
         background-color: $color-oscuro;
         opacity: 0.3;
     }
+
 
     .legend__container {
         position: absolute;
@@ -63,9 +61,9 @@ $color-oscuro: #261A1A;
         padding: 40px 50px;
         // Para fondo cristal oscuro
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-        background-color: rgba(38, 26, 26, 0.7);
+        background-color: hsla(40, 100%, 93%, 0.15);
         border-radius: 20px;
-        backdrop-filter: blur(1px);
+        backdrop-filter: blur(5px);
         border: 1px solid rgb(80, 80, 80);
 
         @media (max-width: 1240px) {
@@ -76,12 +74,14 @@ $color-oscuro: #261A1A;
             margin-bottom: 35px;
             font-size: 3rem;
             text-align: left;
+            color: #fff3dd;
         }
 
         .legend__text {
             margin-bottom: 50px;
             font-size: 1.2rem;
             text-align: justify;
+            color: #fff3dd;
 
             .text-resaltado-primario {
                 font-weight: bold;
@@ -90,7 +90,7 @@ $color-oscuro: #261A1A;
 
             .text-resaltado-terciario {
                 font-weight: bold;
-                color: lighten($color-terciario, 12%);
+                color: lighten($color-terciario, 17%);
             }
 
             .text-resaltado-aux {
@@ -101,9 +101,9 @@ $color-oscuro: #261A1A;
 
         .signin__btn {
             display: flex;
-            background: $color-secundario;
-            outline: 2px solid white;
-            color: white;
+            background: $color-primario;
+            outline: 2px solid #fff3dd;
+            color: #fff3dd;
             padding: 10px 1.8em;
             border-radius: 100px;
             border: none;
@@ -123,7 +123,7 @@ $color-oscuro: #261A1A;
             .arrow {
                 margin-top: 1px;
                 width: 15px;
-                background: $color-secundario;
+                background: $color-primario;
                 height: 3px;
                 position: relative;
                 transition: 0.2s;
@@ -163,31 +163,86 @@ $color-oscuro: #261A1A;
         position: absolute;
         top: 45%;
         right: 0;
-        transform: translate(-55%, -50%);
+        transform: translate(-25%, -50%);
         margin: auto;
         min-width: 360px;
-        padding: 30px;
+        padding: 100px 100px;
         border-radius: 20px;
         background-color: white;
-        width: 190px;
+        width: 700 / 1920 * 100%;
         text-align: center;
-        background: darken($color-auxiliar, 22%);
+        border: 3px solid #ffdea69e;
+        background: linear-gradient(to bottom, #2b2f414f 0%, #2b2f4156 100%),
+            radial-gradient(at top center, lighten(#c39966, 20%) -0%, #36314b 100%) #989898;
+        background-blend-mode: multiply, multiply;
+
+        .hoja1__container {
+            position: absolute;
+            left: 80%;
+            top: 77%;
+
+            .floating-image1 {
+                position: absolute;
+                z-index: 10;
+                animation: floating-animation 4.3s ease-in-out infinite;
+                width: 200px;
+            }
+
+            @keyframes floating-animation {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-15px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+        }
 
         form {
-            margin-top: 30px;
+            margin: 30px auto;
+            width: 1200 / 1920 * 100%;
+
+            input::-webkit-input-placeholder {
+                color: darken($color-auxiliar, 22%);
+                opacity: 0.8;
+            }
+
+            input:-moz-placeholder {
+                color: darken($color-auxiliar, 22%);
+                opacity: 0.8;
+            }
+
+            input::-moz-placeholder {
+                color: darken($color-auxiliar, 22%);
+                opacity: 0.8;
+            }
+
+            input:-ms-input-placeholder {
+                color: darken($color-auxiliar, 22%);
+                opacity: 0.8;
+            }
 
             .input-valid {
                 outline: 1px solid $color-terciario;
             }
 
             .input-invalid {
-                outline: 1px solid red;
+                outline: 2px solid #d14646;
             }
         }
 
 
         @media (max-width: 1600px) {
-            transform: translate(-20%, -50%);
+            transform: translate(-5%, -50%);
+
+            form {
+                width: 1700 / 1920 * 100%;
+            }
         }
 
         @media (max-width: 1240px) {
@@ -195,10 +250,11 @@ $color-oscuro: #261A1A;
             right: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            padding: 50px 50px;
         }
 
         .login__title {
-            color: white;
+            color: #ffdea6;
             text-align: center;
             font-weight: 400;
         }
@@ -209,15 +265,19 @@ $color-oscuro: #261A1A;
             align-items: center;
             justify-content: center;
             gap: .5em;
-            background-color: darken($color-auxiliar, 27%);
-            border-radius: 4px;
+            background-color: #ffdea6;
+            border-radius: 100px;
             padding: .5em 1em;
+
+            &::placeholder {
+                color: darken($color-auxiliar, 22%);
+            }
         }
 
         .input-icon {
             height: 1em;
             width: 1em;
-            fill: lighten($color-primario, 30%);
+            fill: darken($color-auxiliar, 22%);
         }
 
         .input-field {
@@ -225,7 +285,7 @@ $color-oscuro: #261A1A;
             border: none;
             outline: none;
             width: 100%;
-            color: #d3d3d3;
+            color: darken($color-auxiliar, 22%);
         }
 
         /*Text*/
@@ -238,18 +298,18 @@ $color-oscuro: #261A1A;
 
         /*Buttons*/
         .btn {
-            margin: 1rem;
+            margin: 1.5rem auto;
             border: none;
             border-radius: 4px;
             font-weight: bold;
             font-size: .8em;
             text-transform: uppercase;
             padding: 0.6em 1.2em;
-            background-color: lighten($color-primario, 30%);
+            background-color: #ffdea6;
             color: darken($color-auxiliar, 22%);
             box-shadow: 0 8px 24px 0 #ffeba733;
             transition: all .3s ease-in-out;
-            
+
             &[disabled] {
                 opacity: 0.2;
                 cursor: not-allowed;
@@ -258,12 +318,12 @@ $color-oscuro: #261A1A;
             &:not([disabled]) {
                 opacity: 1;
                 cursor: pointer;
-            
+
                 &:hover {
-                    background-color: darken($color-auxiliar, 27%);
-                    color: #ffeba7;
+                    background-color: #2a2a31;
+                    color: #ffdea6;
                     box-shadow: 0 8px 24px 0 #10277033;
-                }    
+                }
             }
         }
 
@@ -273,7 +333,7 @@ $color-oscuro: #261A1A;
         }
 
         .btn-link:hover {
-            color: #ffeba7;
+            color: #ffdea6;
         }
 
         .btn-link {

@@ -17,7 +17,7 @@
             <span class="text-resaltado-primario">Easy Eats</span>!
         </p>
 
-        <button class="signin__btn">
+        <button @click="signin" class="signin__btn">
             Registrarse
             <div class="arrow-wrapper">
                 <div class="arrow"></div>
@@ -26,8 +26,21 @@
     </div>
 </template>
 <script>
+import { useRouter } from 'vue-router';
+
 export default {
-    
+    name: 'LegendLogin',
+    setup() {
+        const router = useRouter();
+
+        const signin = () => {
+            router.push('/signin')
+        }
+
+        return {
+            signin
+        }
+    },
 }
 </script>
 <style>

@@ -1,0 +1,241 @@
+.signin {
+    // centrar formulario
+    display: grid;
+    place-content: center;
+    width: 100vw;
+    height: 100vh;
+    // Imagen Fondo
+    background-image: url('@/assets/imgs/BG-Signin.png');
+    background-size: cover;
+    background-position: center;
+
+    .singin-form {
+        border-radius: 20px;
+        // Para fondo de cristal
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        background-color: hsla(0, 0%, 86%, 0.204);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgb(80, 80, 80);
+        padding: 30px 50px;
+        color: black;
+        font-weight: 600;
+        min-width: 360px;
+
+        input::-webkit-input-placeholder {
+            color: darken(grey, 22%);
+            opacity: 0.8;
+        }
+
+        input:-moz-placeholder {
+            color: darken(grey, 22%);
+            opacity: 0.8;
+        }
+
+        input::-moz-placeholder {
+            color: darken(grey, 22%);
+            opacity: 0.8;
+        }
+
+        input:-ms-input-placeholder {
+            color: darken(grey, 22%);
+            opacity: 0.8;
+        }
+
+
+        .tomato__container {
+            position: absolute;
+            left: 80%;
+            top: -10%;
+
+            img {
+                position: absolute;
+                z-index: 10;
+                animation: floating-animation 4.3s ease-in-out infinite;
+                width: 150px;
+            }
+
+            @keyframes mover-diagonal-curva {
+                0% {
+                    top: 0;
+                    left: 0;
+                }
+
+                25% {
+                    top: 100%;
+                    left: 100%;
+                    transform: translate(-100%, 100%) rotate(45deg);
+                }
+
+                50% {
+                    top: 100%;
+                    left: 100%;
+                    transform: translate(-100%, -100%) rotate(90deg);
+                }
+
+                75% {
+                    top: 0;
+                    left: 100%;
+                    transform: translate(100%, -100%) rotate(135deg);
+                }
+
+                100% {
+                    top: 0;
+                    left: 0;
+                }
+            }
+
+            @keyframes floating-animation {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-15px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        .required__text {
+            color: rgb(255, 61, 61);
+        }
+
+        .inputs__container {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+        }
+
+        .input__form-container {
+            // border: 1px solid yellow;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+
+            label {
+                text-transform: uppercase;
+            }
+
+            input {
+                padding: 5px;
+                border-radius: 5px;
+                border: none;
+                border-bottom: 3px solid grey;
+                outline: none;
+                transition: all .3s ease-in-out;
+
+                &:focus {
+                    border-bottom: 3px solid orange;
+                }
+            }
+        }
+
+        .form__terminos {
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            width: 80%;
+
+            .check {
+                cursor: pointer;
+                position: relative;
+                margin: auto;
+                width: 18px;
+                height: 18px;
+                -webkit-tap-highlight-color: transparent;
+                transform: translate3d(0, 0, 0);
+            }
+
+            .check:before {
+                content: "";
+                position: absolute;
+                top: -15px;
+                left: -15px;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: rgba(34, 50, 84, 0.03);
+                opacity: 0;
+                transition: opacity 0.2s ease;
+            }
+
+            .check svg {
+                position: relative;
+                z-index: 1;
+                fill: none;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke: #000000;
+                stroke-width: 1.5;
+                transform: translate3d(0, 0, 0);
+                transition: all 0.2s ease;
+            }
+
+            .check svg path {
+                stroke-dasharray: 60;
+                stroke-dashoffset: 0;
+            }
+
+            .check svg polyline {
+                stroke-dasharray: 22;
+                stroke-dashoffset: 66;
+            }
+
+            .check:hover:before {
+                opacity: 1;
+            }
+
+            .check:hover svg {
+                stroke: darken(#ff9d00, 3%);
+            }
+
+            #cbx:checked+.check svg {
+                stroke: darken(#ff9d00, 3%);
+            }
+
+            #cbx:checked+.check svg path {
+                stroke-dashoffset: 60;
+                transition: all 0.3s linear;
+            }
+
+            #cbx:checked+.check svg polyline {
+                stroke-dashoffset: 42;
+                transition: all 0.2s linear;
+                transition-delay: 0.15s;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        button {
+            width: 100%;
+            border-radius: 100px;
+            background-color: transparent;
+            border: none;
+            outline: 2px solid black;
+            background-color: darken(orange, 7%);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 23px;
+            padding: 10px 0px;
+            transition: all .275s ease-in-out;
+            color: black;
+
+            &:hover {
+                // no cambie de tamaño el formula "outline
+                outline: 2px solid black;
+                background-color: orange;
+                color: white;
+            }
+        }
+    }
+}

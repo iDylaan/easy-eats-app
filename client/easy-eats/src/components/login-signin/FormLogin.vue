@@ -1,5 +1,10 @@
 <template>
     <div class="form-login__container">
+
+        <div class="hoja1__container">
+            <img src="@/assets/imgs/Hoja1.png" alt="Hoja flotante" class="floating-image1">
+        </div>
+
         <div class="card">
             <form novalidate>
                 <div v-if="error" class="alert-error">{{ error }}</div>

@@ -8,7 +8,7 @@
 
     <div class="login__container">
       <h1 class="login__title">
-        <font-awesome-icon icon="fa-solid fa-right-to-bracket" />
+        <font-awesome-icon icon="fa-solid fa-user" />
         Iniciar Sesión
       </h1>
       <FormLogin />
