@@ -110,7 +110,7 @@ export default {
                             .catch(err => {
                                 console.error('Error al redirigir a la ruta', err);
                             });
-                    }, 750);
+                    }, 900);
                 }
 
             } catch (error) {

@@ -14,6 +14,30 @@
         color: white;
     }
 
+    @mixin alert($borde, $bg, $letter) {
+        border-bottom: 5px solid $borde;
+        background-color: $bg;
+        color: $letter;
+        padding: 2px 5px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        width: 100%;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .alert-success {
+        @include alert($color-terciario,
+            lighten($color-terciario, 12%),
+            white);
+    }
+
+    .alert-error {
+        @include alert(darken(red, 17%),
+            lighten(red, 12%),
+            white);
+    }
+
     .singin-form {
         border-radius: 20px;
         // Para fondo de cristal
@@ -225,11 +249,11 @@
             }
 
             .check:hover svg {
-                stroke: darken(#ff9d00, 3%);
+                stroke: darken(green, 10%);
             }
 
             #cbx:checked+.check svg {
-                stroke: darken(#ff9d00, 3%);
+                stroke: darken(green, 10%);
             }
 
             #cbx:checked+.check svg path {

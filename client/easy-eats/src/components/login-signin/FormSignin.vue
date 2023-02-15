@@ -13,7 +13,6 @@
         <form novalidate>
 
             <div v-if="error" class="alert-error">{{ error }}</div>
-            <div v-if="message" class="alert-success">{{ message }}</div>
 
             <div class="inputs__container">
                 <div class="input__form-container">
@@ -25,7 +24,7 @@
 
                         <input v-model="tagline" autocomplete="off" @input="validateInput('tagline')"
                             :style="{ borderBottom: borderBottomColorTagline }" type="text" name="tagline" id="tagline"
-                            placeholder="Tag">
+                            placeholder="Ej.- HGD75">
                     </div>
                 </div>
 
@@ -88,6 +87,7 @@
 <script>
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 
 export default {
     name: 'FormSignin',
@@ -96,7 +96,6 @@ export default {
         const router = useRouter();
         const id_rol = 2;
         // Variables del form
-        let message = ref('');
         let error = ref('');
         let username = ref('');
         let tagline = ref('');
@@ -246,7 +245,7 @@ export default {
         }
         const validarDate_of_birth = () => {
             // Cambiando formato YYYY-MM-DD a DD-MM-YYYY
-            if (date_of_birth.value.length !== 10 && date_of_birth.value > maxDate.value) {
+            if (date_of_birth.value.length !== 10 || date_of_birth.value > maxDate.value) {
                 borderBottomColorDate_of_birth.value = '3px solid red';
                 date_of_birthValid.value = false;
             } else {
@@ -257,8 +256,12 @@ export default {
             date = dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0];
         }
 
-        const signin = () => {
-            if (!validateInput()) { return; }
+        const signin = async () => {
+            if (!validateInput()) {
+                error.value = "Formulario no válido";
+                return;
+            }
+            error.value = '';
             const ROUTE = '/users';
             const user = {
                 username: username.value,
@@ -270,17 +273,36 @@ export default {
                 id_rol: id_rol
             }
 
-            setTimeout(() => {
-                router.push('/login')
-                    .catch(err => {
-                        console.error('Error al redirigir a la ruta', err);
-                    });
-            }, 750);
+            const response = await axios({
+                method: "POST",
+                url: URL + ROUTE,
+                data: user
+            })
+
+            if (response.data.status === 400) {
+                if (response.data.campo === "tagline") {
+                    borderBottomColorTagline.value = "3px solid red";
+                    taglineValid.value = false;
+                    validateInput();
+                }
+                if (response.data.campo === "email") {
+                    borderBottomColorEmail.value = "3px solid red";
+                    emailValid.value = false;
+                    validateInput();
+                }
+
+                error.value = response.data.message;
+                return;
+            }
+
+            router.push('/login')
+                .catch(err => {
+                    console.error('Error al redirigir a la ruta', err);
+                });
         }
 
         return {
             signin,
-            message,
             error,
             id_rol,
             username,
