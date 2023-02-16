@@ -1,3 +1,9 @@
+// Tamaño de Media Queries
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+
+// Colores
 $color-primario: #f29f05;
 $color-secundario: #D95504;
 $color-terciario: #8C8303;
@@ -29,7 +35,7 @@ $mate-ligth-on-surface: #1f1b16;
 $mate-ligth-outline: #817568;
 $mate-ligth-surface-variant: #f0e0d0;
 $mate-ligth-on-surface-variant: #4f4539;
-// Ligth scheme
+// Dark scheme
 $mate-dark-primary: #ffb958;
 $mate-dark-on-primary: #462b00;
 $mate-dark-primary-container: #643f00;
