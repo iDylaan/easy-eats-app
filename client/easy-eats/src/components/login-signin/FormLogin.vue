@@ -1,5 +1,10 @@
 <template>
     <div class="form-login__container">
+
+        <div class="hoja1__container">
+            <img src="@/assets/imgs/Hoja1.png" alt="Hoja flotante" class="floating-image1">
+        </div>
+
         <div class="card">
             <form novalidate>
                 <div v-if="error" class="alert-error">{{ error }}</div>
@@ -31,7 +36,7 @@
 <script>
 import { useRouter } from 'vue-router';
 import axios from 'axios';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 export default {
     setup() {
@@ -46,6 +51,12 @@ export default {
         let formValid = ref(false);
         let error = ref('');
         let message = ref('');
+
+        onMounted(() => {
+            login().catch(error => {
+                console.error(error)
+            })
+        })
 
         const validateInputs = () => formValid.value = emailValid.value && passwordValid.value && emailCnt > 0 && passwordCnt > 0;
 
@@ -62,6 +73,7 @@ export default {
         }
 
         const login = async () => {
+            if (!validateInputs()) { return; }
             const ROUTE  = '/login';
             error.value = '';
             message.value = '';
@@ -94,8 +106,11 @@ export default {
                     localStorage.setItem("tagline", response.data.tagline);
 
                     setTimeout(() => {
-                        router.push('/loged');
-                    }, 750);
+                        router.push('/loged')
+                            .catch(err => {
+                                console.error('Error al redirigir a la ruta', err);
+                            });
+                    }, 900);
                 }
 
             } catch (error) {

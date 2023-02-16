@@ -21,7 +21,6 @@ export default {
             }
 
             let decoded = jwtDecode(localStorage.getItem('token'));
-            console.log(decoded['user_role'])
             isAdmin.value = decoded['user_role'] === 1 ? true : false;
         });
 

@@ -33,7 +33,8 @@ export default {
         }
 
         onMounted(() => {
-            if(!localStorage.getItem('token')) {
+            if(localStorage.getItem('token')) {
+            } else {
                 router.push('/login');
             }
             

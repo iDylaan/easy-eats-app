@@ -117,7 +117,7 @@ def save_user():
         or not password \
         or not date_of_birth \
         or not id_rol:
-            return jsonify({"message": "Faltan campos obligatorios", "status": 400}), 400
+            return jsonify({"message": "Faltan campos obligatorios", "status": 400}), 200
         
         # * Getting values from request
         tagline = data["tagline"].upper()
@@ -142,7 +142,8 @@ def save_user():
             elif user_exist:
                 respose = {
                     "message": "Tagline no disponible",
-                    "status": 200
+                    "campo": "tagline",
+                    "status": 400
                 }
                 return jsonify(respose), 200
             ### * VALIDATION  UNIQUE EMAIL * ###
@@ -156,7 +157,8 @@ def save_user():
             elif email_exist:
                 respose = {
                     "message": "Email no disponible",
-                    "status": 200
+                    "campo": "email",
+                    "status": 400
                 }
                 return jsonify(respose), 200
             
@@ -197,11 +199,10 @@ def save_user():
                 id_rol
             ))
             if result['status'] != "OK":
-                return jsonify({"message": "Error al crear el usuario", "status": 400}), 400
+                return jsonify({"message": "Error al crear el usuario", "status": 400}), 200
             respose = {
-                "message": "OK",
+                "message": "Usuario creado correctamente!",
                 "status": 200,
-                "data": "Usuario creado correctamente!",
             }
             return jsonify(respose), 200
         else: 
@@ -242,7 +243,7 @@ def update_user(id):
         or not password \
         or not date_of_birth \
         or not id_rol:
-            return jsonify({"message": "Faltan campos obligatorios", "status": 400}), 400
+            return jsonify({"message": "Faltan campos obligatorios", "status": 400}), 200
         
         # * Heashed password for security
         password = generate_password_hash(data["password"], method='sha256')
