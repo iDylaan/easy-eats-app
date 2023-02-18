@@ -51,7 +51,7 @@ def login():
         
         username = user["username"]
         tagline = user["tagline"]
-        token = gen_jwt(user["id"], user["email"], user["password"], user["id_rol"])
+        token = gen_jwt(user["id"], user["id_rol"])
         response = {
             "username": username,
             "tagline": tagline,

@@ -21,13 +21,11 @@ def val_req_data(data, schema): # validate request data
 
 
 
-def gen_jwt(user_id, user_email, user_password, user_role):
+def gen_jwt(user_id, user_role):
     try:
         payload = {
             "user_id": user_id,
-            "user_email": user_email,
-            "user_password": user_password,
-            "user_role": user_role,
+            "is_admin": True if user_role == 2 else False,
             "exp": datetime.datetime.utcnow() + datetime.timedelta(seconds=(60*60*24*1)) # ? seconds * minutes * hours * days
         }
         return jwt.encode(payload, app.config['SECRET_JWT_KEY'], algorithm='HS256')

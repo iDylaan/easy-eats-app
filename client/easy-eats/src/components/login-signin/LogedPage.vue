@@ -10,7 +10,6 @@ import { useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import jwtDecode from 'jwt-decode'
 
-
 export default {
     name: 'LogedPage',
     setup() {

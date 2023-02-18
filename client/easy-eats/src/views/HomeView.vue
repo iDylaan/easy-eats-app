@@ -8,7 +8,7 @@
 
 <script>
 import { useRouter } from 'vue-router';
-import Header from '../components/header/Header';
+import Header from '../components/home/Header';
 import Carrusel from '../components/home/Carrusel';
 
 
