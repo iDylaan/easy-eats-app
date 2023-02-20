@@ -248,7 +248,7 @@
             transform: translate(5%, -50%);
             padding: 50px 50px;
         }
-      
+
         @media (max-width: 1200px) {
             top: 50%;
             right: 50%;
@@ -344,6 +344,22 @@
             display: block;
             font-size: .75em;
             transition: color .3s ease-out;
+        }
+    }
+
+    .register__message-container {
+        color: #ffdea6;
+        font-size: 0.8rem;
+
+        span {
+            cursor: pointer;
+            color: white;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+                color: $color-primario;   
+                text-decoration: underline;
+            }
         }
     }
 }
