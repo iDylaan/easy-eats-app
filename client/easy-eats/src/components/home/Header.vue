@@ -1,11 +1,28 @@
 <template>
     <header :class="headerClass">
-        <div class="logo">LOGO</div>
-        <nav class="navbar">
+        <!-- <div class="logo">LOGO</div> -->
+
+        <a href="#" class="brand">
+      	<img src="../../assets/imgs/header/logo_x.png">
+      </a>
+
+
+      <nav class="navbar">
+        <div class="btn">
+          <i class="fas fa-times close-btn"></i>
+        </div>
+        <ul>
+        	<li><a href="#">Home</a></li>
+        	<li><a href="#">Recetas</a></li>
+        	<li><a href="#">Salud y nutricion</a></li>
+        </ul>
+      </nav>
+
+        <!-- <nav class="navbar">
             <a href="">Inicio</a> <span class="navpipe">|</span>
             <a href="">Recetas</a> <span class="navpipe">|</span>
             <a href="">Salud y Nutrición</a>
-        </nav>
+        </nav> -->
         <div class="profile-options">
             <!-- <button v-if="isLoged" @click="cerrarSesion">Cerrar Sesión</button>
             <button v-if="!isLoged" @click="iniciarSesion">Iniciar Sesión</button> -->
@@ -27,6 +44,12 @@
             </button>
 
         </div>
+
+        <div class="btn">
+        <i class="fas fa-bars menu-btn"></i>
+      </div>
+    
+
     </header>
 </template>
 <script>
