@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+
+    <!-- Stylesheets -->
+    <link href="/client/easy-eats/src/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/client/easy-eats/src/assets/css/main.css" rel="stylesheet">
+    <link href="/client/easy-eats/src/assets/css/responsive.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="/client/easy-eats/src/assets/js/jquery.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/popper.min.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/bootstrap.min.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/jquery.mCustomScrollbar.concat.min.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/jquery.fancybox.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/appear.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/owl.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/wow.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/jquery-ui.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/script.js" defer></script>
+    <script src="/client/easy-eats/src/assets/js/index/main.js" defer></script>
   </head>
+
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+          Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+
 </html>
