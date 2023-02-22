@@ -1,15 +1,18 @@
 <template>
-  <div class="home">
+  <!-- <div class="home">
     <Header />
     <img src="@/assets/imgs/Banner-Food1.png" alt="">
-    <!-- <Carrusel /> -->
-  </div>
+    <Carrusel />
+  </div> -->
+
+  <PagePreloader />
 </template>
 
 <script>
 import { useRouter } from 'vue-router';
 import Header from '../components/home/Header';
 import Carrusel from '../components/home/Carrusel';
+import PagePreloader from '@/components/page-wrapper/PagePreloader';
 
 
 export default {
@@ -19,7 +22,8 @@ export default {
   },
   components: {
     Header,
-    Carrusel
+    Carrusel,
+    PagePreloader
   }
 }
 </script>

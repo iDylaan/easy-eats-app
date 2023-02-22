@@ -3,10 +3,16 @@
         <!-- Preloader -->
         <div class="preloader"></div>
 
+        <HeaderWrapper />
+
     </div>
 </template>
 <script>
-export default {
+import HeaderWrapper from '@/components/page-wrapper/Header.vue';
 
+export default {
+    components: {
+        HeaderWrapper
+    }
 }
 </script>
