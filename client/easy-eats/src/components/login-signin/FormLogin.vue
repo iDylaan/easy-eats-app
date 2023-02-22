@@ -124,7 +124,7 @@ export default {
                     localStorage.setItem("tagline", response.data.tagline);
 
                     setTimeout(() => {
-                        router.push('/loged')
+                        router.push('/')
                             .catch(err => {
                                 console.error('Error al redirigir a la ruta', err);
                             });

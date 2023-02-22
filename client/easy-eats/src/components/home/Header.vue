@@ -3,30 +3,23 @@
         <!-- <div class="logo">LOGO</div> -->
 
         <a href="#" class="brand">
-      	<img src="../../assets/imgs/header/logo_x.png">
-      </a>
+            <img src="../../assets/imgs/header/logo_x.png">
+        </a>
 
 
-      <nav class="navbar">
-        <div class="btn">
-          <i class="fas fa-times close-btn"></i>
-        </div>
-        <ul>
-        	<li><a href="#">Home</a></li>
-        	<li><a href="#">Recetas</a></li>
-        	<li><a href="#">Salud y nutricion</a></li>
-        </ul>
-      </nav>
+        <nav class="navbar">
+            <div class="btn">
+                <i class="fas fa-times close-btn"></i>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Recetas</a></li>
+                <li><a href="#">Salud y nutricion</a></li>
+            </ul>
+        </nav>
 
-        <!-- <nav class="navbar">
-            <a href="">Inicio</a> <span class="navpipe">|</span>
-            <a href="">Recetas</a> <span class="navpipe">|</span>
-            <a href="">Salud y Nutrición</a>
-        </nav> -->
+        
         <div class="profile-options">
-            <!-- <button v-if="isLoged" @click="cerrarSesion">Cerrar Sesión</button>
-            <button v-if="!isLoged" @click="iniciarSesion">Iniciar Sesión</button> -->
-
             <button v-if="!isLoged" @click="iniciarSesion">
                 Iniciar Sesion
                 <div class="arrow-wrapper">
@@ -46,9 +39,9 @@
         </div>
 
         <div class="btn">
-        <i class="fas fa-bars menu-btn"></i>
-      </div>
-    
+            <i class="fas fa-bars menu-btn"></i>
+        </div>
+
 
     </header>
 </template>
@@ -61,10 +54,12 @@ export default {
     setup() {
         const scrollPosition = ref(0);
         const headerClass = ref('');
+        const router = useRouter();
+        let isLoged = ref(false);
 
         const handleScroll = () => {
             scrollPosition.value = window.scrollY;
-            if (scrollPosition.value > 0) { 
+            if (scrollPosition.value > 0) {
                 headerClass.value = 'fixed';
             } else {
                 headerClass.value = '';
@@ -73,14 +68,12 @@ export default {
 
         onMounted(() => {
             window.addEventListener('scroll', headerClass);
+            isLoged.value = localStorage.getItem('token') ? true : false;
         })
 
         onBeforeUnmount(() => {
             window.removeEventListener('scroll', headerClass);
         });
-
-        const router = useRouter();
-        let isLoged = ref(false);
 
         const iniciarSesion = () => {
             router.push("/login");
@@ -89,7 +82,7 @@ export default {
             localStorage.removeItem('token');
             localStorage.removeItem('username');
             localStorage.removeItem('tagline');
-            router.push('/');
+            window.location.reload();
         }
 
         return {
