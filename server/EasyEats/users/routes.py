@@ -14,7 +14,7 @@ from EasyEats.utils.misc import (
 )
 
 # MODULE
-mod = Blueprint('usuarios', __name__, 
+mod = Blueprint('users', __name__, 
     template_folder='templates', 
     static_folder='static', 
     static_url_path='/%s' % __name__
