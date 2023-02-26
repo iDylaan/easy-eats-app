@@ -7,8 +7,6 @@ from .schemas import user_schema
 from .sql_strings import Sql_Strings as SQL_STRINGS
 from EasyEats.config.conf_maria import query, sql
 from EasyEats.utils.misc import (
-    validate_user_exist, 
-    validate_email_exist, 
     val_req_data,
     login_required
 )
@@ -310,7 +308,7 @@ def update_user(id):
                 id
             ))
             if result['status'] != "OK":
-                return jsonify({"message": "Error al crear el usuario", "status": 400}), 400
+                return jsonify({"message": "Error al actualizar el usuario", "status": 400}), 400
             respose = {
                 "message": "OK",
                 "status": 200,
@@ -361,3 +359,25 @@ def delete_user(id):
             "status": 500
         }
         return jsonify(respose), 500
+    
+
+# =========== FUNCTIONS ===========
+def validate_user_exist(username, tagline):
+    try:
+        cnt_users = query(SQL_STRINGS.COUNT_USERS, (username, tagline), True)
+        if cnt_users["status"] != "OK":
+            raise Exception("Error en la consulta de usuarios a la base de datos en @validate_email_exist")
+        return (bool(int(cnt_users['data']['conteo'])))
+    except Exception as e:
+        print("Ha ocurrido el siguiente error en @validate_user_exist/{}".format(e))
+        return None
+
+def validate_email_exist(email):
+    try:
+        cnt_emails = query(SQL_STRINGS.COUNT_EMAILS, (email), True)
+        if cnt_emails["status"] != "OK":
+            raise Exception("Error en la consulta de emails a la base de datos en @validate_email_exist")
+        return bool(int(cnt_emails['data']['conteo']))
+    except Exception as e:
+        print("Ha ocurrido el siguiente error en @validate_email_exist/{}".format(e))
+        return None

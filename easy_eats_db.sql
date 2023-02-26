@@ -203,7 +203,6 @@ INSERT INTO recipe_utensils (id_recipe, id_utensil) VALUES
 CREATE TABLE favorite_recipes (
   id_recipe INT NOT NULL,
   id_user INT NOT NULL,
-  CONSTRAINT pk_favorite_recipes PRIMARY KEY (id_recipe, id_user),
   CONSTRAINT fk_favorite_recipes_recipe_id FOREIGN KEY(id_recipe) REFERENCES recipes(id),
   CONSTRAINT fk_favorite_recipes_user_id FOREIGN KEY(id_user) REFERENCES users(id)
 );
