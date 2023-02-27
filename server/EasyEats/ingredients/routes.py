@@ -51,7 +51,6 @@ def get_ingredients():
                 "status": 500
             }
             return jsonify(respose), 500
-        return jsonify({"message": "Desde @get_ingredients"}), 200
     except Exception as e:
         print("Ha ocurrido un error en @get_ingredients/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         respose = {
