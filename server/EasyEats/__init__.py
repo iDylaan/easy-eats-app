@@ -37,8 +37,26 @@ app.config['SECRET_JWT_KEY'] = os.getenv("SECRET_JWT_KEY")
 
 ### ROUTER ###
 from EasyEats.login_signin.routes import mod as mod_login_signin
-from EasyEats.usuarios.routes import mod as mod_usuarios
+from EasyEats.users.routes import mod as mod_users
+from EasyEats.recipes.routes import mod as mod_recipes
+from EasyEats.ingredients.routes import mod as mod_ingredients
+from EasyEats.categories.routes import mod as mod_categories
+from EasyEats.utensils.routes import mod as mod_utensils
+from EasyEats.recipe_ingredients.routes import mod as mod_recipe_ingredients
+from EasyEats.recipe_categories.routes import mod as mod_recipe_categories
+from EasyEats.recipe_utensils.routes import mod as mod_recipe_utensils
+from EasyEats.steps.routes import mod as mod_steps
+from EasyEats.reviews.routes import mod as mod_reviews
 
 ### BLUEPRINTS ###
 app.register_blueprint(mod_login_signin)
-app.register_blueprint(mod_usuarios)
+app.register_blueprint(mod_users)
+app.register_blueprint(mod_recipes)
+app.register_blueprint(mod_ingredients)
+app.register_blueprint(mod_categories)
+app.register_blueprint(mod_utensils)
+app.register_blueprint(mod_recipe_ingredients)
+app.register_blueprint(mod_recipe_categories)
+app.register_blueprint(mod_recipe_utensils)
+app.register_blueprint(mod_steps)
+app.register_blueprint(mod_reviews)

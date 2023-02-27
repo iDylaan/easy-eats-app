@@ -6,7 +6,7 @@ from .schemas import user_schema
 from werkzeug.security import generate_password_hash, check_password_hash
 from .sql_strings import Sql_Strings as SQL_STRINGS
 from EasyEats.config.conf_maria import query
-from EasyEats.utils.misc import gen_jwt, validate_email_exist, validate_user_exist, val_req_data
+from EasyEats.utils.misc import gen_jwt, val_req_data
 
 
 # MODULE
@@ -30,6 +30,7 @@ def handle_options():
     }
 
 
+# =========== ROUTES ===========
 @mod.route('/login', methods=['POST'])
 def login():
     try:
@@ -61,3 +62,24 @@ def login():
     except Exception as e:
         print("Ha ocurrido un error en @login/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         
+
+# =========== FUNCTIONS ===========
+def validate_user_exist(username, tagline):
+    try:
+        cnt_users = query(SQL_STRINGS.COUNT_USERS, (username, tagline), True)
+        if cnt_users["status"] != "OK":
+            raise Exception("Error en la consulta de usuarios a la base de datos en @validate_email_exist")
+        return (bool(int(cnt_users['data']['conteo'])))
+    except Exception as e:
+        print("Ha ocurrido el siguiente error en @validate_user_exist/{}".format(e))
+        return None
+
+def validate_email_exist(email):
+    try:
+        cnt_emails = query(SQL_STRINGS.COUNT_EMAILS, (email), True)
+        if cnt_emails["status"] != "OK":
+            raise Exception("Error en la consulta de emails a la base de datos en @validate_email_exist")
+        return bool(int(cnt_emails['data']['conteo']))
+    except Exception as e:
+        print("Ha ocurrido el siguiente error en @validate_email_exist/{}".format(e))
+        return None        

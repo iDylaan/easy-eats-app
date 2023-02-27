@@ -5,7 +5,7 @@ from .sql_strings import Sql_Strings as SQL_STRINGS
 
 
 # MODULE
-mod = Blueprint('recipes', __name__, 
+mod = Blueprint('steps', __name__, 
     template_folder='templates', 
     static_folder='static', 
     static_url_path='/%s' % __name__
@@ -14,7 +14,7 @@ mod = Blueprint('recipes', __name__,
 CORS(mod)
 
 # CORS Configure Parameters
-@mod.route('/recipes', methods=['OPTIONS'])
+@mod.route('/steps', methods=['OPTIONS'])
 def handle_options():
     return "", 200, {
         "Access-Control-Allow-Origin": "*", # "*"
@@ -24,12 +24,12 @@ def handle_options():
 
 
 # =========== ROUTES ===========
-@mod.route('/recipes', methods=['GET'])
-def get_recipes():
+@mod.route('/steps', methods=['GET'])
+def get_steps():
     try:
-        return jsonify({"message": "Desde @get_recipes"}), 200
+        return jsonify({"message": "Desde @get_steps"}), 200
     except Exception as e:
-        print("Ha ocurrido un error en @get_recipes/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @get_steps/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500
