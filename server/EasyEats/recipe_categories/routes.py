@@ -26,7 +26,7 @@ def handle_options():
     }
 
 
-# =========== ROUTES ===========
+# =========== ROUTES =========== #
 @mod.route('/recipe_categories', methods=['GET'])
 def get_recipe_categories():
     try:

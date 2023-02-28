@@ -160,14 +160,14 @@ INSERT INTO reviews (comment, rating, id_recipe, id_user) VALUES
 
 CREATE TABLE recipe_ingredients (
   amount INT NOT NULL,
-  type_mount VARCHAR(20) NOT NULL,
+  type_amount VARCHAR(20) NOT NULL,
   id_recipe INT NOT NULL,
   id_ingredient INT NOT NULL,
   CONSTRAINT fk_recipe_ingredient_recipe_id FOREIGN KEY (id_recipe) REFERENCES recipes(id),
   CONSTRAINT fk_recipe_ingredient_ingredient_id FOREIGN KEY (id_ingredient) REFERENCES ingredients(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_General_ci;
 
-INSERT INTO recipe_ingredients(amount, type_mount, id_recipe, id_ingredient) VALUES
+INSERT INTO recipe_ingredients(amount, type_amount, id_recipe, id_ingredient) VALUES
   (1500, 'gr', 1, 1),
   (8, 'piezas', 1, 2),
   (4, 'muslos', 1, 3),
