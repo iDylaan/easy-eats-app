@@ -33,13 +33,8 @@ def get_recipe_ingredients():
         result = query(SQL_STRINGS.QRY_RECIPES_INGREDIENTS)
         if result["status"] == "OK":
             recipe_ingredients = [dict(row) for row in result["data"]]
-            regex = r"\[(\d+), \s*([A-Za-z]+), \s*([\d\.]+)\]"
-            for d in recipe_ingredients:
-                ingredients = re.findall(regex, d["ingredients_array"])
-                print(ingredients)
-                # d["ingredients_array"]
-            # for d in recipe_ingredients:
-                # d["ingredients_array"] = d["ingredients_array"].split(",")
+            for item in recipe_ingredients:
+                item["ingredients"] = eval(item["ingredients_array"])
             respose = {
                 "message": "OK",
                 "status": 200,
@@ -70,14 +65,12 @@ def get_recipe_ingredients():
 @mod.route('/recipe_ingredients/<int:id>', methods=['GET'])
 def get_recipe_ingredient(id):
     try:
-        result = query(SQL_STRINGS.QRY_ingredients_BY_RECIPE_ID, id, True)
+        result = query(SQL_STRINGS.QRY_RECIPE_INGREDIENTS_BY_ID, id)
         if result["status"] == "OK":
-            data = result["data"]
-            data["ingredients"] = data["ingredients"].split(",")
             respose = {
                 "message": "OK",
                 "status": 200,
-                "data": data
+                "data": result["data"]
             }
             return jsonify(respose), 200
         elif result["status"] == "NOT_FOUND":
