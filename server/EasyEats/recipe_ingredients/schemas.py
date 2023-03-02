@@ -5,7 +5,7 @@ recipe_ingredient_schema = {
         "empty": False
     },
     "type_amount": {
-        "type": "String",
+        "type": "string",
         "required": True,
         "empty": False,
         "maxlength": 20

@@ -65,6 +65,13 @@ def get_recipe_categories():
 @mod.route('/recipe_categories/<int:id>', methods=['GET'])
 def get_recipe_category(id):
     try:
+        result = query(SQL_STRINGS.QRY_COUNT_RECIPES_BY_ID, id, True)
+        if result["data"]["count"] == 0:
+            response = {
+                "message": "Receta inexistente",
+                "status": 404
+            }
+            return jsonify(response)
         result = query(SQL_STRINGS.QRY_CATEGORIES_BY_RECIPE_ID, id, True)
         if result["status"] == "OK":
             data = result["data"]
@@ -152,6 +159,20 @@ def save_recipe_category():
 @mod.route('/recipe_categories/<int:id_recipe>/<int:id_category>', methods=["DELETE"])
 def delete_recipe_categories(id_recipe, id_category):
     try:
+        result = query(SQL_STRINGS.QRY_COUNT_RECIPES_BY_ID, id, True)
+        if result["data"]["count"] == 0:
+            response = {
+                "message": "Receta inexistente",
+                "status": 404
+            }
+            return jsonify(response)
+        result = query(SQL_STRINGS.QRY_COUNT_CATEGORY_BY_ID, id, True)
+        if result["data"]["count"] == 0:
+            response = {
+                "message": "Categoría inexistente",
+                "status": 404
+            }
+            return jsonify(response)
         result = query(SQL_STRINGS.QRY_CATEGORIES_BY_RECIPE_ID, id_recipe, True)
         if result["status"] == "NOT_FOUND":
             respose = {
