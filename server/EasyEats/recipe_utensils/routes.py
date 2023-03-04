@@ -27,6 +27,40 @@ def handle_options():
 
 
 # =========== ROUTES =========== #
+@mod.route('/recipe_utensils', methods=['GET'])
+def get_recipes_utensils():
+    try:
+        result = query(SQL_STRINGS.QRY_RECIPES_UTENSILS)
+        if result["status"] == "OK":
+            for row in result["data"]:
+                row["utensils"] = eval(row["utensils"])
+            respose = {
+                "message": "OK",
+                "status": 200,
+                "data": result["data"]
+            }
+            return jsonify(respose), 200
+        elif result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "No hay resultados",
+                "status": 200,
+            }
+            return jsonify(respose), 200
+        else:
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500
+            }
+            return jsonify(respose), 500
+    except Exception as e:
+        print("Ha ocurrido un error en @get_recipe_utensils/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        respose = {
+            "message": "Error inesperado en el servidor",
+            "status": 500
+        }
+        return jsonify(respose), 500
+    
+    
 @mod.route('/recipe_utensils/<int:id_recipe>', methods=['GET'])
 def get_recipe_utensils(id_recipe):
     try:
@@ -37,16 +71,9 @@ def get_recipe_utensils(id_recipe):
                 "status": 404
             }
             return jsonify(response)
-        result = query(SQL_STRINGS.QRY_COUNT_INGREDIENTS_BY_RECIPE_ID, id_recipe, True)
-        if result["data"]["count"] == 0:
-            response = {
-                "message": "No hay ingredientes",
-                "status": 404
-            }
-            return jsonify(response)
-        result = query(SQL_STRINGS.QRY_RECIPES_INGREDIENTS, id_recipe, True)
+        result = query(SQL_STRINGS.QRY_RECIPE_UTENSILS, id_recipe, True)
         if result["status"] == "OK":
-            result["data"]["ingredients"] = eval(result["data"]["ingredients_raw_str"])
+            result["data"]["utensils"] = eval(result["data"]["utensils"])
                 
             respose = {
                 "message": "OK",
@@ -81,22 +108,16 @@ def save_recipe_utensil():
         data = request.get_json()
         
         # * Getting values from request
-        amount = int(data["amount"])
-        type_amount = data["type_amount"]
         id_recipe = int(data["id_recipe"])
-        id_ingredient = int(data["id_ingredient"])
+        id_utensil = int(data["id_utensil"])
         
         if not id_recipe \
-        or not id_ingredient \
-        or not amount \
-        or not type_amount:
+        or not id_utensil:
             return jsonify({"message": "Faltan campos obligatorios", "status": 400}), 200
         
         recipe_utensil = {
-            "amount": amount,
-            "type_amount": type_amount,
             "id_recipe": id_recipe,
-            "id_ingredient": id_ingredient
+            "id_utensil": id_utensil
         }
         
         errors = val_req_data(recipe_utensil, recipe_utensil_schema)
@@ -109,11 +130,11 @@ def save_recipe_utensil():
             }
             return jsonify(respose)
         
-        result = sql(SQL_STRINGS.SQL_INSERT_recipe_utensil, (amount, type_amount, id_recipe, id_ingredient))
+        result = sql(SQL_STRINGS.SQL_INSERT_RECIPE_UTENSIL, (id_recipe, id_utensil))
         if result['status'] != "OK":
                 return jsonify({"message": "Error al registrar el ingrediente de la receta", "status": 400}), 200
         respose = {
-            "message": "Ingrediente registrado exitosamente!",
+            "message": "Utensilio registrado exitosamente!",
             "status": 200
         }
         return jsonify(respose), 200
@@ -126,19 +147,19 @@ def save_recipe_utensil():
         return jsonify(respose), 500
     
     
-@mod.route('/recipe_utensils/<int:id_recipe>/<int:id_ingredient>', methods=["DELETE"])
-def delete_recipe_utensils(id_recipe, id_ingredient):
+@mod.route('/recipe_utensils/<int:id_recipe>/<int:id_utensil>', methods=["DELETE"])
+def delete_recipe_utensils(id_recipe, id_utensil):
     try:
-        result = query(SQL_STRINGS.QRY_COUNT_recipe_utensil_BY_ID, (id_recipe, id_ingredient), True)
+        result = query(SQL_STRINGS.QRY_COUNT_RECIPE_UTENSIL_BY_ID, (id_recipe, id_utensil), True)
         if result["status"] == "NOT_FOUND":
             respose = {
-                "message": "Ingrediente de la receta no encontrado",
+                "message": "Utensilio de la receta no encontrado",
                 "status": 404,
             }
             return jsonify(respose), 404
         if result["data"]["count"] == 0:
             respose = {
-                "message": "Ingrediente de la receta no encontrado",
+                "message": "Utensilio de la receta no encontrado",
                 "status": 404,
             }
             return jsonify(respose), 404
@@ -150,10 +171,10 @@ def delete_recipe_utensils(id_recipe, id_ingredient):
             }
             return jsonify(respose), 500
 
-        response = sql(SQL_STRINGS.SQL_DELETE_recipe_utensil, (id_recipe, id_ingredient))
+        response = sql(SQL_STRINGS.SQL_DELETE_RECIPE_UTENSIL, (id_recipe, id_utensil))
         if response["status"] != "OK":
-            return jsonify({"message": "Error al borrar el la categoría de la receta", "status": 500}), 500
-        return jsonify({"message": "Categoría eliminada correctamente", "status": 200}), 200
+            return jsonify({"message": "Error al borrar el el utensilio de la receta", "status": 500}), 500
+        return jsonify({"message": "Utensilio eliminado correctamente", "status": 200}), 200
     except Exception as e:
         print("Ha ocurrido un error en @delete_ingredient/{}".format(e))
         respose = {

@@ -26,6 +26,40 @@ def handle_options():
 
 
 # =========== ROUTES =========== #
+@mod.route('/recipe_ingredients', methods=['GET'])
+def get_recipes_ingredient():
+    try:
+        result = query(SQL_STRINGS.QRY_RECIPES_INGREDIENTS)
+        if result["status"] == "OK":
+            for row in result["data"]:
+                row["ingredients"] = eval(row["ingredients"])
+            respose = {
+                "message": "OK",
+                "status": 200,
+                "data": result["data"]
+            }
+            return jsonify(respose), 200
+        elif result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "No hay resultados",
+                "status": 200,
+            }
+            return jsonify(respose), 200
+        else:
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500
+            }
+            return jsonify(respose), 500
+    except Exception as e:
+        print("Ha ocurrido un error en @get_recipe_ingredients/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        respose = {
+            "message": "Error inesperado en el servidor",
+            "status": 500
+        }
+        return jsonify(respose), 500
+    
+    
 @mod.route('/recipe_ingredients/<int:id_recipe>', methods=['GET'])
 def get_recipe_ingredients(id_recipe):
     try:
@@ -43,9 +77,9 @@ def get_recipe_ingredients(id_recipe):
                 "status": 404
             }
             return jsonify(response)
-        result = query(SQL_STRINGS.QRY_RECIPES_INGREDIENTS, id_recipe, True)
+        result = query(SQL_STRINGS.QRY_RECIPE_INGREDIENTS, id_recipe, True)
         if result["status"] == "OK":
-            result["data"]["ingredients"] = eval(result["data"]["ingredients_raw_str"])
+            result["data"]["ingredients"] = eval(result["data"]["ingredients"])
                 
             respose = {
                 "message": "OK",
@@ -151,8 +185,8 @@ def delete_recipe_ingredients(id_recipe, id_ingredient):
 
         response = sql(SQL_STRINGS.SQL_DELETE_RECIPE_INGREDIENT, (id_recipe, id_ingredient))
         if response["status"] != "OK":
-            return jsonify({"message": "Error al borrar el la categoría de la receta", "status": 500}), 500
-        return jsonify({"message": "Categoría eliminada correctamente", "status": 200}), 200
+            return jsonify({"message": "Error al borrar el ingrediente de la receta", "status": 500}), 500
+        return jsonify({"message": "Ingrediente eliminado correctamente", "status": 200}), 200
     except Exception as e:
         print("Ha ocurrido un error en @delete_ingredient/{}".format(e))
         respose = {
