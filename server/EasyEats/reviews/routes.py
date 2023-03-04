@@ -32,7 +32,43 @@ def get_reviews():
     try:
         result = query(SQL_STRINGS.QRY_REVIEWS)
         if result["status"] == "OK":
-            print(result["data"])
+            respose = {
+                "message": "OK",
+                "status": 200,
+                "data": result["data"]
+            }
+            return jsonify(respose), 200
+        elif result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "No hay resultados",
+                "status": 200,
+            }
+            return jsonify(respose), 200
+        else:
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500
+            }
+            return jsonify(respose), 500
+    except Exception as e:
+        print("Ha ocurrido un error en @get_reviews/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        respose = {
+            "message": "Error inesperado en el servidor",
+            "status": 500
+        }
+        return jsonify(respose), 500
+    
+
+@mod.route('/reviews/<int:id_recipe>', methods=['GET'])
+def get_recipe_reviews(id_recipe):
+    try:
+        result = query(SQL_STRINGS.QRY_RECIPE_REVIEWS, (
+                '%d-%m-%Y', # ? formato date_made
+                '%d-%m-%Y %H:%i', # ? formato datetime_made
+                '%H:%i', # ? formato time_made
+                id_recipe
+            ))
+        if result["status"] == "OK":
             respose = {
                 "message": "OK",
                 "status": 200,
@@ -108,3 +144,8 @@ def save_review():
             "status": 500
         }
         return jsonify(respose), 500
+    
+    
+@mod.route('/reviews/<int:id_review>', methods=['PUT'])
+def update_review(id_review):
+    return ""

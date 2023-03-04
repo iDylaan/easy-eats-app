@@ -138,6 +138,7 @@ INSERT INTO recipe_categories (id_category, id_recipe) VALUES
 
 
 CREATE TABLE reviews (
+  id INT AUTO_INCREMENT,
   comment VARCHAR(300) DEFAULT NULL,
   rating NUMERIC(2, 1) DEFAULT NULL,
   date_made DATE DEFAULT CURRENT_DATE,
