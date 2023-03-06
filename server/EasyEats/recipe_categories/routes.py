@@ -143,12 +143,12 @@ def save_recipe_category():
         if result['status'] != "OK":
                 return jsonify({"message": "Error al registrar las categorias de la receta", "status": 400}), 200
         respose = {
-            "message": "Categoria/s registrada/s exitosamente!",
+            "message": "Categoria registrada exitosamente!",
             "status": 200
         }
         return jsonify(respose), 200
     except Exception as e:
-        print("Ha ocurrido un error en @get_recipe_categories/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @save_recipe_category/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500
@@ -208,7 +208,7 @@ def delete_recipe_categories(id_recipe, id_category):
             return jsonify({"message": "Error al borrar el la categoría de la receta", "status": 500}), 500
         return jsonify({"message": "Categoría eliminada correctamente", "status": 200}), 200
     except Exception as e:
-        print("Ha ocurrido un error en @delete_ingredient/{}".format(e))
+        print("Ha ocurrido un error en @delete_recipe_categories/{}".format(e))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500

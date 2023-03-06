@@ -53,7 +53,7 @@ def get_recipes_utensils():
             }
             return jsonify(respose), 500
     except Exception as e:
-        print("Ha ocurrido un error en @get_recipe_utensils/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @get_recipes_utensils/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500
@@ -134,12 +134,12 @@ def save_recipe_utensil():
         if result['status'] != "OK":
                 return jsonify({"message": "Error al registrar el ingrediente de la receta", "status": 400}), 200
         respose = {
-            "message": "Utensilio registrado exitosamente!",
+            "message": "Utensilio registrado exitosamente en la receta!",
             "status": 200
         }
         return jsonify(respose), 200
     except Exception as e:
-        print("Ha ocurrido un error en @get_recipe_utensils/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @save_recipe_utensil/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500
@@ -174,9 +174,9 @@ def delete_recipe_utensils(id_recipe, id_utensil):
         response = sql(SQL_STRINGS.SQL_DELETE_RECIPE_UTENSIL, (id_recipe, id_utensil))
         if response["status"] != "OK":
             return jsonify({"message": "Error al borrar el el utensilio de la receta", "status": 500}), 500
-        return jsonify({"message": "Utensilio eliminado correctamente", "status": 200}), 200
+        return jsonify({"message": "Utensilio eliminado correctamente de la receta", "status": 200}), 200
     except Exception as e:
-        print("Ha ocurrido un error en @delete_ingredient/{}".format(e))
+        print("Ha ocurrido un error en @delete_recipe_utensils/{}".format(e))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500
