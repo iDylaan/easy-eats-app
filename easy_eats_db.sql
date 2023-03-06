@@ -110,7 +110,7 @@ INSERT INTO recipes (name, description, image, cooking_time, dinners, update_dat
 CREATE TABLE steps (
   id INT AUTO_INCREMENT,
   description VARCHAR(300) NOT NULL,
-  step_number INT NOT NULL,
+  step_number INT NOT NULL DEFAULT 0,
   id_recipe INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_recipe) REFERENCES recipes(id)
@@ -143,6 +143,8 @@ CREATE TABLE reviews (
   rating NUMERIC(2, 1) DEFAULT NULL,
   date_made DATE DEFAULT CURRENT_DATE,
   time_made DATETIME DEFAULT NOW(),
+  edited BOOL DEFAULT false,
+  underground BOOL DEFAULT false,
   id_recipe INT NOT NULL,
   id_user INT NOT NULL,
   CONSTRAINT fk_reviews_recipe_id FOREIGN KEY (id_recipe) REFERENCES recipes(id),
@@ -217,3 +219,20 @@ INSERT INTO easy_eats_db.favorite_recipes (id_recipe, id_user) VALUES
 CREATE INDEX idx_email ON users (email);
 CREATE INDEX idx_auth ON users (id, email, password, id_rol, username, tagline);
 CREATE INDEX idx_username_tagline ON users (username, tagline);
+
+
+
+-- TRIGGERS --
+-- Trigger para insertar un paso de una receta
+DELIMITER $$
+CREATE TRIGGER before_insert_steps
+BEFORE INSERT ON steps
+FOR EACH ROW
+BEGIN
+  SET NEW.step_number = (
+    SELECT COUNT(*) + 1
+    FROM steps
+    WHERE id_recipe = NEW.id_recipe
+  );
+END$$
+DELIMITER ;

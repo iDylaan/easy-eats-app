@@ -159,7 +159,7 @@ def save_recipe_ingredient():
         return jsonify(respose), 500
     
     
-@mod.route('/recipe_ingredients/<int:id_recipe>/<int:id_ingredient>', methods=["DELETE"])
+@mod.route('/recipe_ingredients/<int:id_recipe>/<int:id_ingredient>', methods=['DELETE'])
 def delete_recipe_ingredients(id_recipe, id_ingredient):
     try:
         result = query(SQL_STRINGS.QRY_COUNT_RECIPE_INGREDIENT_BY_ID, (id_recipe, id_ingredient), True)
