@@ -60,47 +60,47 @@ def get_favorite_recipes(id_user):
         return jsonify(respose), 500
     
 
-@mod.route('/recipe_categories', methods=['POST'])
+@mod.route('/favorite_recipes', methods=['POST'])
 def save_favorite_recipe():
     try:
         data = request.get_json()
         
         # * Getting values from request
         id_recipe = int(data["id_recipe"])
+        id_user = int(data["id_user"])
         
-        if not id_recipe:
+        if not id_recipe \
+        or not id_user:
             return jsonify({"message": "Faltan campos obligatorios", "status": 400}), 200
         
-        id_categories = data["categories"]
-        values_id_categories = ""
-        for i in range(len(id_categories)):
-            id_categories[i] = int(id_categories[i])
-            
-            recipe_category = {
-                'id_recipe': id_recipe,
-                'id_category': id_categories[i]
+        favorite_recipe = {
+            'id_recipe': id_recipe,
+            'id_user': id_user
+        }
+        
+        errors = val_req_data(favorite_recipe, favorite_recipe_schema)
+        if errors:
+            print("Error", errors)
+            respose = {
+                "message": "Error en la valifación de la petición", 
+                "errors": errors,
+                "status": 400
             }
-            
-            errors = val_req_data(recipe_category, favorite_recipe_schema)
-            if errors:
-                print("Error", errors)
-                respose = {
-                    "message": "Error en la valifación de la petición", 
-                    "errors": errors,
-                    "status": 400
-                }
-                return jsonify(respose)
-            
-            # * Creating the query
-            if i == len(id_categories) - 1:
-                values_id_categories += "({}, {})".format(id_recipe, id_categories[i])
-            else:
-                values_id_categories += "({}, {}), ".format(id_recipe, id_categories[i])
-        result = sql(SQL_STRINGS.SQL_INSERT_RECIPE_CATEGORIES.format(values_id_categories))
+            return jsonify(respose)
+        
+        result = query(SQL_STRINGS.QRY_COUNT_FAVORITE_RECIPES_BY_IDS, (id_user, id_recipe))
+        if result["data"]["count"] != 0:
+            respose = {
+                "message": "Esa receta ya está en favoritas",
+                "status": 400
+            }
+            return jsonify(respose)
+
+        result = sql(SQL_STRINGS.SQL_INSERT_FAVORITE_RECIPE, (id_user, id_recipe))
         if result['status'] != "OK":
-                return jsonify({"message": "Error al registrar las categorias de la receta", "status": 400}), 200
+                return jsonify({"message": "Error al registrar la receta en favoritos", "status": 400}), 200
         respose = {
-            "message": "Categoria registrada exitosamente!",
+            "message": "Receta registrada en favoritos exitosamente!",
             "status": 200
         }
         return jsonify(respose), 200

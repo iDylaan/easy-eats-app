@@ -13,4 +13,14 @@ class Sql_Strings():
         "WHERE fr.id_user =%s"
     )
     
+    QRY_COUNT_FAVORITE_RECIPES_BY_IDS = (
+        "SELECT COUNT(*) AS 'count' "
+        "FROM favorite_recipes "
+        "WHERE id_user = %s "
+        "AND id_recipe = %s"
+    )
     
+    SQL_INSERT_FAVORITE_RECIPE = (
+        "INSERT INTO favorite_recipes (id_user, id_recipe) "
+        "VALUES (%s, %s)"
+    )
