@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header />
-    <img src="@/assets/imgs/Banner-Food1.png" alt="">
+    <!-- <img src="@/assets/imgs/Banner-Food1.png" alt=""> -->
     <Carrusel />
   </div>
 </template>

@@ -3,7 +3,7 @@
         <!-- <div class="logo">LOGO</div> -->
 
         <a href="#" class="brand">
-            <img src="../../assets/imgs/header/logo_x.png">
+            <!-- <img src="../../assets/imgs/header/logo_x.png"> -->
         </a>
 
 
