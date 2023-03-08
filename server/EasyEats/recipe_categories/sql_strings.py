@@ -14,9 +14,19 @@ class Sql_Strings():
         "JOIN categories c ON rc.id_category = c.id "
         "WHERE rc.id_recipe = %s"
     )
+    
+    QRY_COUNT_RECIPES_BY_ID = (
+        "SELECT COUNT(*) AS 'count' FROM recipes "
+        "WHERE id = %s"
+    )
 
     QRY_CATEGORY_BY_ID = (
         "SELECT * FROM categories "
+        "WHERE id = %s"
+    )
+    
+    QRY_COUNT_CATEGORY_BY_ID = (
+        "SELECT COUNT(*) AS 'count' FROM categories "
         "WHERE id = %s"
     )
 

@@ -1,4 +1,3 @@
-import json
 from flask import Blueprint, request, jsonify, Response
 from flask_cors import CORS
 from .schemas import recipe_category_schema
@@ -13,7 +12,7 @@ mod = Blueprint('recipe_categories', __name__,
     static_folder='static', 
     static_url_path='/%s' % __name__
 )
-# CORS acces to "users"
+# CORS acces to "recipe_categories"
 CORS(mod)
 
 # CORS Configure Parameters
@@ -26,7 +25,7 @@ def handle_options():
     }
 
 
-# =========== ROUTES ===========
+# =========== ROUTES =========== #
 @mod.route('/recipe_categories', methods=['GET'])
 def get_recipe_categories():
     try:
@@ -65,6 +64,13 @@ def get_recipe_categories():
 @mod.route('/recipe_categories/<int:id>', methods=['GET'])
 def get_recipe_category(id):
     try:
+        result = query(SQL_STRINGS.QRY_COUNT_RECIPES_BY_ID, id, True)
+        if result["data"]["count"] == 0:
+            response = {
+                "message": "Receta inexistente",
+                "status": 404
+            }
+            return jsonify(response)
         result = query(SQL_STRINGS.QRY_CATEGORIES_BY_RECIPE_ID, id, True)
         if result["status"] == "OK":
             data = result["data"]
@@ -103,8 +109,10 @@ def save_recipe_category():
         
         # * Getting values from request
         id_recipe = int(data["id_recipe"])
+        id_user = int(data["id_user"])
         
-        if not id_recipe:
+        if not id_recipe \
+        or not id_user:
             return jsonify({"message": "Faltan campos obligatorios", "status": 400}), 200
         
         id_categories = data["categories"]
@@ -136,12 +144,12 @@ def save_recipe_category():
         if result['status'] != "OK":
                 return jsonify({"message": "Error al registrar las categorias de la receta", "status": 400}), 200
         respose = {
-            "message": "Categoria/s registrada/s exitosamente!",
+            "message": "Categoria registrada exitosamente!",
             "status": 200
         }
         return jsonify(respose), 200
     except Exception as e:
-        print("Ha ocurrido un error en @get_recipe_categories/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @save_recipe_category/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500
@@ -152,6 +160,20 @@ def save_recipe_category():
 @mod.route('/recipe_categories/<int:id_recipe>/<int:id_category>', methods=["DELETE"])
 def delete_recipe_categories(id_recipe, id_category):
     try:
+        result = query(SQL_STRINGS.QRY_COUNT_RECIPES_BY_ID, id, True)
+        if result["data"]["count"] == 0:
+            response = {
+                "message": "Receta inexistente",
+                "status": 404
+            }
+            return jsonify(response)
+        result = query(SQL_STRINGS.QRY_COUNT_CATEGORY_BY_ID, id, True)
+        if result["data"]["count"] == 0:
+            response = {
+                "message": "Categoría inexistente",
+                "status": 404
+            }
+            return jsonify(response)
         result = query(SQL_STRINGS.QRY_CATEGORIES_BY_RECIPE_ID, id_recipe, True)
         if result["status"] == "NOT_FOUND":
             respose = {
@@ -187,7 +209,7 @@ def delete_recipe_categories(id_recipe, id_category):
             return jsonify({"message": "Error al borrar el la categoría de la receta", "status": 500}), 500
         return jsonify({"message": "Categoría eliminada correctamente", "status": 200}), 200
     except Exception as e:
-        print("Ha ocurrido un error en @delete_ingredient/{}".format(e))
+        print("Ha ocurrido un error en @delete_recipe_categories/{}".format(e))
         respose = {
             "message": "Error inesperado en el servidor",
             "status": 500

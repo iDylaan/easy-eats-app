@@ -34,4 +34,4 @@ def get_recipes():
             "message": "Error inesperado en el servidor",
             "status": 500
         }
-        return jsonify(respose), 500
+        return jsonify(respose), 500 

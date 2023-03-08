@@ -51,7 +51,6 @@ def get_utensils():
                 "status": 500
             }
             return jsonify(respose), 500
-        return jsonify({"message": "Desde @get_utensils"}), 200
     except Exception as e:
         print("Ha ocurrido un error en @get_utensils/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         respose = {
@@ -87,6 +86,11 @@ def get_utensil(id):
             return jsonify(respose), 500
     except Exception as e:
         print("Ha ocurrido un error en @get_utensil/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        respose = {
+            "message": "Error inesperado en el servidor",
+            "status": 500
+        }
+        return jsonify(respose), 500
     
     
 @mod.route("/utensils", methods=["POST"])
@@ -124,7 +128,7 @@ def save_utensil():
                 name, image
             ))
             if result['status'] != "OK":
-                return jsonify({"message": "Error al registrar el utensile", "status": 400}), 200
+                return jsonify({"message": "Error al registrar el utensilio", "status": 400}), 200
             respose = {
                 "message": "Utensilio registrado exitosamente!",
                 "status": 200,
@@ -140,8 +144,7 @@ def save_utensil():
         print("Ha ocurrido un error en @save_utensil/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         return jsonify({
             "message": "Error inesperado en el servidor",
-            "status": 500,
-            "data": None
+            "status": 500
         }), 500
         
 
@@ -196,8 +199,7 @@ def update_utensil(id):
         print("Ha ocurrido un error en @update_utensil/{}".format(e))
         return jsonify({
             "message": "Error inesperado en el servidor",
-            "status": 500,
-            "data": None
+            "status": 500
         }), 500
         
 
