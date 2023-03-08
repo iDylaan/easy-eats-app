@@ -15,6 +15,8 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Recetas</a></li>
                 <li><a href="#">Salud y nutricion</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
 
