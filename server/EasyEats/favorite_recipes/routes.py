@@ -88,8 +88,8 @@ def save_favorite_recipe():
             }
             return jsonify(respose)
         
-        result = query(SQL_STRINGS.QRY_COUNT_FAVORITE_RECIPES_BY_IDS, (id_user, id_recipe))
-        if result["data"]["count"] != 0:
+        result = query(SQL_STRINGS.QRY_COUNT_FAVORITE_RECIPES_BY_IDS, (id_user, id_recipe), True)
+        if int(result["data"]["count"]) != 0:
             respose = {
                 "message": "Esa receta ya está en favoritas",
                 "status": 400
@@ -112,3 +112,56 @@ def save_favorite_recipe():
         }
         return jsonify(respose), 500
     
+    
+@mod.route('/favorite_recipes/<int:id_recipe>/<int:id_user>', methods=['DELETE'])
+def delete_favorite_recipe(id_user, id_recipe):
+    try:
+        result = query(SQL_STRINGS.QRY_COUNT_RECIPES_BY_ID, id_recipe, True)
+        if result["data"]["count"] == 0:
+            response = {
+                "message": "Receta inexistente",
+                "status": 404
+            }
+            return jsonify(response)
+        result = query(SQL_STRINGS.QRY_COUNT_USERS_BY_ID, id_user, True)
+        if result["data"]["count"] == 0:
+            response = {
+                "message": "Usuario inexistente",
+                "status": 404
+            }
+            return jsonify(response)
+        
+        result = query(SQL_STRINGS.QRY_COUNT_FAVORITE_RECIPES_BY_IDS, (id_user, id_recipe), True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Esa receta no está en favoritas",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+
+        response = sql(SQL_STRINGS.SQL_DELETE_FAVORITE_RECIPE, (id_recipe, id_user))
+        if response["status"] != "OK":
+            return jsonify({"message": "Error al borrar el la categoría de la receta", "status": 500}), 500
+        return jsonify({"message": "Categoría eliminada correctamente", "status": 200}), 200
+    except Exception as e:
+        print("Ha ocurrido un error en @delete_recipe_categories/{}".format(e))
+        respose = {
+            "message": "Error inesperado en el servidor",
+            "status": 500
+        }
+        return jsonify(respose), 500
