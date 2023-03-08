@@ -1,4 +1,3 @@
-import json
 from flask import Blueprint, request, jsonify, Response
 from flask_cors import CORS
 from .schemas import recipe_category_schema
@@ -13,7 +12,7 @@ mod = Blueprint('recipe_categories', __name__,
     static_folder='static', 
     static_url_path='/%s' % __name__
 )
-# CORS acces to "users"
+# CORS acces to "recipe_categories"
 CORS(mod)
 
 # CORS Configure Parameters
@@ -110,8 +109,10 @@ def save_recipe_category():
         
         # * Getting values from request
         id_recipe = int(data["id_recipe"])
+        id_user = int(data["id_user"])
         
-        if not id_recipe:
+        if not id_recipe \
+        or not id_user:
             return jsonify({"message": "Faltan campos obligatorios", "status": 400}), 200
         
         id_categories = data["categories"]

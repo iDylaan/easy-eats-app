@@ -45,6 +45,7 @@ from EasyEats.utensils.routes import mod as mod_utensils
 from EasyEats.recipe_ingredients.routes import mod as mod_recipe_ingredients
 from EasyEats.recipe_categories.routes import mod as mod_recipe_categories
 from EasyEats.recipe_utensils.routes import mod as mod_recipe_utensils
+from EasyEats.favorite_recipes.routes import mod as mod_favorite_recipes
 from EasyEats.steps.routes import mod as mod_steps
 from EasyEats.reviews.routes import mod as mod_reviews
 
@@ -58,5 +59,6 @@ app.register_blueprint(mod_utensils)
 app.register_blueprint(mod_recipe_ingredients)
 app.register_blueprint(mod_recipe_categories)
 app.register_blueprint(mod_recipe_utensils)
+app.register_blueprint(mod_favorite_recipes)
 app.register_blueprint(mod_steps)
 app.register_blueprint(mod_reviews)

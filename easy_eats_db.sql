@@ -221,7 +221,6 @@ CREATE INDEX idx_auth ON users (id, email, password, id_rol, username, tagline);
 CREATE INDEX idx_username_tagline ON users (username, tagline);
 
 
-
 -- TRIGGERS --
 -- Trigger para insertar un paso de una receta
 DELIMITER $$
