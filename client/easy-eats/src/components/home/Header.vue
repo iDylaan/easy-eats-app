@@ -1,9 +1,10 @@
+<title>Header</title>
 <template>
     <header :class="headerClass">
         <!-- <div class="logo">LOGO</div> -->
 
         <a href="#" class="brand">
-            <!-- <img src="../../assets/imgs/header/logo_x.png"> -->
+            <img src="../../assets/imgs/icono_fondos_pscuros.png">
         </a>
 
 
@@ -14,7 +15,7 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Recetas</a></li>
-                <li><a href="#">Salud y nutricion</a></li>
+                <li><a href="#">Saludable</a></li>
                 <li><a href="#">Nosotros</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
