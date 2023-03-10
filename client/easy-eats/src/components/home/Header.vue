@@ -47,8 +47,10 @@
             <i class="fas fa-bars menu-btn"></i>
         </div>
 
-
+        
     </header>
+    
+    <section class="zona1"></section>
     
 </body>
 </template>
