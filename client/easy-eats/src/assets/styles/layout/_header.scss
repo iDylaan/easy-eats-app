@@ -203,6 +203,10 @@ header .btn {
   }
 }
 
+body{
+  min-height: 100vh;
+}
+
 @media (max-width: 600px) {
   .section-main h1 {
     font-size: 50px;

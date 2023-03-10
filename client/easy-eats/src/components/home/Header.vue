@@ -1,5 +1,7 @@
 <title>Header</title>
 <template>
+    <body>
+        
     <header :class="headerClass">
         <!-- <div class="logo">LOGO</div> -->
 
@@ -47,6 +49,8 @@
 
 
     </header>
+    
+</body>
 </template>
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
