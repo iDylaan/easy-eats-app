@@ -1,0 +1,15 @@
+.home {
+    .carrusel {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        background-color: red;
+
+        .imgs__bg {
+            position: absolute;
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+}

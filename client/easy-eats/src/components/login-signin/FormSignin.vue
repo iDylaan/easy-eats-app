@@ -173,6 +173,8 @@ export default {
         }
         const validarTagline = () => {
             tagline.value = tagline.value.trim().toUpperCase();
+            const regex = /^[a-zA-Z0-9]+$/;
+            if (!regex.test(String(tagline.value))) { tagline.value = tagline.value.slice(0, -1); }
             if (tagline.value.length > 5) { tagline.value = tagline.value.slice(0, -1); }
             if (tagline.value.length < 4 || tagline.value.length > 5) {
                 borderBottomColorTagline.value = '3px solid red';

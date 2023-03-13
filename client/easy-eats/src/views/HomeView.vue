@@ -1,25 +1,25 @@
 <template>
-  <div class="">
-    <h1>Desde home</h1>
-    <button @click="iniciarSesion">Iniciar Sesion</button>
+  <div class="home">
+    <Header />
+    <!-- <img src="@/assets/imgs/Banner-Food1.png" alt=""> -->
+    <Carrusel />
   </div>
 </template>
 
 <script>
 import { useRouter } from 'vue-router';
+import Header from '../components/home/Header';
+import Carrusel from '../components/home/Carrusel';
+
 
 export default {
   name: "Home",
   setup() {
     const router = useRouter();
-
-    const iniciarSesion = () => {
-      router.push("/login");
-    }
-
-    return {
-      iniciarSesion
-    }
+  },
+  components: {
+    Header,
+    Carrusel,
   }
 }
 </script>
