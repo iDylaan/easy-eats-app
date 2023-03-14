@@ -27,15 +27,16 @@ nav {
 
     button {
          $primary-color: #ffa500;
-        --secondary-color: #fff;
+         $secundary-color: #fff;
         --hover-color: #67bc4d;
         --arrow-width: 10px;
         --arrow-stroke: 2px;
         $primary-color: #ffa500;
+        $secundary-color: #fff;
         box-sizing: border-box;
         border: 0;
         border-radius: 20px;
-        color: var(--secondary-color);
+        color: var($secundary-color);
         padding: .5em 1em;
         background: var( $primary-color);
         display: flex;
@@ -48,7 +49,7 @@ nav {
             background-color: var(--hover-color);
 
             .arrow {
-                background: var(--secondary-color);
+                background: var($secundary-color);
             }
 
             .arrow:before {
@@ -74,7 +75,7 @@ nav {
                 content: "";
                 box-sizing: border-box;
                 position: absolute;
-                border: solid var(--secondary-color);
+                border: solid var($secundary-color);
                 border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
                 display: inline-block;
                 top: -3px;
