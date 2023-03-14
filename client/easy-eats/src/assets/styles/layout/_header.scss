@@ -120,6 +120,13 @@ header {
   //   align-items: center;
   // }
 
+  .zona1{
+    // position: relative;
+    // width: 100%;
+    // height: 100vh;
+    background-image: url(../../imgs/easyeatsbackground.png);
+  }
+
 }
 
 
@@ -169,12 +176,7 @@ header .navbar a {
   transition-property: color, background;
 }
 
-body .zona1{
-  // position: relative;
-  // width: 100%;
-  // height: 100vh;
-  background-image: url(../../imgs/easyeatsbackground.png);
-}
+
 
 header .navbar a:hover {
   color: #000;

@@ -1,7 +1,5 @@
 <title>Header</title>
 <template>
-    <body>
-        
     <header :class="headerClass">
         <!-- <div class="logo">LOGO</div> -->
 
@@ -52,8 +50,9 @@
     
     <section class="zona1"></section>
     
-</body>
+
 </template>
+
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRouter } from 'vue-router';
@@ -94,12 +93,19 @@ export default {
             window.location.reload();
         }
 
+        document.querySelector('.zona1').style="background-image:url(../../imgs/easyeatsbackground.png)"
+
         return {
             isLoged,
             headerClass,
             iniciarSesion,
             cerrarSesion
         }
+
+
+
     }
 }
+
+
 </script>
