@@ -7,11 +7,7 @@
         <img src="../../assets/imgs/icono_fondos_pscuros.png">
     
 </div>
-
-<div class="btn">
-    <i class="fas fa-times close-btn"></i>
-</div>
-
+<div class="options_container">
 <ul>
     <li><a href="#">Home</a></li>
     <li><a href="#">Recetas</a></li>
@@ -19,6 +15,7 @@
     <li><a href="#">Nosotros</a></li>
     <li><a href="#">Contacto</a></li>
 </ul>
+</div>
 
 <div class="profile-options">
     <button v-if="!isLoged" @click="iniciarSesion">
@@ -39,9 +36,9 @@
 
 </div>
 
-<div class="btn">
+<!-- <div class="btn">
     <font-awesome-icon icon="fa-solid fa-bars" />
-</div>
+</div> -->
 </nav>
 
 </template>

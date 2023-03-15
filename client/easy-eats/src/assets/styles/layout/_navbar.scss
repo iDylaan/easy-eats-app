@@ -8,9 +8,8 @@
     padding: 0px 0px;
     z-index: 1;
     position: relative;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
     a {
         padding: 0px 20px;
@@ -116,12 +115,12 @@
     }
 
     .logo_containes{
-        border: 1px solid red   ;
-        width: 50px;
+        // border: 1px solid red   ;
         // height: 50px;
+        width: 40px;
+        padding: 10px 0px;
         img{
             width: 100%;
-            
         }
     }
 
