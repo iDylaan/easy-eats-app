@@ -1,59 +1,22 @@
 <title>Header</title>
 <template>
-    <body>
-        
     <header :class="headerClass">
         <!-- <div class="logo">LOGO</div> -->
 
-        <a href="#" class="brand">
-            <img src="../../assets/imgs/icono_fondos_pscuros.png">
-        </a>
 
 
-        <nav class="navbar">
-            <div class="btn">
-                <i class="fas fa-times close-btn"></i>
-            </div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Recetas</a></li>
-                <li><a href="#">Saludable</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
 
-        
-        <div class="profile-options">
-            <button v-if="!isLoged" @click="iniciarSesion">
-                Iniciar Sesion
-                <div class="arrow-wrapper">
-                    <div class="arrow"></div>
 
-                </div>
-            </button>
 
-            <button v-if="isLoged" @click="cerrarSesion">
-                Cerrar Sesión
-                <div class="arrow-wrapper">
-                    <div class="arrow"></div>
-
-                </div>
-            </button>
-
+        <div class="bg-imagen_container">
+            <img src="../../assets/imgs/easyeatsbackground.png" alt="">
         </div>
-
-        <div class="btn">
-            <i class="fas fa-bars menu-btn"></i>
-        </div>
-
         
     </header>
-    
+
     <section class="zona1"></section>
-    
-</body>
 </template>
+
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRouter } from 'vue-router';
@@ -94,12 +57,18 @@ export default {
             window.location.reload();
         }
 
+
         return {
             isLoged,
             headerClass,
             iniciarSesion,
             cerrarSesion
         }
+
+
+
     }
 }
+
+
 </script>
