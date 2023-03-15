@@ -88,6 +88,7 @@ export default {
             passwordValid.value = password.value.length >= 8;
             passwordCnt++;
             validateInputs();
+            
         }
 
         const login = async () => {
