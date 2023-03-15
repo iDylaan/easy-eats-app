@@ -1,0 +1,93 @@
+nav {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: lighten(#1D1C28, 17%);
+    transition: 0.1s ease-in-out;
+    padding: 0px 0px;
+    z-index: 1;
+
+    a {
+        padding: 0px 20px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+        font: 1em sans-serif;
+
+        &:hover {
+            color: #000;
+            background: #ffffff;
+        }
+    }
+
+    button {
+         $primary-color: #ffa500;
+         $secundary-color: #fff;
+        --hover-color: #67bc4d;
+        --arrow-width: 10px;
+        --arrow-stroke: 2px;
+        $primary-color: #ffa500;
+        $secundary-color: #fff;
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 20px;
+        color: var($secundary-color);
+        padding: .5em 1em;
+        background: var( $primary-color);
+        display: flex;
+        transition: 0.2s background;
+        align-items: center;
+        gap: 0.6em;
+        font-weight: bold;
+
+        &:hover {
+            background-color: var(--hover-color);
+
+            .arrow {
+                background: var($secundary-color);
+            }
+
+            .arrow:before {
+                right: 0;
+            }
+
+            .arrow-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .arrow {
+                margin-top: 1px;
+                width: var(--arrow-width);
+                background: var( $primary-color);
+                height: var(--arrow-stroke);
+                position: relative;
+                transition: 0.2s;
+            }
+
+            .arrow::before {
+                content: "";
+                box-sizing: border-box;
+                position: absolute;
+                border: solid var($secundary-color);
+                border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+                display: inline-block;
+                top: -3px;
+                right: 3px;
+                transition: 0.2s;
+                padding: 3px;
+                transform: rotate(-45deg);
+            }
+
+
+        }
+    }
+
+
+}

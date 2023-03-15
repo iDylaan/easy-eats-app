@@ -110,7 +110,7 @@ INSERT INTO recipes (name, description, image, cooking_time, dinners, update_dat
 CREATE TABLE steps (
   id INT AUTO_INCREMENT,
   description VARCHAR(300) NOT NULL,
-  step_number INT NOT NULL,
+  step_number INT NOT NULL DEFAULT 0,
   id_recipe INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_recipe) REFERENCES recipes(id)
@@ -138,10 +138,13 @@ INSERT INTO recipe_categories (id_category, id_recipe) VALUES
 
 
 CREATE TABLE reviews (
+  id INT AUTO_INCREMENT,
   comment VARCHAR(300) DEFAULT NULL,
   rating NUMERIC(2, 1) DEFAULT NULL,
   date_made DATE DEFAULT CURRENT_DATE,
   time_made DATETIME DEFAULT NOW(),
+  edited BOOL DEFAULT false,
+  underground BOOL DEFAULT false,
   id_recipe INT NOT NULL,
   id_user INT NOT NULL,
   CONSTRAINT fk_reviews_recipe_id FOREIGN KEY (id_recipe) REFERENCES recipes(id),
@@ -160,14 +163,14 @@ INSERT INTO reviews (comment, rating, id_recipe, id_user) VALUES
 
 CREATE TABLE recipe_ingredients (
   amount INT NOT NULL,
-  type_mount VARCHAR(20) NOT NULL,
+  type_amount VARCHAR(20) NOT NULL,
   id_recipe INT NOT NULL,
   id_ingredient INT NOT NULL,
   CONSTRAINT fk_recipe_ingredient_recipe_id FOREIGN KEY (id_recipe) REFERENCES recipes(id),
   CONSTRAINT fk_recipe_ingredient_ingredient_id FOREIGN KEY (id_ingredient) REFERENCES ingredients(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_General_ci;
 
-INSERT INTO recipe_ingredients(amount, type_mount, id_recipe, id_ingredient) VALUES
+INSERT INTO recipe_ingredients(amount, type_amount, id_recipe, id_ingredient) VALUES
   (1500, 'gr', 1, 1),
   (8, 'piezas', 1, 2),
   (4, 'muslos', 1, 3),
@@ -203,7 +206,6 @@ INSERT INTO recipe_utensils (id_recipe, id_utensil) VALUES
 CREATE TABLE favorite_recipes (
   id_recipe INT NOT NULL,
   id_user INT NOT NULL,
-  CONSTRAINT pk_favorite_recipes PRIMARY KEY (id_recipe, id_user),
   CONSTRAINT fk_favorite_recipes_recipe_id FOREIGN KEY(id_recipe) REFERENCES recipes(id),
   CONSTRAINT fk_favorite_recipes_user_id FOREIGN KEY(id_user) REFERENCES users(id)
 );
@@ -217,3 +219,19 @@ INSERT INTO easy_eats_db.favorite_recipes (id_recipe, id_user) VALUES
 CREATE INDEX idx_email ON users (email);
 CREATE INDEX idx_auth ON users (id, email, password, id_rol, username, tagline);
 CREATE INDEX idx_username_tagline ON users (username, tagline);
+
+
+-- TRIGGERS --
+-- Trigger para insertar un paso de una receta
+DELIMITER $$
+CREATE TRIGGER before_insert_steps
+BEFORE INSERT ON steps
+FOR EACH ROW
+BEGIN
+  SET NEW.step_number = (
+    SELECT COUNT(*) + 1
+    FROM steps
+    WHERE id_recipe = NEW.id_recipe
+  );
+END$$
+DELIMITER ;
