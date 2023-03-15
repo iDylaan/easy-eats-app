@@ -3,9 +3,9 @@
  <nav class="navbar">
 
 <div class="logo_containes">
-    <a href="#" class="brand">
+   
         <img src="../../assets/imgs/icono_fondos_pscuros.png">
-    </a>
+    
 </div>
 
 <div class="btn">
