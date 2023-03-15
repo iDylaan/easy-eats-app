@@ -1,8 +1,9 @@
 <template>
   <div class="home">
+    <Navbar />
     <Header />
     <!-- <img src="@/assets/imgs/Banner-Food1.png" alt=""> -->
-    <Carrusel />
+    <Carrusel />  
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import { useRouter } from 'vue-router';
 import Header from '../components/home/Header';
 import Carrusel from '../components/home/Carrusel';
+import Navbar from '../components/layout/Navbar';
 
 
 export default {
@@ -20,6 +22,7 @@ export default {
   components: {
     Header,
     Carrusel,
+    Navbar,
   }
 }
 </script>
