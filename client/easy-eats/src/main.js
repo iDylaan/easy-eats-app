@@ -10,12 +10,17 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons'
+import {
+     faRightToBracket, 
+     faUser, 
+     faBars 
+    } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(
     faRightToBracket,
-    faUser
+    faUser,
+    faBars
 )
 
 

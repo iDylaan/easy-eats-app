@@ -11,28 +11,22 @@ from EasyEats.config.conf_maria import query
 def val_req_data(data, schema): # validate request data
     v = Validator(schema)
     if not v.validate(data):
-        respose = {
-            "message": v.errors,
-            "status": 400,
-            "data": None
-        }
-        return jsonify(respose)
+        return {"message": v.errors}
     return None
 
 
 
-def gen_jwt(user_id, user_email, user_password, user_role):
+def gen_jwt(user_id, user_role):
     try:
         payload = {
             "user_id": user_id,
-            "user_email": user_email,
-            "user_password": user_password,
-            "user_role": user_role,
+            "is_admin": True if user_role == 2 else False,
             "exp": datetime.datetime.utcnow() + datetime.timedelta(seconds=(60*60*24*1)) # ? seconds * minutes * hours * days
         }
         return jwt.encode(payload, app.config['SECRET_JWT_KEY'], algorithm='HS256')
     except Exception as e:
         print("Ha ocurrido un error en @misc.gen_jwt/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+
 
 
 def login_required(f):
@@ -115,23 +109,3 @@ def verify_jwt_token(token):
         return 'Signature expired. Please log in again.'
     except jwt.exceptions.InvalidTokenError:
         return 'Invalid token. Please log in again.'
-
-def validate_user_exist(username, tagline):
-    try:
-        cnt_users = query(SQL_STRINGS.COUNT_USERS, (username, tagline), True)
-        if cnt_users["status"] != "OK":
-            raise Exception("Error en la consulta de usuarios a la base de datos en @validate_email_exist")
-        return (bool(int(cnt_users['data']['conteo'])))
-    except Exception as e:
-        print("Ha ocurrido el siguiente error en @validate_user_exist/{}".format(e))
-        return None
-
-def validate_email_exist(email):
-    try:
-        cnt_emails = query(SQL_STRINGS.COUNT_EMAILS, (email), True)
-        if cnt_emails["status"] != "OK":
-            raise Exception("Error en la consulta de emails a la base de datos en @validate_email_exist")
-        return bool(int(cnt_emails['data']['conteo']))
-    except Exception as e:
-        print("Ha ocurrido el siguiente error en @validate_email_exist/{}".format(e))
-        return None
