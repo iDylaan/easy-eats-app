@@ -89,7 +89,7 @@ def get_user(id):
             }
             return jsonify(respose), 500
     except Exception as e:
-        print("Ha ocurrido un error en @users_list/{}".format(e))
+        print("Ha ocurrido un error en @get_user/{}".format(e))
         
         
 @mod.route('/users', methods=["POST"])

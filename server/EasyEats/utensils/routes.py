@@ -1,4 +1,3 @@
-import json
 from flask import Blueprint, request, jsonify, Response
 from flask_cors import CORS
 from .schemas import utensil_schema

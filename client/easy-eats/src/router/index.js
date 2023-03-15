@@ -3,7 +3,6 @@ import Home from '../views/HomeView.vue'
 import Login from '../views/LoginView.vue'
 import Signin from '../views/SigninView.vue'
 import Loged from '../views/LogedView.vue'
-import Lucero from '../views/LuceroView.vue'
 
 const routes = [
   {
@@ -25,11 +24,6 @@ const routes = [
     path: '/loged',
     name: 'loged',
     component: Loged
-  },
-  {
-    path: '/lucero',
-    name: 'lucero',
-    component: Lucero
   }
 ]
 
