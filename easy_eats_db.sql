@@ -20,6 +20,7 @@ INSERT INTO rols (id, name) VALUES
 CREATE TABLE categories (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
+  underground BOOL DEFAULT false,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_General_ci;
 
@@ -41,6 +42,7 @@ CREATE TABLE ingredients (
   description VARCHAR(300) NOT NULL,
   price NUMERIC(11, 2) DEFAULT NULL,
   image VARCHAR(40) DEFAULT NULL,
+  underground BOOL DEFAULT false,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_General_ci;
 
@@ -63,6 +65,7 @@ CREATE TABLE users (
   date_of_birth DATE NOT NULL,
   height INT DEFAULT NULL,
   weight NUMERIC(5,2) DEFAULT NULL,
+  underground BOOL DEFAULT false,
   id_rol INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_rol) REFERENCES rols(id)
@@ -95,6 +98,7 @@ CREATE TABLE recipes (
   fiber INT DEFAULT NULL, -- Fibra
   sugars INT DEFAULT NULL, -- Azucares
   budget NUMERIC(11, 2) DEFAULT NULL, -- Presupuesto
+  underground BOOL DEFAULT false,
   id_user INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_user) REFERENCES users(id) 
@@ -182,6 +186,7 @@ CREATE TABLE utensils (
   id INT AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
   image VARCHAR(40) DEFAULT NULL,
+  underground BOOL DEFAULT false,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_General_ci;
 
