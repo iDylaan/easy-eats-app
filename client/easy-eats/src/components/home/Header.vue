@@ -1,7 +1,6 @@
 <title>Header</title>
 <template>
     <header :class="headerClass">
-        <!-- <div class="logo">LOGO</div> -->
 
 
 

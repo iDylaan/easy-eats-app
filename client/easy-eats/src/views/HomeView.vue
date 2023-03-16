@@ -2,7 +2,6 @@
   <div class="home">
     <Navbar />
     <Header />
-    <!-- <img src="@/assets/imgs/Banner-Food1.png" alt=""> -->
     <Carrusel />  
   </div>
 </template>
