@@ -1,9 +1,10 @@
 class Sql_Strings():
-    QRY_ALL_CATEGORIES = ("SELECT * FROM categories")
+    QRY_ALL_CATEGORIES = ("SELECT * FROM categories WHERE banned = 0")
     
     QRY_CATEGORY_BY_ID = (
         "SELECT * FROM categories "
-        "WHERE id = %s"
+        "WHERE id = %s "
+        "AND banned = 0 "
     )
     
     SQL_CREATE_CATEGORY = (
@@ -18,6 +19,7 @@ class Sql_Strings():
     )
     
     SQL_DELETE_CATEGORY = (
-        "DELETE FROM categories "
+        "UPDATE categories SET "
+        "banned = 1 "
         "WHERE id = %s"
     )

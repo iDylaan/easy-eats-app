@@ -152,6 +152,21 @@ def save_ingredient():
 @mod.route('/ingredients/<int:id>', methods=["PUT"])
 def update_ingredient(id):
     try:
+        result = query(SQL_STRINGS.QRY_INGREDIENT_BY_ID, id, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Ingrediente no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
         data = request.get_json()
         
         # * Validating null values

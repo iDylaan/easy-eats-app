@@ -1,9 +1,10 @@
 class Sql_Strings():
-    QRY_ALL_UTENSILS = ("SELECT * FROM utensils")
+    QRY_ALL_UTENSILS = ("SELECT * FROM utensils WHERE banned = 0")
     
     QRY_UTENSIL_BY_ID = (
         "SELECT * FROM utensils "
-        "WHERE id = %s"
+        "WHERE id = %s "
+        "AND banned = 0 "
     )
     
     SQL_CREATE_UTENSIL = (
@@ -19,6 +20,7 @@ class Sql_Strings():
     )
     
     SQL_DELETE_UTENSIL = (
-        "DELETE FROM utensils "
+        "UPDATE utensils SET "
+        "banned = 1 "
         "WHERE id = %s"
     )

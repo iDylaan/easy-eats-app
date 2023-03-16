@@ -1,9 +1,10 @@
 class Sql_Strings():
-    QRY_ALL_INGREDIENTS = ("SELECT * FROM ingredients")
+    QRY_ALL_INGREDIENTS = ("SELECT * FROM ingredients WHERE banned = 0")
     
     QRY_INGREDIENT_BY_ID = (
         "SELECT * FROM ingredients "
-        "WHERE id = %s"
+        "WHERE id = %s "
+        "AND banned = 0"
     )
     
     SQL_CREATE_INGREDIENT = (
@@ -21,6 +22,7 @@ class Sql_Strings():
     )
     
     SQL_DELETE_INGREDIENT = (
-        "DELETE FROM ingredients "
+        "UPDATE ingredients SET "
+        "banned = 1 "
         "WHERE id = %s"
     )

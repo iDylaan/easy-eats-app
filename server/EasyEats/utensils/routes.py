@@ -150,6 +150,21 @@ def save_utensil():
 @mod.route('/utensils/<int:id>', methods=["PUT"])
 def update_utensil(id):
     try:
+        result = query(SQL_STRINGS.QRY_UTENSIL_BY_ID, id, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Utensilio no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
         data = request.get_json()
         
         # * Validating null values

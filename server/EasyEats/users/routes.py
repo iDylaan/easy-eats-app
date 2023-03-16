@@ -1,8 +1,9 @@
-import json
+import json, base64
 from datetime import datetime
 from flask import Blueprint, request, jsonify, Response
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 from .schemas import user_schema
 from .sql_strings import Sql_Strings as SQL_STRINGS
 from EasyEats.config.conf_maria import query, sql
@@ -37,6 +38,11 @@ def get_users():
         result = query(SQL_STRINGS.USERS_LIST)
         if result["status"] == "OK":
             users_dict = [dict(row) for row in result["data"]]
+            for row in users_dict:
+                if row["image_name"] and row["image_bit"]:
+                    image_base64 = base64.b64decode(row["image_bit"]).decode("utf-8")
+                    row["image_base64"] = image_base64
+                    
             respose = {
                 "message": "OK",
                 "status": 200,
@@ -67,8 +73,12 @@ def get_users():
 @mod.route('/users/<int:id>', methods=["GET"])
 def get_user(id):
     try:
-        result = query(SQL_STRINGS.GET_USER, (id), True)
+        result = query(SQL_STRINGS.GET_USER, id, True)
         if result["status"] == "OK":
+            if result["data"]["image_name"] and result["data"]["image_bit"]:
+                image_base64 = base64.b64decode(result["data"]["image_bit"]).decode("utf-8")
+                result["data"]["image_base64"] = image_base64
+
             respose = {
                 "message": "OK",
                 "status": 200,
@@ -97,11 +107,22 @@ def save_user():
     try:
         data = request.get_json()
         
+        # * Getting the image
+        file = request.files.get('image', None)
+        filename = None
+        img_byte_arr = None
+        if file:
+            filename = secure_filename(file.filename)
+            image = PILImage.open(file.stream)
+            
+            img_byte_arr = io.BytesIO()
+            image.save(img_byte_arr, format='PNG')
+            img_byte_arr = img_byte_arr.getvalue()
+        
         # * Validating null values
         name = data.get("name", None)
         height = data.get("height", None)
         weight = data.get("weight", None)
-        image = data.get("image", None)
         username = data.get("username", None)
         tagline = data.get("tagline", None)
         email = data.get("email", None)
@@ -163,7 +184,7 @@ def save_user():
             user = {
                 'username': username,
                 'tagline': tagline,
-                'image': image,
+                'image': filename,
                 'name': name,
                 'email': email,
                 'password': password,
@@ -187,7 +208,8 @@ def save_user():
             result = sql(SQL_STRINGS.CREATE_USER, (
                 username,
                 tagline,
-                image,
+                filename,
+                img_byte_arr,
                 name,
                 email,
                 password,
@@ -223,11 +245,22 @@ def update_user(id):
     try:
         data = request.get_json()
         
+        # * Getting the image
+        file = request.files.get('image', None)
+        filename = None
+        img_byte_arr = None
+        if file:
+            filename = secure_filename(file.filename)
+            image = PILImage.open(file.stream)
+            
+            img_byte_arr = io.BytesIO()
+            image.save(img_byte_arr, format='PNG')
+            img_byte_arr = img_byte_arr.getvalue()
+        
         # * Validating null values
         name = data.get("name", None)
         height = data.get("height", None)
         weight = data.get("weight", None)
-        image = data.get("image", None)
         username = data.get("username", None)
         tagline = data.get("tagline", None)
         email = data.get("email", None)
@@ -273,7 +306,7 @@ def update_user(id):
             user = {
                 'username': username,
                 'tagline': tagline,
-                'image': image,
+                'image': filename,
                 'name': name,
                 'email': email,
                 'password': password,
@@ -293,20 +326,36 @@ def update_user(id):
                     "data": None
                 }
                 return jsonify(respose)
-        
-            result = sql(SQL_STRINGS.UPDATE_USER, (
-                username,
-                tagline,
-                image,
-                name,
-                email,
-                password,
-                date_of_birth,
-                height,
-                weight,
-                id_rol,
-                id
-            ))
+
+            if file:
+                result = sql(SQL_STRINGS.UPDATE_USER_NEW_IMAGE, (
+                    username,
+                    tagline,
+                    filename,
+                    img_byte_arr,
+                    name,
+                    email,
+                    password,
+                    date_of_birth,
+                    height,
+                    weight,
+                    id_rol,
+                    id
+                ))
+            else:
+                result = sql(SQL_STRINGS.UPDATE_USER, (
+                    username,
+                    tagline,
+                    name,
+                    email,
+                    password,
+                    date_of_birth,
+                    height,
+                    weight,
+                    id_rol,
+                    id
+                ))
+            
             if result['status'] != "OK":
                 return jsonify({"message": "Error al actualizar el usuario", "status": 400}), 400
             respose = {
@@ -333,7 +382,7 @@ def update_user(id):
 @mod.route('/users/<int:id>', methods=["DELETE"])
 def delete_user(id):
     try:
-        result = query(SQL_STRINGS.GET_USER, (id), True)
+        result = query(SQL_STRINGS.GET_USER, id, True)
         if result["status"] == "NOT_FOUND":
             respose = {
                 "message": "Usuario no encontrado",
@@ -347,11 +396,19 @@ def delete_user(id):
                 "data": None
             }
             return jsonify(respose), 500
-
-        response = sql(SQL_STRINGS.DELETE_USER, (id))
+        
+        response = sql(SQL_STRINGS.SQL_DELETE_RECIPES_BY_USER_ID, id)
         if response["status"] != "OK":
-            return jsonify({"message": "Error al borrar el usuario", "status": 500}), 500
-        return jsonify({"message": "Usuario eliminado correctamente", "status": 200}), 200
+            return jsonify({"message": "Error al eliminar las recetas del usuario dado de baja", "status": 500}), 500
+        
+        response = sql(SQL_STRINGS.SQL_DELETE_REVIEWS_BY_ID, id)
+        if response["status"] != "OK":
+            return jsonify({"message": "Error al eliminar las reseñas del usuario dado de baja", "status": 500}), 500
+
+        response = sql(SQL_STRINGS.DELETE_USER, id)
+        if response["status"] != "OK":
+            return jsonify({"message": "Error al dar de baja al usuario", "status": 500}), 500
+        return jsonify({"message": "Usuario dado de baja correctamente", "status": 200}), 200
     except Exception as e:
         print("Ha ocurrido un error en @delete_user/{}".format(e))
         respose = {
@@ -374,7 +431,7 @@ def validate_user_exist(username, tagline):
 
 def validate_email_exist(email):
     try:
-        cnt_emails = query(SQL_STRINGS.COUNT_EMAILS, (email), True)
+        cnt_emails = query(SQL_STRINGS.COUNT_EMAILS, email, True)
         if cnt_emails["status"] != "OK":
             raise Exception("Error en la consulta de emails a la base de datos en @validate_email_exist")
         return bool(int(cnt_emails['data']['conteo']))
