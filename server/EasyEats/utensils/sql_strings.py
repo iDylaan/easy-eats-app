@@ -8,14 +8,13 @@ class Sql_Strings():
     )
     
     SQL_CREATE_UTENSIL = (
-        "INSERT INTO utensils (name, image) "
-        "VALUES (%s, %s)"
+        "INSERT INTO utensils (name) "
+        "VALUES (%s)"
     )
     
     SQL_UPDATE_UTENSIL = (
         "UPDATE utensils SET "
-        "name = %s, "
-        "image = %s "
+        "name = %s "
         "WHERE id = %s"
     )
     

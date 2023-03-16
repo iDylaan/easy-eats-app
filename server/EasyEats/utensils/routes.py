@@ -97,9 +97,6 @@ def save_utensil():
     try:
         data = request.get_json()
         
-        # * Validating null values
-        image = data.get("image", None)
-        
         # * Getting values from request
         name = data["name"].strip()
         
@@ -110,8 +107,7 @@ def save_utensil():
         
         if data:
             utensil = {
-                'name': name,
-                'image': image
+                'name': name
             }
             
             errors = val_req_data(utensil, utensil_schema)
@@ -123,9 +119,7 @@ def save_utensil():
                     "status": 400
                 }
                 return jsonify(respose)
-            result = sql(SQL_STRINGS.SQL_CREATE_UTENSIL, (
-                name, image
-            ))
+            result = sql(SQL_STRINGS.SQL_CREATE_UTENSIL, name)
             if result['status'] != "OK":
                 return jsonify({"message": "Error al registrar el utensilio", "status": 400}), 200
             respose = {
@@ -167,9 +161,6 @@ def update_utensil(id):
         
         data = request.get_json()
         
-        # * Validating null values
-        image = data.get("image", None)
-        
         # * Getting values from request
         name = data["name"].strip()
         
@@ -180,8 +171,7 @@ def update_utensil(id):
         
         if data:
             utensil = {
-                'name': name,
-                'image': image
+                'name': name
             }
             
             errors = val_req_data(utensil, utensil_schema)
@@ -194,7 +184,7 @@ def update_utensil(id):
                 }
                 return jsonify(respose)
             result = sql(SQL_STRINGS.SQL_UPDATE_UTENSIL, (
-                name, image, id
+                name, id
             ))
             if result['status'] != "OK":
                 return jsonify({"message": "Error al actulizar el utensilio", "status": 400}), 200
@@ -246,5 +236,85 @@ def delete_utensil(id):
             "status": 500
         }
         return jsonify(respose), 500
+    
+    
+    
+@mod.route("/pic_utensil/<int:id_utensil>", methods=["GET"])
+def get_picprofile(id_utensil):
+    try:
+        result = query(SQL_STRINGS.GET_USER, id_utensil, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Usuario no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        result = query(SQL_STRINGS.GET_USER_PIC, id_utensil, True)
+        if result["status"] != "OK":
+            return jsonify({"message": "Error al obtener la imagen", "status": 500}), 500
+        
+        if not result["data"]:
+            return jsonify({'message': 'Imagen no encontrada', "status": 404}), 404
+        
+        image_bit = result['data']["image_bit"]
+
+        img_io = io.BytesIO(image_bit)
+        img_io.seek(0)
+        
+        return send_file(img_io, mimetype='image/png')
+        
+    except Exception as e:
+        print("Ha ocurrido un error en @get_picprofile/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        return None
+        
+    
+    
+@mod.route("/pic_utensil/<int:id_user>", methods=["POST"])
+def save_picprofile(id_user):
+    try:
+        result = query(SQL_STRINGS.GET_USER, id_user, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Usuario no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        # * Getting the image
+        file = request.files.get('image', None)
+        filename = None
+        img_byte_arr = None
+        if file:
+            filename = secure_filename(file.filename)
+            image = PILImage.open(file.stream)
+            
+            img_byte_arr = io.BytesIO()
+            image.save(img_byte_arr, format='PNG')
+            img_byte_arr = img_byte_arr.getvalue()
+            
+            response = sql(SQL_STRINGS.SQL_SAVE_PICPROFILE, (filename, img_byte_arr, id_user))
+            if response["status"] != "OK":
+                return jsonify({"message": "Error al agregar la iamgen", "status": 500}), 500
+            
+            return jsonify({'message': 'Image uploaded successfully', "status": 201}), 201
+    except Exception as e:
+        print("Ha ocurrido un error en @save_picprofile/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        return None
+    
 
 # =========== FUNCTIONS =========== #

@@ -1,7 +1,37 @@
 class Sql_Strings():
-    USERS_LIST = ("SELECT * FROM users WHERE banned = 0")
+    USERS_LIST = (
+        "SELECT "
+        "id, "
+        "username, "
+        "tagline, "
+        "name, "
+        "email, "
+        "password, "
+        "date_of_birth "
+        "height, "
+        "weight, "
+        "banned, "
+        "id_rol "
+        "FROM users "
+        "WHERE banned = 0"
+    )
     
-    GET_USER = ("SELECT * FROM users WHERE id = %s AND banned = 0")
+    GET_USER = (
+        "SELECT "
+        "id, "
+        "username, "
+        "tagline, "
+        "name, "
+        "email, "
+        "password, "
+        "date_of_birth "
+        "height, "
+        "weight, "
+        "banned, "
+        "id_rol "
+        "FROM users "
+        "WHERE id = %s AND banned = 0"
+    )
 
     CATEGORIAS_LIST = ("SELECT * FROM categories WHERE banned = 0")
     
@@ -22,8 +52,6 @@ class Sql_Strings():
         "INSERT INTO users "
         "(username, "
         "tagline, "
-        "image_name, "
-        "image_bit, "
         "name,  "
         "email,  "
         "password,  "
@@ -31,7 +59,7 @@ class Sql_Strings():
         "height,  "
         "weight,  "
         "id_rol) VALUES "
-        "(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        "(%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     )
 
     UPDATE_USER = (
@@ -89,4 +117,18 @@ class Sql_Strings():
         "UPDATE reviews SET "
         "banned = 1 "
         "WHERE id_recipe = %s "
+    )
+    
+    SQL_SAVE_PICPROFILE = (
+        "UPDATE users SET "
+        "image_name = %s, "
+        "image_bit = %s "
+        "WHERE id = %s"
+    )
+    
+    GET_USER_PIC = (
+        "SELECT "
+        "image_bit "
+        "FROM users "
+        "WHERE id = %s "
     )
