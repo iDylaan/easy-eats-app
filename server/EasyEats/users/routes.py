@@ -184,7 +184,7 @@ def save_user():
                     "data": None
                 }
                 return jsonify(respose)
-        
+
             result = sql(SQL_STRINGS.CREATE_USER, (
                 username,
                 tagline,
