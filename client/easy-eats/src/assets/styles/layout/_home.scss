@@ -1,5 +1,12 @@
 .home {
+  position: relative;
 
+    .prueba {
+      width: 50%;
+      margin: auto;
+      padding: 40px;
+      background-color: rgb(233, 233, 233);
+    }
 
     header {
         position: relative;
@@ -25,15 +32,56 @@
         }
       
         .bg-imagen_container{
-          border: 1px solid red;
-          background-image: url('@/assets/imgs/Banner-Food1.png');
+          background-image: url('@/assets/imgs/Banner-Food4.png');
           width: 100vw;
           height: 100vh;
           background-size: cover;
-
+          background-position: auto center;
+          overflow: hidden;
+          position: relative;
+          display: grid;
+          place-content: center;
         }
       
-        
+        .card-receta__container {
+          border: 1px solid red;
+          width: 550px;
+          background-color: snow;
+          padding: 20px;
+          border-radius: 20px;
+
+          .imag-container {
+            width: 300px;
+            display: grid;
+            place-content: center;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: auto;
+
+            img {
+              width: 100%;
+            }
+          }
+
+          .detalles__container {
+            margin-top: 40px;
+            padding: 0 20px;
+
+            .receta-descripcion__container {
+              text-align: justify;
+              margin-top: 15px;
+              overflow-y: scroll;
+              height: 100px;
+            }
+
+            .receta-detalles__container {
+              text-align: center;
+              display: flex;
+              justify-content: space-evenly;
+              margin-top: 20px;
+            }
+          }
+        }
       
       }
       

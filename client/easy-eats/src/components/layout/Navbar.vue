@@ -9,11 +9,10 @@
 </div>
 <div class="options_container">
 <ul>
-    <li><a href="#">Home</a></li>
+    <li><a href="#">Inicio</a></li>
     <li><a href="#">Recetas</a></li>
-    <li><a href="#">Saludable</a></li>
+    <li><a href="#">Nutrición</a></li>
     <li><a href="#">Nosotros</a></li>
-    <li><a href="#">Contacto</a></li>
 </ul>
 </div>
 

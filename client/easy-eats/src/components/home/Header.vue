@@ -3,7 +3,35 @@
     <header :class="headerClass">
 
         <div class="bg-imagen_container">
-            <!-- <img src="../../assets/imgs/easyeatsbackground.png" alt=""> -->
+            <div class="card-receta__container">
+
+                <div class="imag-container">
+                    <img src="../../assets/imgs/Food1.png" alt="">
+                </div>
+
+                <div class="detalles__container">
+                    <div class="receta-nombre__container">
+                        <h2>Titulo de la receta</h2>
+                    </div>
+                    <div class="receta-descripcion__container">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus necessitatibus maiores, in, expedita illum voluptates error quam sed laudantium, at obcaecati! Distinctio quaerat porro neque iusto, voluptates dolorem quasi earum molestias temporibus minima eum velit? Quaerat soluta dolor, praesentium eligendi aspernatur ex culpa, beatae officia odit voluptas earum ad suscipit at cupiditate ipsum. Corrupti sit doloremque maxime odio quo ab voluptate aliquid repellendus quasi, accusantium voluptatem molestiae dicta sequi ratione temporibus! Assumenda dolores dolorem esse doloribus animi commodi nemo. Ullam id nemo labore quas dolorem tempora voluptate, velit vel modi sequi. Accusantium voluptate quidem aliquam quia voluptas maxime, totam fugit.</p>
+                    </div>
+                    <div class="receta-detalles__container">
+                        <div class="receta-puntaje__container">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                        |
+                        <div class="receta-tiempo__container">
+                            <span>3</span> minutos
+                        </div>
+                        |
+                        <div class="receta-personas__container">
+                            <span>4</span> personas
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </header>
