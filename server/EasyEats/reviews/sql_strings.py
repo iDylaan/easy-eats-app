@@ -6,6 +6,8 @@ class Sql_Strings():
         "FROM "
             "reviews r "
             "JOIN users u "
+        "WHERE r.banned = 0 "
+        "AND u.banned = 0 "
         "ORDER BY r.time_made DESC"
     )
     
@@ -20,18 +22,21 @@ class Sql_Strings():
         	"id_user "
         "FROM reviews "
         "WHERE id_recipe = %s "
+        "AND banned = 0 "
         "ORDER BY time_made DESC"
     )
     
     QRY_RECIPE_EXISTS = (
         "SELECT COUNT(*) AS 'exists' "
         "FROM recipes "
-        "WHERE id = %s"
+        "WHERE id = %s "
+        "AND banned = 0"
     )
     
     QRY_COUNT_REVIEWS_BY_ID = (
         "SELECT COUNT(*) as 'count' FROM reviews "
-        "WHERE id = %s"
+        "WHERE id = %s "
+        "AND banned = 0"
     )
     
     SQL_INSERT_REVIEW = (
@@ -50,5 +55,7 @@ class Sql_Strings():
     )
     
     SQL_DELETE_REVIEW = (
-        "DELETE FROM reviews WHERE id = %s"
+        "UPDATE reviews SET "
+        "banned = 1 "
+        "WHERE id = %s"
     )
