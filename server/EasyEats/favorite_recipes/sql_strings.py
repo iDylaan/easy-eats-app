@@ -20,7 +20,23 @@ class Sql_Strings():
         "AND id_recipe = %s"
     )
     
+    QRY_COUNT_RECIPES_BY_ID = (
+        "SELECT COUNT(*) AS 'count' FROM recipes "
+        "WHERE id = %s"
+    )
+
+    QRY_COUNT_USERS_BY_ID = (
+        "SELECT COUNT(*) AS 'count' FROM users "
+        "WHERE id = %s"
+    )
+    
     SQL_INSERT_FAVORITE_RECIPE = (
         "INSERT INTO favorite_recipes (id_user, id_recipe) "
         "VALUES (%s, %s)"
+    )
+    
+    SQL_DELETE_FAVORITE_RECIPE = (
+        "DELETE FROM favorite_recipes "
+        "WHERE id_user = %s "
+        "and id_recipe = %s"
     )
