@@ -1,4 +1,6 @@
 .home {
+
+
     header {
         position: relative;
        
@@ -23,9 +25,12 @@
         }
       
         .bg-imagen_container{
+          border: 1px solid red;
+          background-image: url('@/assets/imgs/Banner-Food1.png');
           width: 100vw;
-          height: 20vh;
-          position: relative;
+          height: 100vh;
+          background-size: cover;
+
         }
       
         
@@ -34,11 +39,11 @@
       
       
       
-      header .brand img {
+      .brand img {
         height: 45px;
       }
       
-      header .brand {
+      .brand {
         color: #fff;
         font-size: 30px;
         font-weight: 700;
@@ -46,5 +51,14 @@
         text-decoration: none;
         letter-spacing: 2px;
       }
+
+      // .zona1 {
+      //   position:relative;
+      //   width: 100%;
+      //   height: 100vh;
+      //   background: url(/src/assets/imgs/easyeatsbackground.png);
+      //   background-size: cover;
+      //   background-position: center center;
+      // }
       
 }

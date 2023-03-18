@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <Header />
     <Navbar />
+    <Header />
     <Carrusel />  
   </div>
 </template>
