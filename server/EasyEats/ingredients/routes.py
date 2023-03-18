@@ -1,7 +1,9 @@
-import json
-from flask import Blueprint, request, jsonify, Response
+import json, io
+from flask import Blueprint, request, jsonify, Response, send_file
 from flask_cors import CORS
 from .schemas import ingredient_schema
+from werkzeug.utils import secure_filename
+from PIL import Image as PILImage
 from .sql_strings import Sql_Strings as SQL_STRINGS
 from EasyEats.config.conf_maria import query, sql
 from EasyEats.utils.misc import val_req_data
@@ -95,7 +97,6 @@ def save_ingredient():
         
         # * Validating null values
         price = data.get("price", None)
-        image = data.get("image", None)
         
         # * Getting values from request
         name = data["name"].strip()
@@ -111,8 +112,7 @@ def save_ingredient():
             ingredient = {
                 'name': name,
                 'description': description,
-                'price': price,
-                'image': image
+                'price': price
             }
             
             errors = val_req_data(ingredient, ingredient_schema)
@@ -125,7 +125,7 @@ def save_ingredient():
                 }
                 return jsonify(respose)
             result = sql(SQL_STRINGS.SQL_CREATE_INGREDIENT, (
-                name, description, price, image
+                name, description, price
             ))
             if result['status'] != "OK":
                 return jsonify({"message": "Error al registrar el ingrediente", "status": 400}), 200
@@ -171,7 +171,6 @@ def update_ingredient(id):
         
         # * Validating null values
         price = data.get("price", None)
-        image = data.get("image", None)
         
         # * Getting values from request
         name = data["name"].strip()
@@ -187,8 +186,7 @@ def update_ingredient(id):
             ingredient = {
                 'name': name,
                 'description': description,
-                'price': price,
-                'image': image
+                'price': price
             }
             
             errors = val_req_data(ingredient, ingredient_schema)
@@ -201,7 +199,7 @@ def update_ingredient(id):
                 }
                 return jsonify(respose)
             result = sql(SQL_STRINGS.SQL_UPDATE_INGREDIENT, (
-                name, description, price, image, id
+                name, description, price, id
             ))
             if result['status'] != "OK":
                 return jsonify({"message": "Error al actulizar el ingrediente", "status": 400}), 200
@@ -254,5 +252,85 @@ def delete_ingredient(id):
             "status": 500
         }
         return jsonify(respose), 500
+    
+    
+@mod.route("/pic_ingredient/<int:id_ingredient>", methods=["GET"])
+def get_pic_ingredient(id_ingredient):
+    try:
+        result = query(SQL_STRINGS.QRY_INGREDIENT_BY_ID, id_ingredient, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Ingrediente no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        result = query(SQL_STRINGS.QRY_INGREDIENT_PIC, id_ingredient, True)
+        if result["status"] != "OK":
+            return jsonify({"message": "Error al obtener la imagen", "status": 500}), 500
+        
+        if not result["data"]:
+            return jsonify({'message': 'Imagen no encontrada', "status": 404}), 404
+        
+        image_bit = result['data']['image']
+
+        img_io = io.BytesIO(image_bit)
+        img_io.seek(0)
+        
+        return send_file(img_io, mimetype='image/png')
+        
+    except Exception as e:
+        print("Ha ocurrido un error en @get_pic_ingredient/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        return None
+        
+    
+    
+@mod.route("/pic_ingredient/<int:id_ingredient>", methods=["POST"])
+def save_pic_ingredient(id_ingredient):
+    try:
+        result = query(SQL_STRINGS.QRY_INGREDIENT_BY_ID, id_ingredient, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Ingrediente no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        # * Getting the image
+        file = request.files.get('image', None)
+        filename = None
+        img_byte_arr = None
+        if file:
+            filename = secure_filename(file.filename)
+            image = PILImage.open(file.stream)
+            
+            img_byte_arr = io.BytesIO()
+            image.save(img_byte_arr, format='PNG')
+            img_byte_arr = img_byte_arr.getvalue()
+            
+            response = sql(SQL_STRINGS.SQL_SAVE_PIC_INGREDIENT, (filename, img_byte_arr, id_ingredient))
+            if response["status"] != "OK":
+                return jsonify({"message": "Error al agregar la imagen", "status": 500}), 200
+            
+            return jsonify({'message': 'Imagen registrada correctamente', "status": 201}), 201
+        return jsonify({'message': 'No se recibio una imagen valida', "status": 400}), 400
+    except Exception as e:
+        print("Ha ocurrido un error en @save_pic_ingredient/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        return None
+    
 
 # =========== FUNCTIONS =========== #

@@ -1,6 +1,9 @@
-from flask import Blueprint, request, jsonify, Response
+import io
+from flask import Blueprint, request, jsonify, Response, send_file
 from flask_cors import CORS
 from .schemas import utensil_schema
+from werkzeug.utils import secure_filename
+from PIL import Image as PILImage
 from .sql_strings import Sql_Strings as SQL_STRINGS
 from EasyEats.config.conf_maria import query, sql
 from EasyEats.utils.misc import val_req_data
@@ -240,12 +243,12 @@ def delete_utensil(id):
     
     
 @mod.route("/pic_utensil/<int:id_utensil>", methods=["GET"])
-def get_picprofile(id_utensil):
+def get_pic_utensil(id_utensil):
     try:
-        result = query(SQL_STRINGS.GET_USER, id_utensil, True)
+        result = query(SQL_STRINGS.QRY_UTENSIL_BY_ID, id_utensil, True)
         if result["status"] == "NOT_FOUND":
             respose = {
-                "message": "Usuario no encontrado",
+                "message": "Utensilio no encontrado",
                 "status": 404,
             }
             return jsonify(respose), 404
@@ -257,7 +260,7 @@ def get_picprofile(id_utensil):
             }
             return jsonify(respose), 500
         
-        result = query(SQL_STRINGS.GET_USER_PIC, id_utensil, True)
+        result = query(SQL_STRINGS.QRY_UTENSIL_PIC, id_utensil, True)
         if result["status"] != "OK":
             return jsonify({"message": "Error al obtener la imagen", "status": 500}), 500
         
@@ -272,18 +275,18 @@ def get_picprofile(id_utensil):
         return send_file(img_io, mimetype='image/png')
         
     except Exception as e:
-        print("Ha ocurrido un error en @get_picprofile/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @get_pic_utensil/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         return None
         
     
     
-@mod.route("/pic_utensil/<int:id_user>", methods=["POST"])
-def save_picprofile(id_user):
+@mod.route("/pic_utensil/<int:id_utensil>", methods=["POST"])
+def save_pic_utensil(id_utensil):
     try:
-        result = query(SQL_STRINGS.GET_USER, id_user, True)
+        result = query(SQL_STRINGS.QRY_UTENSIL_BY_ID, id_utensil, True)
         if result["status"] == "NOT_FOUND":
             respose = {
-                "message": "Usuario no encontrado",
+                "message": "Utensilio no encontrado",
                 "status": 404,
             }
             return jsonify(respose), 404
@@ -307,13 +310,14 @@ def save_picprofile(id_user):
             image.save(img_byte_arr, format='PNG')
             img_byte_arr = img_byte_arr.getvalue()
             
-            response = sql(SQL_STRINGS.SQL_SAVE_PICPROFILE, (filename, img_byte_arr, id_user))
+            response = sql(SQL_STRINGS.SQL_SAVE_PIC_UTENSIL, (filename, img_byte_arr, id_utensil))
             if response["status"] != "OK":
-                return jsonify({"message": "Error al agregar la iamgen", "status": 500}), 500
+                return jsonify({"message": "Error al agregar la imagen", "status": 500}), 200
             
-            return jsonify({'message': 'Image uploaded successfully', "status": 201}), 201
+            return jsonify({'message': 'Imagen registrada correctamente', "status": 201}), 201
+        return jsonify({'message': 'No se recibio una imagen valida', "status": 400}), 400
     except Exception as e:
-        print("Ha ocurrido un error en @save_picprofile/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @save_pic_utensil/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         return None
     
 

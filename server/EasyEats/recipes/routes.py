@@ -1,6 +1,9 @@
-from flask import Blueprint, request, jsonify, Response
+import io
+from flask import Blueprint, request, jsonify, Response, send_file
 from flask_cors import CORS
 from .schemas import recipe_schema
+from werkzeug.utils import secure_filename
+from PIL import Image as PILImage
 from .sql_strings import Sql_Strings as SQL_STRINGS
 from EasyEats.config.conf_maria import query, sql
 from EasyEats.utils.misc import val_req_data
@@ -96,7 +99,6 @@ def save_recipe():
         description = data.get("description", None)
         cooking_time = data.get("cooking_time", None)
         dinners = data.get("dinners", None)
-        image = data.get("image", None)
         calories = data.get("calories", None)
         fats = data.get("fats", None)
         carbs = data.get("carbs", None)
@@ -124,7 +126,6 @@ def save_recipe():
                 'description': description,
                 'cooking_time': cooking_time,
                 'dinners': dinners,
-                'image': image,
                 'calories': calories,
                 'fats': fats,
                 'carbs': carbs,
@@ -153,7 +154,6 @@ def save_recipe():
                 description,
                 cooking_time,
                 dinners,
-                image,
                 calories,
                 fats,
                 carbs,
@@ -211,7 +211,6 @@ def update_recipe(id_recipe):
         description = data.get("description", None)
         cooking_time = data.get("cooking_time", None)
         dinners = data.get("dinners", None)
-        image = data.get("image", None)
         calories = data.get("calories", None)
         fats = data.get("fats", None)
         carbs = data.get("carbs", None)
@@ -241,7 +240,6 @@ def update_recipe(id_recipe):
                 'description': description,
                 'cooking_time': cooking_time,
                 'dinners': dinners,
-                'image': image,
                 'calories': calories,
                 'fats': fats,
                 'carbs': carbs,
@@ -269,7 +267,6 @@ def update_recipe(id_recipe):
                 description,
                 cooking_time,
                 dinners,
-                image,
                 calories,
                 fats,
                 carbs,
@@ -338,3 +335,82 @@ def delete_recipe(id_recipe):
             "status": 500
         }
         return jsonify(respose), 500
+    
+    
+@mod.route("/pic_recipe/<int:id_recipe>", methods=["GET"])
+def get_pic_recipe(id_recipe):
+    try:
+        result = query(SQL_STRINGS.QRY_RECIPE, id_recipe, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Receta no encontrada",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        result = query(SQL_STRINGS.QRY_RECIPE_PIC, id_recipe, True)
+        if result["status"] != "OK":
+            return jsonify({"message": "Error al obtener la imagen", "status": 500}), 500
+        
+        if not result["data"]:
+            return jsonify({'message': 'Imagen no encontrada', "status": 404}), 404
+        
+        image_bit = result['data']['image']
+
+        img_io = io.BytesIO(image_bit)
+        img_io.seek(0)
+        
+        return send_file(img_io, mimetype='image/png')
+        
+    except Exception as e:
+        print("Ha ocurrido un error en @get_pic_recipe/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        return None
+        
+    
+    
+@mod.route("/pic_recipe/<int:id_recipe>", methods=["POST"])
+def save_pic_recipe(id_recipe):
+    try:
+        result = query(SQL_STRINGS.QRY_RECIPE, id_recipe, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Receta no encontrada",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        # * Getting the image
+        file = request.files.get('image', None)
+        filename = None
+        img_byte_arr = None
+        if file:
+            filename = secure_filename(file.filename)
+            image = PILImage.open(file.stream)
+            
+            img_byte_arr = io.BytesIO()
+            image.save(img_byte_arr, format='PNG')
+            img_byte_arr = img_byte_arr.getvalue()
+            
+            response = sql(SQL_STRINGS.SQL_SAVE_PIC_RECIPE, (filename, img_byte_arr, id_recipe))
+            if response["status"] != "OK":
+                return jsonify({"message": "Error al agregar la imagen", "status": 500}), 200
+            
+            return jsonify({'message': 'Imagen registrada correctamente', "status": 201}), 201
+        return jsonify({'message': 'No se recibio una imagen valida', "status": 400}), 400
+    except Exception as e:
+        print("Ha ocurrido un error en @save_pic_recipe/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        return None

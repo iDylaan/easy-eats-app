@@ -439,9 +439,9 @@ def save_picprofile(id_user):
             
             response = sql(SQL_STRINGS.SQL_SAVE_PICPROFILE, (filename, img_byte_arr, id_user))
             if response["status"] != "OK":
-                return jsonify({"message": "Error al agregar la iamgen", "status": 500}), 500
+                return jsonify({"message": "Error al agregar la imagen", "status": 500}), 500
             
-            return jsonify({'message': 'Image uploaded successfully', "status": 201}), 201
+            return jsonify({'message': 'Imagen registrada correctamente', "status": 201}), 201
     except Exception as e:
         print("Ha ocurrido un error en @save_picprofile/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         return None

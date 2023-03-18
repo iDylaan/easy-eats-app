@@ -1,8 +1,42 @@
 class Sql_Strings():
-    QRY_RECIPES = ("SELECT * FROM recipes WHERE banned = 0")
+    QRY_RECIPES = (
+        "SELECT "
+        "id, "
+        "name, "
+        "description, "
+        "cooking_time, "
+        "dinners, "
+        "update_date, "
+        "calories, "
+        "fats, "
+        "carbs, "
+        "protein, "
+        "satured_fats, "
+        "sodium, "
+        "fiber, "
+        "sugars, "
+        "id_user "
+        "FROM recipes WHERE banned = 0"
+    )
     
     QRY_RECIPE = (
-        "SELECT * FROM recipes "
+        "SELECT "
+        "id, "
+        "name, "
+        "description, "
+        "cooking_time, "
+        "dinners, "
+        "update_date, "
+        "calories, "
+        "fats, "
+        "carbs, "
+        "protein, "
+        "satured_fats, "
+        "sodium, "
+        "fiber, "
+        "sugars, "
+        "id_user " 
+        "FROM recipes "
         "WHERE id = %s "
         "AND banned = 0 "
     )
@@ -10,11 +44,11 @@ class Sql_Strings():
     SQL_INSERT_RECIPE = (
         "INSERT INTO recipes "
         "(name, description, cooking_time, "
-        "dinners, image, calories, "
+        "dinners, calories, "
         "fats, carbs, protein, satured_fats, "
         "sodium, fiber, sugars, budget, id_user) "
         "VALUES (%s, %s, %s, %s, %s, %s, "
-        "%s, %s, %s, %s, %s, %s, %s, %s, %s) "
+        "%s, %s, %s, %s, %s, %s, %s, %s) "
     )
     
     SQL_UPDATE_RECIPE = (
@@ -23,7 +57,6 @@ class Sql_Strings():
         "description = %s, "
         "cooking_time = %s, "
         "dinners = %s, "
-        "image = %s, "
         "calories = %s, "
         "fats = %s, "
         "carbs = %s, "
@@ -41,4 +74,19 @@ class Sql_Strings():
         "UPDATE recipes SET "
         "banned = 1 "
         "WHERE id = %s "
+    )
+    
+    QRY_RECIPE_PIC = (
+        "SELECT image_bit AS 'image' "
+        "FROM recipes "
+        "WHERE id = %s "
+        "AND banned = 0"
+    )
+    
+    SQL_SAVE_PIC_RECIPE = (
+        "UPDATE recipes SET "
+        "image_name = %s, "
+        "image_bit = %s "
+        "WHERE id = %s "
+        "AND banned = 0"
     )
