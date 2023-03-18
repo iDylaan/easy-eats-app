@@ -1,7 +1,9 @@
-import json
-from flask import Blueprint, request, jsonify, Response
+import io
+from flask import Blueprint, request, jsonify, Response, send_file
 from flask_cors import CORS
 from .schemas import utensil_schema
+from werkzeug.utils import secure_filename
+from PIL import Image as PILImage
 from .sql_strings import Sql_Strings as SQL_STRINGS
 from EasyEats.config.conf_maria import query, sql
 from EasyEats.utils.misc import val_req_data
@@ -98,9 +100,6 @@ def save_utensil():
     try:
         data = request.get_json()
         
-        # * Validating null values
-        image = data.get("image", None)
-        
         # * Getting values from request
         name = data["name"].strip()
         
@@ -111,8 +110,7 @@ def save_utensil():
         
         if data:
             utensil = {
-                'name': name,
-                'image': image
+                'name': name
             }
             
             errors = val_req_data(utensil, utensil_schema)
@@ -124,9 +122,7 @@ def save_utensil():
                     "status": 400
                 }
                 return jsonify(respose)
-            result = sql(SQL_STRINGS.SQL_CREATE_UTENSIL, (
-                name, image
-            ))
+            result = sql(SQL_STRINGS.SQL_CREATE_UTENSIL, name)
             if result['status'] != "OK":
                 return jsonify({"message": "Error al registrar el utensilio", "status": 400}), 200
             respose = {
@@ -151,10 +147,22 @@ def save_utensil():
 @mod.route('/utensils/<int:id>', methods=["PUT"])
 def update_utensil(id):
     try:
-        data = request.get_json()
+        result = query(SQL_STRINGS.QRY_UTENSIL_BY_ID, id, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Utensilio no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
         
-        # * Validating null values
-        image = data.get("image", None)
+        data = request.get_json()
         
         # * Getting values from request
         name = data["name"].strip()
@@ -166,8 +174,7 @@ def update_utensil(id):
         
         if data:
             utensil = {
-                'name': name,
-                'image': image
+                'name': name
             }
             
             errors = val_req_data(utensil, utensil_schema)
@@ -180,7 +187,7 @@ def update_utensil(id):
                 }
                 return jsonify(respose)
             result = sql(SQL_STRINGS.SQL_UPDATE_UTENSIL, (
-                name, image, id
+                name, id
             ))
             if result['status'] != "OK":
                 return jsonify({"message": "Error al actulizar el utensilio", "status": 400}), 200
@@ -232,5 +239,86 @@ def delete_utensil(id):
             "status": 500
         }
         return jsonify(respose), 500
+    
+    
+    
+@mod.route("/pic_utensil/<int:id_utensil>", methods=["GET"])
+def get_pic_utensil(id_utensil):
+    try:
+        result = query(SQL_STRINGS.QRY_UTENSIL_BY_ID, id_utensil, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Utensilio no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        result = query(SQL_STRINGS.QRY_UTENSIL_PIC, id_utensil, True)
+        if result["status"] != "OK":
+            return jsonify({"message": "Error al obtener la imagen", "status": 500}), 500
+        
+        if not result["data"]:
+            return jsonify({'message': 'Imagen no encontrada', "status": 404}), 404
+        
+        image_bit = result['data']["image_bit"]
+
+        img_io = io.BytesIO(image_bit)
+        img_io.seek(0)
+        
+        return send_file(img_io, mimetype='image/png')
+        
+    except Exception as e:
+        print("Ha ocurrido un error en @get_pic_utensil/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        return None
+        
+    
+    
+@mod.route("/pic_utensil/<int:id_utensil>", methods=["POST"])
+def save_pic_utensil(id_utensil):
+    try:
+        result = query(SQL_STRINGS.QRY_UTENSIL_BY_ID, id_utensil, True)
+        if result["status"] == "NOT_FOUND":
+            respose = {
+                "message": "Utensilio no encontrado",
+                "status": 404,
+            }
+            return jsonify(respose), 404
+        elif result["status"] != "OK":
+            respose = {
+                "message": "Error inesperado en el servidor",
+                "status": 500,
+                "data": None
+            }
+            return jsonify(respose), 500
+        
+        # * Getting the image
+        file = request.files.get('image', None)
+        filename = None
+        img_byte_arr = None
+        if file:
+            filename = secure_filename(file.filename)
+            image = PILImage.open(file.stream)
+            
+            img_byte_arr = io.BytesIO()
+            image.save(img_byte_arr, format='PNG')
+            img_byte_arr = img_byte_arr.getvalue()
+            
+            response = sql(SQL_STRINGS.SQL_SAVE_PIC_UTENSIL, (filename, img_byte_arr, id_utensil))
+            if response["status"] != "OK":
+                return jsonify({"message": "Error al agregar la imagen", "status": 500}), 200
+            
+            return jsonify({'message': 'Imagen registrada correctamente', "status": 201}), 201
+        return jsonify({'message': 'No se recibio una imagen valida', "status": 400}), 400
+    except Exception as e:
+        print("Ha ocurrido un error en @save_pic_utensil/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        return None
+    
 
 # =========== FUNCTIONS =========== #
