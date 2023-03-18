@@ -369,8 +369,8 @@ def delete_user(id):
         return jsonify(respose), 500
     
     
-@mod.route("/picprofile/<int:id_user>", methods=["GET"])
-def get_picprofile(id_user):
+@mod.route("/pic_user/<int:id_user>", methods=["GET"])
+def get_pic_user(id_user):
     try:
         result = query(SQL_STRINGS.GET_USER, id_user, True)
         if result["status"] == "NOT_FOUND":
@@ -402,13 +402,13 @@ def get_picprofile(id_user):
         return send_file(img_io, mimetype='image/png')
         
     except Exception as e:
-        print("Ha ocurrido un error en @get_picprofile/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @get_pic_user/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         return None
         
     
     
-@mod.route("/picprofile/<int:id_user>", methods=["POST"])
-def save_picprofile(id_user):
+@mod.route("/pic_user/<int:id_user>", methods=["POST"])
+def save_pic_user(id_user):
     try:
         result = query(SQL_STRINGS.GET_USER, id_user, True)
         if result["status"] == "NOT_FOUND":
@@ -437,13 +437,13 @@ def save_picprofile(id_user):
             image.save(img_byte_arr, format='PNG')
             img_byte_arr = img_byte_arr.getvalue()
             
-            response = sql(SQL_STRINGS.SQL_SAVE_PICPROFILE, (filename, img_byte_arr, id_user))
+            response = sql(SQL_STRINGS.SQL_SAVE_pic_user, (filename, img_byte_arr, id_user))
             if response["status"] != "OK":
                 return jsonify({"message": "Error al agregar la imagen", "status": 500}), 500
             
             return jsonify({'message': 'Imagen registrada correctamente', "status": 201}), 201
     except Exception as e:
-        print("Ha ocurrido un error en @save_picprofile/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
+        print("Ha ocurrido un error en @save_pic_user/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
         return None
     
 
