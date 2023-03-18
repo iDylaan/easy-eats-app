@@ -1,13 +1,14 @@
 .navbar {
+    // border: 1px solid red   ;
     top: 0;
     left: 0;
     width: 100%;
     display: flex;
-    background-color: #1D1C28;
+    background-color: #1d1c2800;
     transition: 0.1s ease-in-out;
     padding: 0px 0px;
     z-index: 1;
-    position: relative;
+    position: fixed;
     align-items: center;
     justify-content: space-evenly;
 
@@ -101,7 +102,7 @@
     }
 
     a {
-        color: #fff;
+        color: #000000;
         font-weight: 600;
         text-transform: uppercase;
         font-size: 16px;

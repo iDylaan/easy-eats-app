@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <Navbar />
     <Header />
+    <Navbar />
     <Carrusel />  
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import { useRouter } from 'vue-router';
 import Header from '../components/home/Header';
-import Carrusel from '../components/home/Carrusel';
+// import Carrusel from '../components/home/Carrusel';
 import Navbar from '../components/layout/Navbar';
 
 
@@ -19,9 +19,9 @@ export default {
     const router = useRouter();
   },
   components: {
-    Header,
-    Carrusel,
     Navbar,
+    Header,
+    // Carrusel,
   }
 }
 </script>

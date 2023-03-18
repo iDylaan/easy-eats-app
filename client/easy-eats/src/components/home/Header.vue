@@ -10,7 +10,7 @@
         <div class="bg-imagen_container">
             <img src="../../assets/imgs/easyeatsbackground.png" alt="">
         </div>
-        
+
     </header>
 
     <section class="zona1"></section>
@@ -27,6 +27,13 @@ export default {
         const headerClass = ref('');
         const router = useRouter();
         let isLoged = ref(false);
+
+
+        // windowaddEventListener("scroll", function () {
+        //     var header = document.querySelector('header');
+        //     header.classList.toggle("abajo", window.scrollY > 0);
+
+        // })
 
         const handleScroll = () => {
             scrollPosition.value = window.scrollY;
@@ -57,6 +64,7 @@ export default {
         }
 
 
+
         return {
             isLoged,
             headerClass,
@@ -68,6 +76,8 @@ export default {
 
     }
 }
+
+
 
 
 </script>
