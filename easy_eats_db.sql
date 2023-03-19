@@ -109,10 +109,6 @@ CREATE TABLE recipe_categories (
 );
 
 
-INSERT INTO recipe_categories (id_category, id_recipe) VALUES 
-(1, 1), (2, 1), (3, 2), (4, 2), (9, 2), (10, 2);
-
-
 CREATE TABLE reviews (
   id INT AUTO_INCREMENT,
   comment VARCHAR(300) DEFAULT NULL,
@@ -159,19 +155,12 @@ CREATE TABLE recipe_utensils (
   CONSTRAINT fk_recipe_utensils_utensil_id FOREIGN KEY(id_utensil) REFERENCES utensils(id)
 );
 
-INSERT INTO recipe_utensils (id_recipe, id_utensil) VALUES
-(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 1), (2, 3), (2, 5);
-
 CREATE TABLE favorite_recipes (
   id_recipe INT NOT NULL,
   id_user INT NOT NULL,
   CONSTRAINT fk_favorite_recipes_recipe_id FOREIGN KEY(id_recipe) REFERENCES recipes(id),
   CONSTRAINT fk_favorite_recipes_user_id FOREIGN KEY(id_user) REFERENCES users(id)
 );
-
-INSERT INTO easy_eats_db.favorite_recipes (id_recipe, id_user) VALUES
-(1, 1),
-(2, 1);
 
 
 -- INDICES --
