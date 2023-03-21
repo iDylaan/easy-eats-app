@@ -166,7 +166,7 @@
         padding: 100px 100px;
         border-radius: 20px;
         background-color: white;
-        width: 300 / 1920 * 100%;
+        width: calc(300 / 1920) * 100%;
         text-align: center;
         border: 3px solid #ffdea69e;
         background: linear-gradient(to bottom, #2b2f414f 0%, #2b2f4156 100%),
@@ -202,7 +202,7 @@
 
         form {
             margin: 30px auto;
-            width: 1200 / 1920 * 100%;
+            width: calc(1200 / 1920) * 100%;
 
             input::-webkit-input-placeholder {
                 color: darken($color-auxiliar, 22%);
@@ -238,7 +238,7 @@
             transform: translate(-5%, -50%);
 
             .login__container {
-                width: 1400 / 1920 * 100%;
+                width: calc(1400 / 1920) * 100%;
             }
         }
 

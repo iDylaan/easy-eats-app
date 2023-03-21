@@ -54,15 +54,15 @@ def conn_maria():
         'charset': app.config['MARIA_CHARSET'],
         'cursorclass': pymysql.cursors.DictCursor
     }
-    config = { # * Comentar en caso de utilizar contenedores
-        'host': 'localhost',
-        'port': 3090,
-        'user': app.config['MARIA_USER'],
-        'password': 'admin',
-        'database': app.config['MARIA_DB'],
-        'charset': app.config['MARIA_CHARSET'],
-        'cursorclass': pymysql.cursors.DictCursor
-    }
+    # config = { # * Comentar en caso de utilizar contenedores
+    #     'host': 'localhost',
+    #     'port': 3090,
+    #     'user': app.config['MARIA_USER'],
+    #     'password': 'admin',
+    #     'database': app.config['MARIA_DB'],
+    #     'charset': app.config['MARIA_CHARSET'],
+    #     'cursorclass': pymysql.cursors.DictCursor
+    # }
     try: 
         conn = pymysql.connect(**config)
     except Exception as e:
