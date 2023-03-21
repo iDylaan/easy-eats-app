@@ -18,7 +18,7 @@
 
 <div class="profile-options">
     <button v-if="!isLoged" @click="iniciarSesion">
-        Iniciar Sesion
+        Iniciar Sesion 
         <div class="arrow-wrapper">
             <div class="arrow"></div>
 
@@ -35,6 +35,7 @@
 
 </div>
 
+<!-- menu de hamburguesa -->
 <!-- <div class="btn">
     <font-awesome-icon icon="fa-solid fa-bars" />
 </div> -->
