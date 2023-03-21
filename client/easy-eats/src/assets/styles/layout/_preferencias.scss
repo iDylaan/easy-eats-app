@@ -1,0 +1,61 @@
+.prefe{
+    .container{
+
+        .form-group{
+            width: 70%;
+            text-align: center;
+        }
+
+        width: 70%; 
+        display:flex; 
+        align-items: center;
+        flex-direction: column;
+        margin:  0 auto;
+
+        h1{
+            color: black;
+            padding: 2% 0%; 
+            font-size: 4rem; 
+        }
+    
+        label{
+            color: black;
+            font-size: 3rem;
+        }
+    
+        select{
+            color: black;
+            background-color: antiquewhite;
+            font-size: 2rem;
+        }
+    
+        input{
+            color: black;
+            background-color: antiquewhite;
+            font-size: 2rem;
+        }
+        
+        .opciones{
+            display:flex; 
+            justify-content: space-evenly;
+            margin-top: 20%;
+            width: 100%;
+
+        
+            a{
+                color: rgb(247, 247, 247);
+                background-color: rgb(9, 9, 10);
+                padding: 8px 10px; 
+                font-size: 2rem;
+            }
+        
+            button{
+                color: black;
+                background-color: aqua;
+                font-size: 2rem;              
+            }
+      
+
+        }
+    }       
+}

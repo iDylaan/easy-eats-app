@@ -26,6 +26,7 @@
 				
 				<div class="form-group">
 					<label for="imagen" class="col-sm-2 control-label">imagen</label>
+
 					<div class="col-sm-10">
 						<input type="imagen" class="form-control" id="imagen" name="imagen" placeholder="imagen">
 					</div>

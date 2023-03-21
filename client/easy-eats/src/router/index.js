@@ -3,6 +3,8 @@ import Home from '../views/HomeView.vue'
 import Login from '../views/LoginView.vue'
 import Signin from '../views/SigninView.vue'
 import Loged from '../views/LogedView.vue'
+import Preferencias from '../views/PreferenciasView.vue'
+import SubirRecetas from '../views/SubirRecetaView.vue' 
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: '/loged',
     name: 'loged',
     component: Loged
+  },
+  {
+    path: '/preferencias',
+    name: 'preferencias',
+    component: Preferencias
+  },
+  {
+    path: '/subirReceta',
+    name: 'subirReceta',
+    component: SubirRecetas
   }
 ]
 
