@@ -1,18 +1,11 @@
 footer{
     /*Aquí debajo va el FOOTER*/
-
-
+    // border: 1px solid red   ;
     width: 100%;
     padding: 50px 0px;
-    // background-image: url(../Images/background-footer.svg);
     background-size: cover;
 
     background-color: #1d1c28;
-    // -webkit-mask-image: url("../Images/background-footer.svg");
-    // mask-image: url("../Images/background-footer.svg");
-    // -webkit-mask-size: cover;
-    // mask-size: cover;
-
 
     .container__footer {
         display: flex;
