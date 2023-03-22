@@ -9,12 +9,29 @@
 
     <div class="pollo">
       <div class="img"><img src="../assets/imgs/polllo_hor.jpg" alt=""></div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis hic aliquid eaque eos voluptatem maiores, possimus, illum consequatur laudantium itaque iure nemo. Aut expedita quia quasi, neque libero ex, nam eaque eveniet doloremque cum at corrupti officiis quod quisquam velit maxime. Accusamus doloribus excepturi, alias odit nihil officia ea quam exercitationem! Accusantium nihil harum ratione, sit eligendi, rem veniam dolorem ex reprehenderit earum esse. Amet quas, quae quibusdam inventore vel velit iure deleniti fuga qui, at dicta pariatur exercitationem nobis fugit accusantium error, ex blanditiis eos eligendi perspiciatis facilis. Vero impedit molestias quaerat accusamus soluta rem debitis alias dolore nesciunt?</p>
+      <p>El pollo al horno con hierbas es un plato delicioso y fácil de preparar que consiste 
+         en muslos de pollo sazonados con una mezcla de hierbas frescas como el tomillo, el romero 
+         y la salvia. Se hornea en el horno a una temperatura alta hasta que esté crujiente por fuera 
+         y tierno por dentro.
+      </p> 
+
+      <div class="receta-detalles__container">
+        <div class="receta-tiempo__container">
+          <span>2</span> Horas 🕐
+           </div>
+            |
+          <div class="receta-personas__container">
+          <span>8</span> personas 👥
+          </div>
+      </div>
+
     </div>
     
 
     <!-- Termina Contenido -->
+    <Footer />
   </div>
+
 </template>
 
 <script>
