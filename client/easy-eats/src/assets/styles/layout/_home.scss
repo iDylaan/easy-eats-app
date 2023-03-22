@@ -1,12 +1,15 @@
 .home {
   font-family: verdana;
   position: relative;
+  
 
   .pollo {
+    // border: 1px solid red;    
     width: 50%;
     margin: auto;
     padding: 40px;
     background-color: #e9e9e900;
+     overflow: hidden; 
 
     .img {
       // border: 1px solid red;
@@ -139,5 +142,7 @@
   //   background-size: cover;
   //   background-position: center center;
   // }
+
+  
 
 }
