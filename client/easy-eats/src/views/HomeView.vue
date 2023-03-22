@@ -29,7 +29,9 @@
     
 
     <!-- Termina Contenido -->
+    <Footer />
   </div>
+
 </template>
 
 <script>

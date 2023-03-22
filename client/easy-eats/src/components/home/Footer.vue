@@ -1,7 +1,7 @@
 <title>footer</title>
 <template>
     <footer>
-
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, esse.</p>
         <div class="container__footer">
             <div class="box__footer">
                 <div class="logo">
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="box__footer">
-                <h2></h2>
+                <h2>Hola Mundo</h2>
             </div>
         </div>
 
