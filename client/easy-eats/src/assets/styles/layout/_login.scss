@@ -357,9 +357,19 @@
             transition: 0.2s ease-in-out;
 
             &:hover {
-                color: $color-primario;   
+                color: $color-primario;
                 text-decoration: underline;
             }
         }
+    }
+}
+
+.logo-login-signin__container {
+    display: fixed;
+    width: 100%;
+    padding: 20px 7%;
+
+    img {
+        width: 50px;
     }
 }
