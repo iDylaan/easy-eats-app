@@ -367,9 +367,20 @@
 .logo-login-signin__container {
     display: fixed;
     width: 100%;
-    padding: 20px 7%;
+    height: 50px;
+    padding: 30px 7%;
+    color: white;
+    border: 1px solid red;
+    
+    .content__contianer {
+        border: 1px solid blue;
+        display: flex;
+        align-items: center;
+        width: 100%;
 
-    img {
-        width: 50px;
+        img {
+            width: 50px;
+            float: left;
+        }
     }
 }
