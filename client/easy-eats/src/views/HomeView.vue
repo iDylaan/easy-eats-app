@@ -31,16 +31,7 @@
 
 
     <div class="container__recipes">
-    <!-- <div class="box__recipes">
-        <div class="logo">
-            <img src="../../assets/imgs/icono_fondos_pscuros.png" alt="">
-         
-        </div>
-        
-        <div class="terms">
-            <p>En nuestro sitio web, respetamos su privacidad y nos comprometemos a proteger sus datos personales. </p>
-        </div>
-    </div> -->
+  
     <div class="box__recipes">
        <div class="logo">
             <img src="../assets/imgs/receta1.jpg" alt="">
@@ -51,23 +42,38 @@
 
     <div class="box__recipes">
       <div class="logo">
-            <img src="../assets/imgs/receta2.jpg" alt="">
+            <img src="../assets/imgs/ensa_verduras.png" alt="">
         </div>
-        <h2>Sopa de calabaza</h2>
+        <h2>Ensalada de verduras</h2>
+        <a href="#">Lorem, ipsum dolor.</a>           
+    </div>
+    <div class="box__recipes">
+       <div class="logo">
+            <img src="../assets/imgs/higado.jpg" alt="">
+        </div>
+        <h2>Higado de res</h2>
+        <a href="#">Lorem, ipsum dolor.</a>
+    </div>
+
+    <div class="box__recipes">
+      <div class="logo">
+            <img src="../assets/imgs/cal_res.jpg" alt="">
+        </div>
+        <h2>Caldo de res</h2>
         <a href="#">Lorem, ipsum dolor.</a>           
     </div>
     <div class="box__recipes">
       <div class="logo">
-            <img src="../assets/imgs/receta3.jpg" alt="">
+            <img src="../assets/imgs/fresas.jpg" alt="">
         </div>
-        <h2>Chili con carne </h2>
+        <h2>Fresas con crema </h2>
         <a href="#">Lorem, ipsum dolor.</a>        
     </div>
     <div class="box__recipes">
       <div class="logo">
-            <img src="../assets/imgs/receta4.jpg" alt="">
+            <img src="../assets/imgs/frutos_rojos.jpg" alt="">
         </div>
-        <h2>Pasta con salsa de <br> tomate casera </h2>
+        <h2>Frutos rojos</h2>
         <a href="#">Lorem, ipsum dolor.</a>        
     </div>
 </div>
