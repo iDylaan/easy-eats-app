@@ -362,25 +362,31 @@
             }
         }
     }
-}
 
-.logo-login-signin__container {
-    display: fixed;
-    width: 100%;
-    height: 50px;
-    padding: 30px 7%;
-    color: white;
-    border: 1px solid red;
-    
-    .content__contianer {
-        border: 1px solid blue;
-        display: flex;
-        align-items: center;
+    .logo-login-signin__container {
+        display: fixed;
         width: 100%;
+        height: 50px;
+        padding: 30px 7%;
+        color: white;
+        // border: 1px solid red;
 
-        img {
-            width: 50px;
-            float: left;
+        .content__contianer {
+            // border: 1px solid blue;
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            .title__container {
+                margin-left: 20px;
+                font-size: 2rem;
+                font-weight: 500;
+            }
+
+            img {
+                width: 50px;
+                float: left;
+            }
         }
     }
 }
