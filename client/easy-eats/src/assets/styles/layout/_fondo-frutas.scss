@@ -1,0 +1,13 @@
+.bg-frutas {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  border: 1px solid red;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url('@/assets/imgs/BG-marcaAgua.png');
+  background-size: 50%;
+  background-repeat: repeat;
+  opacity: 0.05;
+}
