@@ -1,15 +1,16 @@
-nav {
-
-    position: fixed;
+.navbar {
+    // border: 1px solid red   ;
     top: 0;
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    background-color: lighten(#1D1C28, 17%);
+    background-color: #1d1c2800;
     transition: 0.1s ease-in-out;
     padding: 0px 0px;
     z-index: 1;
+    position: fixed;
+    align-items: center;
+    justify-content: space-evenly;
 
     a {
         padding: 0px 20px;
@@ -26,8 +27,8 @@ nav {
     }
 
     button {
-         $primary-color: #ffa500;
-         $secundary-color: #fff;
+        $primary-color: #ffa500;
+        $secundary-color: #fff;
         --hover-color: #67bc4d;
         --arrow-width: 10px;
         --arrow-stroke: 2px;
@@ -38,7 +39,7 @@ nav {
         border-radius: 20px;
         color: var($secundary-color);
         padding: .5em 1em;
-        background: var( $primary-color);
+        background: var($primary-color);
         display: flex;
         transition: 0.2s background;
         align-items: center;
@@ -65,7 +66,7 @@ nav {
             .arrow {
                 margin-top: 1px;
                 width: var(--arrow-width);
-                background: var( $primary-color);
+                background: var($primary-color);
                 height: var(--arrow-stroke);
                 position: relative;
                 transition: 0.2s;
@@ -86,6 +87,41 @@ nav {
             }
 
 
+        }
+    }
+
+    ul {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    a {
+        color: #000000;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+        margin: 0 30px;
+        padding: 7px 12px;
+        border-radius: 20px;
+        transition: 0.7s;
+        transition-property: color, background;
+    }
+
+    .logo_containes{
+        // border: 1px solid red   ;
+        // height: 50px;
+        width: 40px;
+        padding: 10px 0px;
+        img{
+            width: 100%;
         }
     }
 
