@@ -73,7 +73,7 @@
       <div class="logo">
             <img src="../assets/imgs/frutos_rojos.jpg" alt="">
         </div>
-        <h2>Frutos rojos</h2>
+        <h2>Ensalada de frutos rojos</h2>
         <a href="#">Lorem, ipsum dolor.</a>        
     </div>
 </div>

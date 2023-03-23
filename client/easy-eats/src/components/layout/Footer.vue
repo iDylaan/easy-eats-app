@@ -26,7 +26,7 @@
 
     <div class="box__footer">
         <h2>Contacto</h2>
-        <a href="#">5532514869</a>
+        <a href="#">+52 5532514869</a>
         <a href="#">WizardOfCode@gmail.com</a>            
     </div>
 </div>
