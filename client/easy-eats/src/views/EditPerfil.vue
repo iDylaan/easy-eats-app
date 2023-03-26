@@ -1,4 +1,49 @@
 <template>
+	<nav class="navbar">
+
+<div class="logo_containes">
+   
+        <img src="../../assets/imgs/icono_fondos_pscuros.png">
+    
+</div>
+<div class="options_container">
+<ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Recetas</a></li>
+    <li><a href="#">Saludable</a></li>
+    <li><a href="#">Nosotros</a></li>
+    <li><a href="#">Contacto</a></li>
+</ul>
+</div>
+
+<div class="profile-options">
+  
+
+    <button v-if="isLoged" @click="cerrarSesion">
+        Cerrar Sesión
+        <div class="arrow-wrapper">
+            <div class="arrow"></div>
+
+        </div>
+    </button>
+
+</div>
+
+<div class="nav-item dropdown">
+				<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> Romo Mañon <b class="caret"></b></a>
+				<div class="dropdown-menu">
+					<a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Editar perfil</a>
+					
+					<div class="divider dropdown-divider"></div>
+					<a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Cerrar Sesión</a>
+				</div>
+			</div>
+			
+
+<!-- <div class="btn">
+    <font-awesome-icon icon="fa-solid fa-bars" />
+</div> -->
+</nav>
     <div>
         <h1 class="legend__title">
         ¡Edita tu perfil!
@@ -70,4 +115,8 @@
     </div>
 </template>
 
-
+<script>
+export default {
+    
+}
+</script>
