@@ -1,82 +1,228 @@
 .home {
-    header {
-        position: relative;
-       
-        
-      
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: verdana;
+  font-family: verdana;
+  position: relative;
+
+
+  .pollo {
+    // border: 1px solid red;    
+    width: 50%;
+    margin: auto;
+    padding: 40px;
+    background-color: #e9e9e900;
+    overflow: hidden;
+
+    .img {
+      // border: 1px solid red;
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: auto;
+      float: left;
+    }
+
+    p {
+      // border: 1px solid red;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+    }
+
+    .receta-detalles__container {
+      // border: 1px solid red;
+      text-align: center;
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 20px;
+    }
+  }
+
+
+  header {
+    position: relative;
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: verdana;
+    }
+
+
+
+
+
+    profile-options {
+      bottom: color;
+      left: 0;
+      position: fixed;
+    }
+
+    .bg-imagen_container {
+      background-image: url('@/assets/imgs/Banner-Food4.png');
+      width: 100vw;
+      height: 100vh;
+      background-size: cover;
+      background-position: auto center;
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      place-content: center;
+    }
+
+    .card-receta__container {
+      // border: 1px solid red;
+      width: 550px;
+      background-color: #fffafa;
+      padding: 20px;
+      border-radius: 20px;
+
+      .imag-container {
+        width: 300px;
+        display: grid;
+        place-content: center;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: auto;
+
+        img {
+          width: 100%;
         }
-      
-       
-      
-       
-      
-        profile-options {
-          bottom: color;
-          left: 0;
-          position: fixed;
-          ;
+      }
+
+      .detalles__container {
+        margin-top: 40px;
+        padding: 0 20px;
+
+        .receta-descripcion__container {
+          text-align: justify;
+          margin-top: 15px;
+          overflow-y: scroll;
+          height: 100px;
+          padding: 15px;
         }
-      
-        .bg-imagen_container{
-          width: 100vw;
-          height: 20vh;
-          position: relative;
+
+        .receta-detalles__container {
+          text-align: center;
+          display: flex;
+          justify-content: space-evenly;
+          margin-top: 20px;
         }
-      
-        
-      
       }
-      
-      
-      
-      header .brand img {
-        height: 45px;
-      }
-      
-      header .brand {
-        color: #fff;
-        font-size: 30px;
-        font-weight: 700;
-        text-transform: uppercase;
-        text-decoration: none;
-        letter-spacing: 2px;
-      }
-      
-    //   header .navbar {
-    //     position: relative;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //   }
-      
-    //   header .navbar ul {
-    //     position: relative;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //   }
-      
-    //   header .navbar ul li {
-    //     list-style: none;
-    //   }
-      
-    //   header .navbar a {
-    //     color: #fff;
-    //     font-weight: 600;
-    //     text-transform: uppercase;
-    //     font-size: 16px;
-    //     font-weight: 500;
-    //     text-decoration: none;
-    //     margin: 0 30px;
-    //     padding: 7px 12px;
-    //     border-radius: 20px;
-    //     transition: 0.7s;
-    //     transition-property: color, background;
-    //   }
-      
+    }
+
+  }
+
+
+
+  .brand img {
+    height: 45px;
+  }
+
+  .brand {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+  }
+
+  // .zona1 {
+  //   position:relative;
+  //   width: 100%;
+  //   height: 100vh;
+  //   background: url(/src/assets/imgs/easyeatsbackground.png);
+  //   background-size: cover;
+  //   background-position: center center;
+  // }
+
+
+
+
+
+
+  .container__recipes {
+    border: 1px solid red;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 100px;
+  }
+
+  .box__recipes {
+    border: 1px solid rgb(17, 0, 255);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+  }
+
+  .box__recipes .logo img {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: auto;
+    float: left;
+  }
+
+  .box__recipes .terms {
+    max-width: 350px;
+    margin-top: 20px;
+    font-weight: 500;
+    color: #7a7a7a;
+    font-size: 18px;
+  }
+
+  .box__recipes h2 {
+    margin-bottom: 30px;
+    color: #000000;
+    font-weight: 700;
+    overflow: hidden;
+  }
+
+  .box__recipes a {
+    margin-top: 10px;
+    color: #222222;
+    font-weight: 600;
+    overflow: hidden;
+  }
+
+  .box__recipes a:hover {
+    opacity: 0.8;
+  }
+
+  .box__recipes a .fab {
+    font-size: 20px;
+  }
+
+  .box__copyright {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding: 0px 40px;
+  }
+
+  .box__copyright p {
+    margin-top: 20px;
+    color: #7a7a7a;
+  }
+
+  .box__copyright hr {
+    border: none;
+    height: 1px;
+    background-color: #7a7a7a;
+  }
 }
