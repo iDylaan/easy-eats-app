@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="legend__title">
-        ¡Ediat tu perfil!
+        ¡Edita tu perfil!
         </h1>
 
         <div class="container">
