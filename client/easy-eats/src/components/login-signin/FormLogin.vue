@@ -45,7 +45,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 export default {
     setup() {
         const URL = 'https://easy-eats-back.fly.dev';
-        const router = useRouter();
+        const router = useRouter(); 
         let showSinginResponsive = ref(false);
         let emailCnt = 0;
         let passwordCnt = 0;
