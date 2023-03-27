@@ -5,6 +5,7 @@ import Signin from '../views/SigninView.vue'
 import Loged from '../views/LogedView.vue'
 import Preferencias from '../views/PreferenciasView.vue'
 import SubirRecetas from '../views/SubirRecetaView.vue' 
+import RecetasCategoria from '../views/RecetasCatView.vue'
 
 const routes = [
   {
@@ -36,7 +37,12 @@ const routes = [
     path: '/subirReceta',
     name: 'subirReceta',
     component: SubirRecetas
-  }
+  },
+  {
+    path: '/recetasCategoria',
+    name: 'recetasCategoria',
+    component: RecetasCategoria
+  } 
 ]
 
 const router = createRouter({

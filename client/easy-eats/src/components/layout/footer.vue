@@ -1,4 +1,3 @@
-<title>footer</title>
 <template>
     <footer>
 
