@@ -40,19 +40,21 @@
 				</div>
 			</div>
 		</div>
+		<Footer/>
 	</div>
 </template>
 <script>
 import FondoFrutas from '../components/layout/FondoFrutas';
 import Navbar from '../components/layout/Navbar';
-
+import Footer from '../components/layout/Footer.vue'; 
 
 export default {
   name: "prefe",
   
   components: {
     Navbar,
-    FondoFrutas
+    FondoFrutas,
+	Footer
   }
 }
 </script>

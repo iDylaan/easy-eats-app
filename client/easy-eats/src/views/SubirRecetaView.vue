@@ -118,7 +118,6 @@
 import FondoFrutas from '../components/layout/FondoFrutas';
 import Navbar from '../components/layout/Navbar';
 
-
 export default {
 	name: "subirReceta",
 
