@@ -1,4 +1,6 @@
 <template>
+    <FondoFrutas />
+        <Navbar/>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -182,7 +184,25 @@
             </div>
         </div>
     </div>
-</body></template>
+</body>
+<Footer/>
+</template>
+
+<script>
+import FondoFrutas from '../components/layout/FondoFrutas';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer.vue'; 
+
+export default {
+  name: "prefe",
+  
+  components: {
+    Navbar,
+    FondoFrutas,
+	Footer
+  }
+}
+</script>
     
     
     

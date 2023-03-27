@@ -1,5 +1,7 @@
 <template>
     <html lang="es">
+      <FondoFrutas />
+        <Navbar/>
 <head>
  <meta charset="UTF-8">
 <title>Mis recetas favoritas</title>
@@ -83,5 +85,22 @@ width=200>
       </ol>
       </article>
     </body>
+    <Footer/>
 </html>
+
 </template>
+<script>
+import FondoFrutas from '../components/layout/FondoFrutas';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer.vue'; 
+
+export default {
+  name: "prefe",
+  
+  components: {
+    Navbar,
+    FondoFrutas,
+	Footer
+  }
+}
+</script>

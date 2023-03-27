@@ -2,6 +2,8 @@
 <center>
     <div>
         <h1 class="legend__title">
+		<FondoFrutas />
+        <Navbar/>
         ¡Edita tu perfil!
         </h1>
 
@@ -68,11 +70,22 @@
 			</form>
 		</div>
     </div>
+	<Footer/>
 </center>
 </template>
 
 <script>
+import FondoFrutas from '../components/layout/FondoFrutas';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer.vue'; 
+
 export default {
-    
+  name: "prefe",
+  
+  components: {
+    Navbar,
+    FondoFrutas,
+	Footer
+  }
 }
 </script>
