@@ -3,26 +3,22 @@
  <nav class="navbar">
 
 <div class="logo_containes">
-    <a href="#" class="brand">
-        <img src="../../assets/imgs/icono_fondos_pscuros.png">
-    </a>
+   
+        <img src="../../assets/imgs/icono_pfondos_claros.png">
+    
 </div>
-
-<div class="btn">
-    <i class="fas fa-times close-btn"></i>
-</div>
-
+<div class="options_container">
 <ul>
-    <li><a href="#">Home</a></li>
+    <li><a href="#">Inicio</a></li>
     <li><a href="#">Recetas</a></li>
-    <li><a href="#">Saludable</a></li>
+    <li><a href="#">Nutrición</a></li>
     <li><a href="#">Nosotros</a></li>
-    <li><a href="#">Contacto</a></li>
 </ul>
+</div>
 
 <div class="profile-options">
     <button v-if="!isLoged" @click="iniciarSesion">
-        Iniciar Sesion
+        Iniciar Sesion 
         <div class="arrow-wrapper">
             <div class="arrow"></div>
 
@@ -39,9 +35,10 @@
 
 </div>
 
-<div class="btn">
+<!-- menu de hamburguesa -->
+<!-- <div class="btn">
     <font-awesome-icon icon="fa-solid fa-bars" />
-</div>
+</div> -->
 </nav>
 
 </template>
