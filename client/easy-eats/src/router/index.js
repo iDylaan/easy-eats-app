@@ -30,6 +30,16 @@ const routes = [
     path: '/nosotros',
     name: 'nosotros',
     component: Nosotros
+  },
+  {
+    path: '/preferencias',
+    name: 'preferencias',
+    component: () => import('../views/PreferenciasView.vue')
+  },
+  {
+    path: '/subir-receta',
+    name: 'subir-receta',
+    component: () => import('../views/SubirRecetaView.vue')
   }
 ]
 
