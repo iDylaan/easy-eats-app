@@ -50,6 +50,11 @@ const routes = [
         name: 'ingredients',
         component: () => import('../views/IngredientsCrud.vue')
         },
+        {
+          path:'/editusers',
+          name: 'editusers',
+          component: () => import('../views/EditUsers.vue')
+          }
 ]
 
 const router = createRouter({
