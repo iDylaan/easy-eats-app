@@ -1,13 +1,12 @@
 <template>
+<center>
     <div>
         <h1 class="legend__title">
-        ¡Ediat tu perfil!
+        ¡Edita tu perfil!
         </h1>
 
         <div class="container">
-			<div class="row">
-				<h3 style="text-align:center">Editar perfil</h3>
-			</div>
+			
 			
 			<form class="form-horizontal" method="POST" action="#" autocomplete="off">
 				<div class="form-group">
@@ -69,6 +68,11 @@
 			</form>
 		</div>
     </div>
+</center>
 </template>
 
-
+<script>
+export default {
+    
+}
+</script>

@@ -2,6 +2,7 @@ FROM python:latest
 
 RUN apt-get update
 RUN apt-get -y upgrade
+RUN apt-get install -y default-mysql-client
 RUN pip install --upgrade pip
 WORKDIR /app
 COPY . /app
