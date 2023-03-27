@@ -3,9 +3,7 @@ import Home from '../views/HomeView.vue'
 import Login from '../views/LoginView.vue'
 import Signin from '../views/SigninView.vue'
 import Loged from '../views/LogedView.vue'
-import Preferencias from '../views/PreferenciasView.vue'
-import SubirRecetas from '../views/SubirRecetaView.vue' 
-import RecetasCategoria from '../views/RecetasCatView.vue'
+import Nosotros from '../views/Nosotros.vue'
 
 const routes = [
   {
@@ -29,20 +27,10 @@ const routes = [
     component: Loged
   },
   {
-    path: '/preferencias',
-    name: 'preferencias',
-    component: Preferencias
-  },
-  {
-    path: '/subirReceta',
-    name: 'subirReceta',
-    component: SubirRecetas
-  },
-  {
-    path: '/recetasCategoria',
-    name: 'recetasCategoria',
-    component: RecetasCategoria
-  } 
+    path: '/nosotros',
+    name: 'nosotros',
+    component: Nosotros
+  }
 ]
 
 const router = createRouter({
