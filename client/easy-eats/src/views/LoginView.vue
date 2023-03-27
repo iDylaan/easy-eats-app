@@ -2,6 +2,8 @@
   <div class="login">
     <span class="bg-darken"></span>
 
+    <Logo />
+
     <div class="legend__container">
       <LegendLogin />
     </div>
@@ -18,12 +20,14 @@
 <script>
 import FormLogin from '../components/login-signin/FormLogin';
 import LegendLogin from '../components/login-signin/LegendLogin';
+import Logo from '../components/login-signin/LogoFixed';
 
 export default {
   name: "Login",
   components: {
     FormLogin,
     LegendLogin,
+    Logo
   },
 }
 </script>

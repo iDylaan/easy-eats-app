@@ -1,9 +1,10 @@
 .signin {
     // centrar formulario
-    display: grid;
-    place-content: center;
     width: 100vw;
     height: 100vh;
+    display: grid;
+    place-content: center;
+    position: relative;
     // Imagen Fondo
     background-image: url('@/assets/imgs/BG-Signin.png');
     background-size: cover;
@@ -39,7 +40,6 @@
     }
 
     .singin-form {
-        border-radius: 20px;
         // Para fondo de cristal
         -webkit-box-shadow:
             0px 0.9px 1.1px rgba(0, 0, 0, 0.036),
@@ -74,6 +74,7 @@
             0px 21.5px 24.8px rgba(0, 0, 0, 0.117),
             0px 33.2px 38.3px rgba(0, 0, 0, 0.134),
             0px 59px 68px rgba(0, 0, 0, 0.17);
+        border-radius: 20px;
         background-color: hsla(0, 0%, 86%, 0.204);
         backdrop-filter: blur(15px);
         border: 1px solid rgb(80, 80, 80);
@@ -81,6 +82,10 @@
         color: black;
         font-weight: 600;
         min-width: 360px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
 
         input::-webkit-input-placeholder {
             color: darken(grey, 22%);
@@ -331,6 +336,32 @@
                     top: -30px;
                     left: -30px;
                 }
+            }
+        }
+    }
+
+    .logo-login-signin__container {
+        display: fixed;
+        width: 100vw;
+        height: 50px;
+        padding: 30px 7%;
+        color: white;
+        position: absolute;
+
+        .content__contianer {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            .title__container {
+                margin-left: 20px;
+                font-size: 2rem;
+                font-weight: 500;
+            }
+
+            img {
+                width: 50px;
+                float: left;
             }
         }
     }
