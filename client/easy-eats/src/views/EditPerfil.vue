@@ -3,7 +3,7 @@
 
 <div class="logo_containes">
    
-        <img src="../../assets/imgs/icono_fondos_pscuros.png">
+        <!-- <img src="../../assets/imgs/icono_fondos_pscuros.png"> -->
     
 </div>
 <div class="options_container">
