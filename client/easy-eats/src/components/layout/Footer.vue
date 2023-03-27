@@ -7,35 +7,28 @@
     <div class="box__footer">
         <div class="logo">
             <img src="../../assets/imgs/icono_fondos_pscuros.png" alt="">
+            <!-- <div class="nombre_logo">
+                 <h2>EasyEats</h2>
+            </div> -->
         </div>
+        
         <div class="terms">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas impedit cum cumque velit libero officiis quam doloremque reprehenderit quae corporis! Delectus architecto officia praesentium atque laudantium, nam deleniti sapiente deserunt.</p>
+            <p>En nuestro sitio web, respetamos su privacidad y nos comprometemos a proteger sus datos personales. </p>
         </div>
     </div>
     <div class="box__footer">
         <h2>Soluciones</h2>
-        <a href="">Lorem ipsum dolor sit amet.</a>
-        <a href="#">Lorem ipsum dolor sit amet.</a>
-        <a href="#">Lorem ipsum dolor sit amet.</a>
-        <a href="#">Lorem ipsum dolor sit amet.</a>
+        <a href="#">Inicio</a>
+        <a href="#">Recetas</a>
+        <a href="#">Nutricion</a>
+        <a href="#"></a>
     </div>
 
     <div class="box__footer">
-        <h2>Compañia</h2>
-        <a href="#">Lorem, ipsum.</a>
-        <a href="#">Lorem, ipsum.</a>
-        <a href="#">Lorem, ipsum.</a>
-        <a href="#">Lorem, ipsum.</a>              
+        <h2>Contacto</h2>
+        <a href="#">+52 5532514869</a>
+        <a href="#">WizardOfCode@gmail.com</a>            
     </div>
-
-    <!-- <div class="box__footer">
-        <h2>Redes Sociales</h2>
-        <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
-        <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
-        <a href="#"><i class="fab fa-linkedin"></i> Linkedin</a>
-        <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
-    </div> -->
-
 </div>
 
 <div class="box__copyright">

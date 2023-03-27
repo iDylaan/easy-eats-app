@@ -26,6 +26,58 @@
       </div>
 
     </div>
+
+
+
+
+    <div class="container__recipes">
+  
+    <div class="box__recipes">
+       <div class="logo">
+            <img src="../assets/imgs/receta1.jpg" alt="">
+        </div>
+        <h2>Ensalada de quinoa <br> y verduras</h2>
+        <a href="#">Lorem, ipsum dolor.</a>
+    </div>
+
+    <div class="box__recipes">
+      <div class="logo">
+            <img src="../assets/imgs/ensa_verduras.png" alt="">
+        </div>
+        <h2>Ensalada de verduras</h2>
+        <a href="#">Lorem, ipsum dolor.</a>           
+    </div>
+    <div class="box__recipes">
+       <div class="logo">
+            <img src="../assets/imgs/higado.jpg" alt="">
+        </div>
+        <h2>Higado de res</h2>
+        <a href="#">Lorem, ipsum dolor.</a>
+    </div>
+
+    <div class="box__recipes">
+      <div class="logo">
+            <img src="../assets/imgs/cal_res.jpg" alt="">
+        </div>
+        <h2>Caldo de res</h2>
+        <a href="#">Lorem, ipsum dolor.</a>           
+    </div>
+    <div class="box__recipes">
+      <div class="logo">
+            <img src="../assets/imgs/fresas.jpg" alt="">
+        </div>
+        <h2>Fresas con crema </h2>
+        <a href="#">Lorem, ipsum dolor.</a>        
+    </div>
+    <div class="box__recipes">
+      <div class="logo">
+            <img src="../assets/imgs/frutos_rojos.jpg" alt="">
+        </div>
+        <h2>Ensalada de frutos rojos</h2>
+        <a href="#">Lorem, ipsum dolor.</a>        
+    </div>
+</div>
+
     
 
     <!-- Termina Contenido -->
