@@ -2,7 +2,7 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Ingredientes</title>
+    <title>Usuarios</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -36,7 +36,8 @@
                             <th>id</th>
                             <th>username</th>
                             <th>tagline</th>
-                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
                             <th>Operaciones</th>
                         </tr>
                     </thead>
@@ -48,11 +49,11 @@
                                     <label for="checkbox1"></label>
                                 </span>
                             </td>
-                            <td>Jitomate</td>
-                            <td>Tiene hojas fuertemente aromáticas con bordes dentados. Florece con abundancia y sus flores pequeñas y amarillas producen frutos muy coloreados —de tonos que van del amarillento al rojo—, 
-                  debido a la presencia de pigmentos como el licopeno y los carotenos.</td>
-                            <td>$13</td>
-                            <td>#</td>
+                            <td>1</td>
+                            <td>Yesos</td>
+                            <td>Yisus</td>
+                            <td>Rodrigo de Jesus</td>
+                            <td>jesusmanon00@gmail.com</td>
                             <td>
                                 <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -65,11 +66,11 @@
                                     <label for="checkbox2"></label>
                                 </span>
                             </td>
-                            <td>Sal</td>
-                            <td>Sustancia consistente en cloruro de sodio, ordinariamente blanca, cristalina, de sabor propio y muy soluble en agua, que se emplea para sazonar y conservar alimentos, 
-                  es muy abundante en las aguas del mar y también se encuentra en la corteza terrestre.</td>
-                            <td>$17</td>
-                            <td>#</td>
+                            <td>2</td>
+                            <td>Brandon</td>
+                            <td>Lic</td>
+                            <td>Brandon Figueroa</td>
+                            <td>brandon00@gmail.com</td>
                             <td>
                                 <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -82,11 +83,11 @@
                                     <label for="checkbox3"></label>
                                 </span>
                             </td>
-                            <td>Cebolla</td>
-                            <td>Forma parte de la familia de las liliáceas, a la que pertenece también el ajo y el puerro. Es una planta bienal de tallo subterráneo y reducido. El bulbo no es una raíz, sino un engrosamiento subterráneo del tallo de la planta. 
-                  La verdadera raíz está formada por los filamentos que nacen en la parte inferior del bulbo.</td>
-                            <td>$27</td>
-                            <td>#</td>
+                            <td>3</td>
+                            <td>Dany</td>
+                            <td>Danyyy</td>
+                            <td>Chaparro Marín</td>
+                            <td>chaparro00@gmail.com</td>
                             <td>
                                 <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -115,26 +116,32 @@
             <div class="modal-content">
                 <form>
                     <div class="modal-header">						
-                        <h4 class="modal-title">Agregar Ingrediente</h4>
+                        <h4 class="modal-title">Agregar Usuario</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>username</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>tagline</label>
+                            <textarea class="form-control" required></textarea>
+                        </div>
                         <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Descripcion</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Precio</label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Imagen</label>
+                            <label>Correo</label>
                             <input type="text" class="form-control" required>
-                        </div>					
+                        </div>
+                        
+                        					
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -150,26 +157,30 @@
             <div class="modal-content">
                 <form>
                     <div class="modal-header">						
-                        <h4 class="modal-title">Editar Receta</h4>
+                        <h4 class="modal-title">Editar Usuario</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>username</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>tagline</label>
+                            <textarea class="form-control" required></textarea>
+                        </div>
                         <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Precio</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Descripción</label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Imagen</label>
+                            <label>Correo</label>
                             <input type="text" class="form-control" required>
-                        </div>					
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -185,7 +196,7 @@
             <div class="modal-content">
                 <form>
                     <div class="modal-header">						
-                        <h4 class="modal-title">Eliminar Receta</h4>
+                        <h4 class="modal-title">Eliminar Usuario</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
