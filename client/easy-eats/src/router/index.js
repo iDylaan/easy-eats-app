@@ -4,6 +4,8 @@ import Login from '../views/LoginView.vue'
 import Signin from '../views/SigninView.vue'
 import Loged from '../views/LogedView.vue'
 import Nosotros from '../views/Nosotros.vue'
+import recetasCategoria from '../views/RecetasCatView.vue' 
+
 
 const routes = [
   {
@@ -40,6 +42,21 @@ const routes = [
     path: '/subir-receta',
     name: 'subir-receta',
     component: () => import('../views/SubirRecetaView.vue')
+  },
+  {
+    path: '/recetasCategoria',
+    name: 'recetasCategoria',
+    component: () => import('../views/RecetasCatView.vue')
+  },
+  {
+    path: '/detallesPasos',
+    name: 'detallesPasos',
+    component: () => import('../views/DetallesPasosView.vue')
+  },
+  {
+    path: '/reviewComments',
+    name: 'reviewComments',
+    component: () => import('../views/ReviewCommentsView.vue')
   }
 ]
 
