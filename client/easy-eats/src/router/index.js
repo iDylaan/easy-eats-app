@@ -61,11 +61,7 @@ const routes = [
     name: 'coments',
     component: () => import('../views/ComentsView.vue')
   },
-  {
-    path: '/favorites',
-    name: 'favorites',
-    component: () => import('../views/FavoritesRecepitesView.vue')
-  },
+ 
   {
     path: '/ingredients',
     name: 'ingredients',
@@ -75,7 +71,22 @@ const routes = [
     path: '/editusers',
     name: 'editusers',
     component: () => import('../views/EditUsers.vue')
-  }
+  },
+  {
+    path: '/agreingre',
+    name: 'agregar-ingredientes',
+    component: () => import('../views/AgregarIngrediente.vue')
+  },
+  {
+    path: '/editingre',
+    name: 'editar-ingredientes',
+    component: () => import('../views/EditarIngrediente.vue')
+  },
+  {
+    path: '/deleteingre',
+    name: 'eliminar-ingredientes',
+    component: () => import('../views/BorrarIngrediente.vue')
+  },
 ]
 
 const router = createRouter({
