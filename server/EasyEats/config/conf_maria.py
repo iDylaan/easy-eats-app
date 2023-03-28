@@ -61,7 +61,7 @@ def conn_maria():
     #     'password': 'admin',
     #     'database': app.config['MARIA_DB'],
     #     'charset': app.config['MARIA_CHARSET'],
-    #     'cursorclass': pymysql.cursors.DictCursor
+    #     # 'cursorclass': pymysql.cursors.DictCursor
     # }
     try: 
         conn = pymysql.connect(**config)

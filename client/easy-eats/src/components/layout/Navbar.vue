@@ -2,7 +2,7 @@
  
  <nav class="navbar">
 
-<div class="logo_containes">
+<div class="logo_containes" @click="goHome">
    
         <img src="../../assets/imgs//icono_fondos_pscuros.png">
     
