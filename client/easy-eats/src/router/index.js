@@ -4,8 +4,6 @@ import Login from '../views/LoginView.vue'
 import Signin from '../views/SigninView.vue'
 import Loged from '../views/LogedView.vue'
 import Nosotros from '../views/Nosotros.vue'
-import recetasCategoria from '../views/RecetasCatView.vue' 
-
 
 const routes = [
   {
@@ -44,19 +42,39 @@ const routes = [
     component: () => import('../views/SubirRecetaView.vue')
   },
   {
-    path: '/recetasCategoria',
-    name: 'recetasCategoria',
-    component: () => import('../views/RecetasCatView.vue')
+    path: '/subir-receta',
+    name: 'subir-receta',
+    component: () => import('../views/SubirRecetaView.vue')
   },
   {
-    path: '/detallesPasos',
-    name: 'detallesPasos',
-    component: () => import('../views/DetallesPasosView.vue')
+    path: '/editar-perfil',
+    name: 'editar-perfil',
+    component: () => import('../views/EditPerfil.vue')
   },
   {
-    path: '/reviewComments',
-    name: 'reviewComments',
-    component: () => import('../views/ReviewCommentsView.vue')
+    path: '/users',
+    name: 'crudusers',
+    component: () => import('../views/CrudUsersView.vue')
+  },
+  {
+    path: '/coments',
+    name: 'coments',
+    component: () => import('../views/ComentsView.vue')
+  },
+  {
+    path: '/favorites',
+    name: 'favorites',
+    component: () => import('../views/FavoritesRecepitesView.vue')
+  },
+  {
+    path: '/ingredients',
+    name: 'ingredients',
+    component: () => import('../views/IngredientsCrud.vue')
+  },
+  {
+    path: '/editusers',
+    name: 'editusers',
+    component: () => import('../views/EditUsers.vue')
   }
 ]
 
