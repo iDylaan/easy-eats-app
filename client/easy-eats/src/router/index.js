@@ -67,11 +67,7 @@ const routes = [
     name: 'ingredients',
     component: () => import('../views/IngredientsCrud.vue')
   },
-  {
-    path: '/editusers',
-    name: 'editusers',
-    component: () => import('../views/EditUsers.vue')
-  },
+ 
   {
     path: '/agreingre',
     name: 'agregar-ingredientes',
@@ -91,7 +87,17 @@ const routes = [
     path: '/editusers',
     name: 'editar-usuario',
     component: () => import('../views/EditUsers.vue')
-  }
+  },
+  {
+    path: '/agregaringre',
+    name: 'agregar-ingrediente',
+    component: () => import('../views/AgregarIngrediente.vue')
+  },
+  {
+    path: '/deleteuser',
+    name: 'eliminar-usuario',
+    component: () => import('../views/EliminarUsuario.vue')
+  },
 ]
 
 const router = createRouter({
