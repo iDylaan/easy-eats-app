@@ -87,6 +87,11 @@ const routes = [
     name: 'eliminar-ingredientes',
     component: () => import('../views/BorrarIngrediente.vue')
   },
+  {
+    path: '/editusers',
+    name: 'editar-usuario',
+    component: () => import('../views/EditUsers.vue')
+  }
 ]
 
 const router = createRouter({
