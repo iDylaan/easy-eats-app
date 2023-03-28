@@ -36,8 +36,10 @@
        <div class="logo">
             <img src="../assets/imgs/receta1.jpg" alt="">
         </div>
-        <h2>Ensalada de quinoa <br> y verduras</h2>
-        <a href="#">Lorem, ipsum dolor.</a>
+        <h2>Ensalada de quinoa  y verduras</h2>
+        <div class="parrafo">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat assumenda quis aperiam iusto minima optio exercitationem, voluptas eaque perferendis laudantium eos eius enim voluptatem repellendus magni sapiente quas, fugiat possimus. Deserunt alias facilis debitis ut sequi ea natus nobis ipsa officia, suscipit quisquam et est veniam quaerat in ipsum impedit?</p>
+        </div>
     </div>
 
     <div class="box__recipes">
