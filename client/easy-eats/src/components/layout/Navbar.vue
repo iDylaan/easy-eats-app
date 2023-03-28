@@ -4,7 +4,7 @@
 
 <div class="logo_containes">
    
-        <img src="../../assets/imgs/icono_pfondos_claros.png">
+        <img src="../../assets/imgs//icono_fondos_pscuros.png">
     
 </div>
 <div class="options_container">
