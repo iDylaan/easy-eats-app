@@ -25,7 +25,7 @@
 							
 						</div>
 						<div class="modal-footer">
-							<input type="button" class="btn btn-default" data-dismiss="modal" value="Regresar">
+							<input type="button"   class="btn btn-default" data-dismiss="modal" value="Regresar">
 							<input type="submit" class="btn btn-success" value="Agregar">
 						</div>
 					</form>

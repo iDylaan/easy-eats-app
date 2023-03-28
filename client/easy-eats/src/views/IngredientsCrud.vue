@@ -22,7 +22,7 @@
 								<h2>Tabla <b>Ingredientes</b></h2>
 							</div>
 							<div class="col-sm-6">
-								<a href="#" class="btn btn-success" data-toggle="modal"><i
+								<a href="agreingre" class="btn btn-success" data-toggle="modal"><i
 										class="material-icons">&#xE147;</i> <span>Agregar</span></a>
 								
 							</div>
@@ -54,9 +54,9 @@
 								<td>$13</td>
 								
 								<td>
-									<a href="#" class="edit" data-toggle="modal"><i class="material-icons"
+									<a href="editingre" class="edit" data-toggle="modal"><i class="material-icons"
 											data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-									<a href="#" class="delete" data-toggle="modal"><i class="material-icons"
+									<a href="deleteingre" class="delete" data-toggle="modal"><i class="material-icons"
 											data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 								</td>
 							</tr>
@@ -72,9 +72,9 @@
 								<td>$17</td>
 								
 								<td>
-									<a href="#" class="edit" data-toggle="modal"><i class="material-icons"
+									<a href="editingre" class="edit" data-toggle="modal"><i class="material-icons"
 											data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-									<a href="#" class="delete" data-toggle="modal"><i class="material-icons"
+									<a href="deleteingre" class="delete" data-toggle="modal"><i class="material-icons"
 											data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 								</td>
 							</tr>
@@ -91,9 +91,9 @@
 								<td>$27</td>
 							
 								<td>
-									<a href="#" class="edit" data-toggle="modal"><i class="material-icons"
+									<a href="editingre" class="edit" data-toggle="modal"><i class="material-icons"
 											data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-									<a href="#" class="delete" data-toggle="modal"><i class="material-icons"
+									<a href="deleteingre" class="delete" data-toggle="modal"><i class="material-icons"
 											data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 								</td>
 							</tr>

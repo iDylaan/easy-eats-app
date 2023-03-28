@@ -42,9 +42,9 @@ const routes = [
     component: () => import('../views/SubirRecetaView.vue')
   },
   {
-    path: '/subir-receta',
-    name: 'subir-receta',
-    component: () => import('../views/SubirRecetaView.vue')
+    path: '/crudingredients',
+    name: 'crud-ingredientes',
+    component: () => import('../views/IngredientsCrud.vue')
   },
   {
     path: '/editar-perfil',
