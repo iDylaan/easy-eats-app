@@ -1,39 +1,52 @@
 <template>
-    <FondoFrutas />
-        <Navbar/>
-        <div id="addEmployeeModal" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<form>
-						<div class="modal-header">
-							<h4 class="modal-title">Agregar Ingrediente</h4>
-							
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label>Nombre</label>
-								<input type="nombre" class="form-control" required>
-							</div>
-							<div class="form-group">
-								<label>Descripcion</label>
-								<input type="descripcion" class="form-control" required>
-							</div>
-							<div class="form-group">
-								<label>Precio</label>
-								<input type="precio" class="form-control" required>
-							</div>
-							
-						</div>
-						<div class="modal-footer">
-							<input type="button"   class="btn btn-default" data-dismiss="modal" value="Regresar">
-							<input type="submit" class="btn btn-success" value="Agregar">
-						</div>
-					</form>
+   <div class="subirReceta">
+		<FondoFrutas />
+		<Navbar />
+		<div class="title">
+			<h1 style="text-align:center">Nueva Ingrediente</h1>
+		</div>
+
+		<div class="form-recet">
+			<div class="form-group">
+				<label for="nomReceta" class="form-label">Nombre:</label>
+				<div class="form-input">
+					<input type="tagline" class="form-control" id="tagline" name="nomReceta" 
+						required>
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="nomReceta" class="form-label">Descripción:</label>
+				<div class="form-input">
+					<input type="tagline" class="form-control" id="tagline" name="nomReceta" 
+						required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="nomReceta" class="form-label">Precio:</label>
+				<div class="form-input">
+					<input type="tagline" class="form-control" id="tagline" name="nomReceta" 
+						required>
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="imagen" class="form-label">Imagen:</label>
+				<div class="form-input">
+					<input type="file" class="form-control" id="tagline" name="imagen"  required>
+				</div>
+			</div>
+
+			<div class="options-group">
+				<div class="opciones">
+					<a href="#" class="btn btn-default">Regresar</a>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</div>
+			</div>
+
 		</div>
-  
-        <Footer/>
+	</div>
+	<Footer/>
 </template>
 <script>
 import FondoFrutas from '../components/layout/FondoFrutas';

@@ -113,6 +113,7 @@
 			</div>
 		</div>
 	</div>
+	
 </template>
 <script>
 import FondoFrutas from '../components/layout/FondoFrutas';

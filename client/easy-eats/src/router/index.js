@@ -98,6 +98,11 @@ const routes = [
     name: 'eliminar-usuario',
     component: () => import('../views/EliminarUsuario.vue')
   },
+  {
+    path: '/agregarusers',
+    name: 'agregar-usuario',
+    component: () => import('../views/AgregarUsuario.vue')
+  }
 ]
 
 const router = createRouter({
