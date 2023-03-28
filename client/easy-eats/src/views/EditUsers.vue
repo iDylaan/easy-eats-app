@@ -1,56 +1,77 @@
 <template>
-    <FondoFrutas />
-        <Navbar/>
-<!-- Edit Modal HTML -->
-<div id="#" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">						
-                    <h4 class="modal-title">Editar Usuario</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">					
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="Userame" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>tagline</label>
-                        <input type="tagline" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="nombre" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Correo</label>
-                        <input type="correo" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Regresar">
-                    <input type="submit" class="btn btn-info" value="Guardar">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<Footer/>
-</template>
-<script>
-import FondoFrutas from '../components/layout/FondoFrutas';
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer.vue'; 
+    <div class="subirReceta">
+         <FondoFrutas />
+         <Navbar />
+         <div class="title">
+             <h1 style="text-align:center">Editar Usuario</h1>
+         </div>
+ 
+         <div class="form-recet">
+             <div class="form-group">
+                 <label for="nomReceta" class="form-label">Username:</label>
+                 <div class="form-input">
+                     <input type="tagline" class="form-control" id="tagline" name="nomReceta" 
+                         required>
+                 </div>
+             </div>
+             
+             
+             <div class="form-group">
+                 <label for="imagen" class="form-label">Imagen:</label>
+                 <div class="form-input">
+                     <input type="file" class="form-control" id="tagline" name="imagen"  required>
+                 </div>
+             </div>
 
-export default {
-  name: "prefe",
-  
-  components: {
-    Navbar,
-    FondoFrutas,
-    Footer
-  }
-}
-</script>
+             <div class="form-group">
+                 <label for="nomReceta" class="form-label">Nombre:</label>
+                 <div class="form-input">
+                     <input type="tagline" class="form-control" id="tagline" name="nomReceta" 
+                         required>
+                 </div>
+             </div>
+
+             <div class="form-group">
+                 <label for="nomReceta" class="form-label">Correo:</label>
+                 <div class="form-input">
+                     <input type="tagline" class="form-control" id="tagline" name="nomReceta" 
+                         required>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label for="nomReceta" class="form-label">Username:</label>
+                 <div class="form-input">
+                     <input type="date" class="form-control" id="tagline" name="nomReceta" 
+                         required>
+                 </div>
+             </div>
+
+             
+ 
+             <div class="options-group">
+                 <div class="opciones">
+                     <a href="#" class="btn btn-default">Regresar</a>
+                     <button type="submit" class="btn btn-primary">Guardar</button>
+                 </div>
+             </div>
+ 
+         </div>
+     </div>
+     <Footer/>
+ </template>
+ <script>
+ import FondoFrutas from '../components/layout/FondoFrutas';
+ import Navbar from '../components/layout/Navbar';
+ import Footer from '../components/layout/Footer.vue'; 
+ 
+ export default {
+   name: "prefe",
+   
+   components: {
+     Navbar,
+     FondoFrutas,
+     Footer
+   }
+ }
+ </script>
+ 

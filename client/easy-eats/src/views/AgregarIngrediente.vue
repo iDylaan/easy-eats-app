@@ -24,7 +24,7 @@
 			<div class="form-group">
 				<label for="nomReceta" class="form-label">Precio:</label>
 				<div class="form-input">
-					<input type="tagline" class="form-control" id="tagline" name="nomReceta" 
+					<input type="number" class="form-control" id="tagline" name="nomReceta" 
 						required>
 				</div>
 			</div>
