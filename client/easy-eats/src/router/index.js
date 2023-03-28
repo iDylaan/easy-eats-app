@@ -42,9 +42,9 @@ const routes = [
     component: () => import('../views/SubirRecetaView.vue')
   },
   {
-    path: '/subir-receta',
-    name: 'subir-receta',
-    component: () => import('../views/SubirRecetaView.vue')
+    path: '/crudingredients',
+    name: 'crud-ingredientes',
+    component: () => import('../views/IngredientsCrud.vue')
   },
   {
     path: '/editar-perfil',
@@ -61,20 +61,47 @@ const routes = [
     name: 'coments',
     component: () => import('../views/ComentsView.vue')
   },
-  {
-    path: '/favorites',
-    name: 'favorites',
-    component: () => import('../views/FavoritesRecepitesView.vue')
-  },
+ 
   {
     path: '/ingredients',
     name: 'ingredients',
     component: () => import('../views/IngredientsCrud.vue')
   },
+ 
+  {
+    path: '/agreingre',
+    name: 'agregar-ingredientes',
+    component: () => import('../views/AgregarIngrediente.vue')
+  },
+  {
+    path: '/editingre',
+    name: 'editar-ingredientes',
+    component: () => import('../views/EditarIngrediente.vue')
+  },
+  {
+    path: '/deleteingre',
+    name: 'eliminar-ingredientes',
+    component: () => import('../views/BorrarIngrediente.vue')
+  },
   {
     path: '/editusers',
-    name: 'editusers',
+    name: 'editar-usuario',
     component: () => import('../views/EditUsers.vue')
+  },
+  {
+    path: '/agregaringre',
+    name: 'agregar-ingrediente',
+    component: () => import('../views/AgregarIngrediente.vue')
+  },
+  {
+    path: '/deleteuser',
+    name: 'eliminar-usuario',
+    component: () => import('../views/EliminarUsuario.vue')
+  },
+  {
+    path: '/agregarusers',
+    name: 'agregar-usuario',
+    component: () => import('../views/AgregarUsuario.vue')
   }
 ]
 

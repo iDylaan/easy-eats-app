@@ -1,4 +1,6 @@
 <template>
+    <FondoFrutas />
+        <Navbar/>
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,9 +20,7 @@
                         <div class="col-sm-6">
                             <h2>Tabla <b>Comentarios</b></h2>
                         </div>
-                        <div class="col-sm-6">
-                            <a href="#" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Borrar</span></a>						
-                        </div>
+                       
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
@@ -29,7 +29,7 @@
                             <th>
                                 <span class="custom-checkbox">
                                     <input type="checkbox" id="selectAll">
-                                    <label for="selectAll"></label>
+                                    
                                 </span>
                             </th>
                             <th>Comentarios</th>
@@ -47,7 +47,7 @@
                             <td>lsbe</td>
 
                             <td>
-                                <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                               
                                 <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>
@@ -60,7 +60,7 @@
                             </td>
                             <td>Sal</td>
                             <td>
-                                <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+
                                 <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>
@@ -73,51 +73,36 @@
                             </td>
                             <td>Cebolla</td>
                             <td>
-                                <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                
                                 <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>				
                     </tbody>
                 </table>
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Antes</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
-                    </ul>
-                </div>
+                
             </div>
         </div>        
     </div>
    
-    <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">						
-                        <h4 class="modal-title">Eliminar Comentario</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">					
-                        <p>Seguro que quieres eliminarlo?</p>
-                        <p class="text-warning"><small>Esta acción no se podra realizar nuevamente.</small></p>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+  
+    <Footer/>
     </body>
     </template>
+    <script>
+    import FondoFrutas from '../components/layout/FondoFrutas';
+    import Navbar from '../components/layout/Navbar';
+    import Footer from '../components/layout/Footer.vue'; 
+    
+    export default {
+      name: "prefe",
+      
+      components: {
+        Navbar,
+        FondoFrutas,
+        Footer
+      }
+    }
+    </script>
     
     
     
