@@ -55,7 +55,6 @@
       font-family: verdana;
     }
 
-
     .bg-imagen_container {
       background-image: url('@/assets/imgs/Banner-Food4.png');
       width: 100vw;
@@ -71,9 +70,24 @@
     .card-receta__container {
       // border: 1px solid red;
       width: 550px;
-      background-color: #fffafa;
+      // background-color: #ff0606;
+      backdrop-filter: blur(25px);
       padding: 20px;
       border-radius: 20px;
+      background-color: #fffde31b;
+      border: 1px solid #979797;
+      box-shadow:
+      0px 0.9px 1.1px rgba(0, 0, 0, 0.036),
+      0px 2px 2.3px rgba(0, 0, 0, 0.053),
+      0px 3.4px 3.9px rgba(0, 0, 0, 0.065),
+      0px 5.1px 5.9px rgba(0, 0, 0, 0.075),
+      0px 7.4px 8.5px rgba(0, 0, 0, 0.085),
+      0px 10.5px 12.1px rgba(0, 0, 0, 0.095),
+      0px 14.8px 17.1px rgba(0, 0, 0, 0.105),
+      0px 21.5px 24.8px rgba(0, 0, 0, 0.117),
+      0px 33.2px 38.3px rgba(0, 0, 0, 0.134),
+      0px 59px 68px rgba(0, 0, 0, 0.17);
+
 
       .imag-container {
         width: 300px;

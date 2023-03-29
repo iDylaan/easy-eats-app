@@ -4,7 +4,9 @@
         <Navbar />
     <!-- Contenido -->
     <div class="container__nosotros">
-
+      <div class="title">
+        <p>Nosotros</p>
+      </div>
     </div>
 
     <!-- <Footer /> -->
