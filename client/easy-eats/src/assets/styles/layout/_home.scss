@@ -80,7 +80,8 @@
     .card-receta__container {
       // border: 1px solid red;
       width: 550px;
-      background-color: #fffafa;
+      // background-color: #ff0606;
+      backdrop-filter: blur(25px) brightness(75%) saturate(150%); //Efecto cristal
       padding: 20px;
       border-radius: 20px;
 
