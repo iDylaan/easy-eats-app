@@ -2,15 +2,16 @@
 <template>
     <div class="nosotros">
         <Navbar />
-    <!-- Contenido -->
-    <div class="container__nosotros">
+     <!-- Contenido -->
+      <div class="container__nosotros">
       <div class="title">
-        <p>Nosotros</p>
+        <h1>Hacerca de nosotros</h1>
+      </div>
       </div>
     </div>
 
     <!-- <Footer /> -->
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>
