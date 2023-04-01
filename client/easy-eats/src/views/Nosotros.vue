@@ -5,7 +5,10 @@
      <!-- Contenido -->
       <div class="container__nosotros">
       <div class="title">
-        <p>Hacerca de nosotros</p>
+        <h1>Hacerca de nosotros</h1>
+      </div>
+      <div class="vision">
+        <h3>Vision</h3>
       </div>
       </div>
     </div>

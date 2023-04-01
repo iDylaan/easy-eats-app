@@ -1,18 +1,29 @@
-.nosotros{
+.nosotros {
     font-family: verdana;
     position: relative;
-    
-    p {
-        // border: 1px solid red;
+
+    .title {
+        text-align: center;
+        color: #000000;
+    }
+
+    .title h1 {
+        border: 1px solid red;
         margin: 10vh;
         padding: 20px;
         display: flex;
         flex-direction: column;
         position: sticky;
-      }
-    .title{
-        text-align: center;
-        color: red;
+        font-weight: bold;
     }
-    
+    .vision h3 {
+        border: 1px solid red;
+        margin: 10vh;
+        padding:10px;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        font-weight: bold;
+    }
+
 }
