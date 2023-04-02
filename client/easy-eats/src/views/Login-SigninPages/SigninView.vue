@@ -6,8 +6,8 @@
     </div>
 </template>
 <script>
-import FormSignin from '../components/login-signin/FormSignin'; 
-import Logo from '../components/login-signin/LogoFixed';
+import FormSignin from '../../components/login-signin/FormSignin'; 
+import Logo from '../../components/login-signin/LogoFixed';
 
 export default {
     name: 'Signin',

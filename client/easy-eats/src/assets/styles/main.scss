@@ -1,13 +1,16 @@
+/** Base **/
 @import 'base/alerts';
 @import 'base/buttons';
 @import 'base/globales';
 @import 'base/mixins';
 @import 'base/variables';
 
+/** Login - Signin **/
+@import 'login-signin/signin';
+@import 'login-signin/login';
+
 /** UI **/
 @import 'layout/footer';
-@import 'layout/login';
-@import 'layout/signin';
 @import 'layout/navbar';
 @import 'layout/home';
 @import 'layout/fondo-frutas';
