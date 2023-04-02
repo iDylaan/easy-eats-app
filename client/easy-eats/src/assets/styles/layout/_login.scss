@@ -365,10 +365,14 @@
 
     .logo-login-signin__container {
         display: fixed;
+        position: absolute;
         width: 100%;
+        background-color: transparent;
         height: 50px;
         padding: 30px 7%;
         color: white;
+        z-index: 2;
+        opacity: 0.9;
         // border: 1px solid red;
         
         .content__contianer {

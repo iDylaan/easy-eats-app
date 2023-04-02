@@ -1,8 +1,8 @@
 <template>
   <div class="login">
+    <Logo />
     <span class="bg-darken"></span>
 
-    <Logo />
 
     <div class="legend__container">
       <LegendLogin />
