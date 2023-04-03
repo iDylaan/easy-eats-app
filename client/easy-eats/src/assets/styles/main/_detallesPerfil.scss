@@ -81,7 +81,7 @@
         border: 7px solid #FFFFFF;
         background-color: #DFE5F2;
         border-radius: 50%;
-        box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 12px #00000033;
         position: absolute;
         bottom: -40px;
         left: calc(50% - 90px);
@@ -94,18 +94,19 @@
         border-radius: 50%;
     }
     
-    .seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
-        position: absolute;
-        left: -2px;
-        top: -2px;
-        border: 0;
-        background-color: #fff;
-        box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
+    // pestaña para editar foto de perfil
+    // .seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+    //     position: absolute;
+    //     left: -2px;
+    //     top: -2px;
+    //     border: 0;
+    //     background-color: #fff;
+    //     box-shadow: 0 0 12px #00000033;
+    //     width: 45px;
+    //     height: 45px;
+    //     border-radius: 50%;
+    //     cursor: pointer;
+    // }
     
     .seccion-perfil-usuario .perfil-usuario-body {
         width: 70%;
@@ -130,7 +131,7 @@
         display: flex;
         flex-wrap: wrap;
         padding: 1.5rem 2rem;
-        box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 12px #00000033;
         background-color: #fff;
         border-radius: 15px;
         width: 100%;

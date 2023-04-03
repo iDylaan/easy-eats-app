@@ -1,7 +1,9 @@
 <template>
     <div class="detallesPerfil">
-       <navbar />
-       <!-- <FondoFrutas /> -->
+
+       <Navbar />
+       <FondoFrutas />
+       
        <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
@@ -19,8 +21,8 @@
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
                 <h3 class="titulo">Campos Figueroa Brandon</h3>
-                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <!-- <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p> -->
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
@@ -36,38 +38,36 @@
         </div>
     </section>
 
-    <div class="mis-redes" style="display: block;position: fixed;bottom: 1rem;left: 1rem; opacity: 0.5; z-index: 1000;">
+    <!-- <div class="mis-redes" style="display: block;position: fixed;bottom: 1rem;left: 1rem; opacity: 0.5; z-index: 1000;">
     <p style="font-size: .75rem;">Apock graficos</p>
     <div>
         <a target="_blank" href="#"><i class="fab fa-facebook-square"></i></a>
        
     </div>
-</div>
+    </div> -->
 
-
+    <Footer />
 
     </div>
 </template>
-<!-- 
+
 
 <script>
-import { useRouter } from 'vue-router';
-import FondoFrutas from '../components/layout/FondoFrutas';
-import Header from '../components/home/Header';
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
+import FondoFrutas from '@/components/layout/FondoFrutas';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
+import { useRouter } from 'vue-router';
 
 export default {
-  name: "Detalles",
+  name: "detallesPerfil",
   setup() {
     const router = useRouter();
   },
   components: {
     Navbar,
-    Header,
     FondoFrutas,
     Footer
   }
 }
-</script> -->
+</script>
