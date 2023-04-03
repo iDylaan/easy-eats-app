@@ -46,7 +46,7 @@
         </div>
 
         <!-- Termina Contenido -->
-        <!-- <Footer /> -->
+        <Footer />
     </div>
 </template>
 <script>

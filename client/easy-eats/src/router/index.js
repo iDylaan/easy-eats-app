@@ -27,7 +27,16 @@ const routes = [
   {
     path: '/nosotros',
     name: 'nosotros',
+<<<<<<< HEAD
     component: () => import('../views/NosotrosView.vue')
+=======
+    component: () => import('@/views/NosotrosView.vue')
+  },
+  {
+    path: '/nueva-receta',
+    name: 'NuevaReceta',
+    component: () => import('@/views/Recetas/NuevaRecetaView.vue')
+>>>>>>> 4aaad6c7d72b656971c0530cfd4afb8d12cb99b3
   },
   {
     path: '/detallesPerfil',

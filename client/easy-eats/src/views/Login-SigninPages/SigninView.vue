@@ -1,7 +1,6 @@
 <template>
     <div class="signin">
         <Logo />
-
         <FormSignin />
     </div>
 </template>
