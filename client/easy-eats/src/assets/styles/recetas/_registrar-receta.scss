@@ -1,3 +1,61 @@
 .registrar-receta {
-    
+    width: 100%;
+    margin: auto;
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-content: center;
+        column-gap: 50px;
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+
+            textarea {
+                resize: none;
+            }
+        }
+
+        .datos-nutricionales {
+            display: grid;
+            align-items: flex-start;
+
+            .datos-nutricionales-title_container {
+                text-transform: uppercase;
+            }
+
+            .inputs-nutricionales__container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                row-gap: 10px;
+                column-gap: 20px;
+            }
+        }
+
+        .campos-obligatorios {
+            display: grid;
+            row-gap: 20px;
+
+            .detalles-receta-title_container {
+                text-transform: uppercase;
+            }
+
+            .inputs-datos-receta__container {
+                display: grid;
+                row-gap: 10px;
+            }
+        }
+    }
+
+    .buttons-section__container {
+        display: flex;
+        gap: 20px;
+        padding: 15px 5px 10px 0px;
+        border-top: 1px solid #c9c9c9;
+        justify-content: end;
+        margin-top: 20px;
+        grid-column: 1 / 3;
+    }
 }
