@@ -1,6 +1,7 @@
 .nosotros {
     font-family: verdana;
     position: relative;
+    
 
     .title {
         text-align: center;
@@ -8,7 +9,7 @@
     }
 
     .title h1 {
-        border: 1px solid red;
+        // border: 1px solid red;
         margin: 10vh;
         padding: 20px;
         display: flex;
@@ -16,13 +17,18 @@
         position: sticky;
         font-weight: bold;
     }
-    .vision{
-        border: 1px solid red;
-        margin: 10vh;
+    .cajauno{
+        // border: 1px solid red;
+         margin: 10vh;
         padding:10px;
     }
+    .vision{
+        // border: 1px solid red;
+        // margin: 10vh;
+        // padding:10px;
+    }
     .vision h3 {
-        border: 1px solid red;
+        // border: 1px solid red;
         // margin: 10vh;
         // padding:10px;
         display: flex;
@@ -32,8 +38,44 @@
     }
     .vision p{
         padding-top: 30px;
-        border: 1px solid red;
+        // border: 1px solid red;
         text-align: justify;
+    }
+    .mision{
+        // border: 1px solid rgb(17, 0, 255);
+        margin: 50px 0px 0px 0px;
+        // padding:10px;
+    }
+    .mision h3 {
+        // border: 1px solid rgb(0, 34, 255);
+        // margin: 10vh;
+        // padding:10px;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        font-weight: bold;
+    }
+    .mision p{
+        padding-top: 30px;
+        // border: 1px solid rgb(0, 34, 255);
+        text-align: justify;
+    }
+
+    .datos {
+        // border: 1px solid red;
+        margin: 10vh;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        text-align: center;
+    }
+    .datos p,a{
+        margin: 10px;
+    }
+    .datos a{
+        color: #000000;
+        
     }
 
 }

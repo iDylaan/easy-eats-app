@@ -26,15 +26,18 @@
 
     <div class="box__footer">
         <h2>Contacto</h2>
-        <a href="#">+52 5532514869</a>
-        <a href="#">WizardOfCode@gmail.com</a>            
+        <a href="https://wa.me/qr/PUD62BLERMXSA1">55-74-18-15-29</a>
+        <a href="http://mail.google.com/mail?hl=es-419">Wizard.Of.CodeOficial@gmail.com</a>         
     </div>
 </div>
 
 <div class="box__copyright">
     <hr>
     <p>Todos los derechos reservados © 2023 <b>Wizard of Code (WOC)</b></p>
+    <p>Desarrollado en la Universidad Tecnologica De Nezahualcoyotl</p>
 </div>
 </footer>
 </template>
+
+
 
