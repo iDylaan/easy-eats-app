@@ -16,14 +16,24 @@
         position: sticky;
         font-weight: bold;
     }
-    .vision h3 {
+    .vision{
         border: 1px solid red;
         margin: 10vh;
         padding:10px;
+    }
+    .vision h3 {
+        border: 1px solid red;
+        // margin: 10vh;
+        // padding:10px;
         display: flex;
         flex-direction: column;
         position: sticky;
         font-weight: bold;
+    }
+    .vision p{
+        padding-top: 30px;
+        border: 1px solid red;
+        text-align: justify;
     }
 
 }
