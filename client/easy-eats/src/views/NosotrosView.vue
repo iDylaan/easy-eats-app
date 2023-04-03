@@ -28,7 +28,7 @@ import Footer from '../components/layout/Footer';
 
 
 export default {
-  name: "Home",
+  name: "Nosotros",
   setup() {
     const router = useRouter();
   },

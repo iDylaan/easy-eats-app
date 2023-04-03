@@ -12,7 +12,7 @@
     <li><a @click="goHome">Inicio</a></li>
     <li><a href="#">Recetas</a></li>
     <li><a href="#">Nutrición</a></li>
-    <li><a href="#">Nosotros</a></li>
+    <li><a @click="goNosotros">Nosotros</a></li>
 </ul>
 </div>
 
@@ -55,13 +55,11 @@ export default {
         const router = useRouter();
         const isLoged = ref(false);
 
-        const goHome = () => {
-            router.push('/');
-        }
+        const goHome = () => router.push('/');
+        const nuevaReceta = () => router.push("/subir-receta");
+        const goNosotros = () => router.push("/nosotros");
 
-        const iniciarSesion = () => {
-            router.push("/login");
-        }
+        const iniciarSesion = () => router.push("/login");
 
         const cerrarSesion = () => {
             localStorage.removeItem('token');
@@ -70,9 +68,6 @@ export default {
             window.location.reload();
         }
 
-        const nuevaReceta = () => {
-            router.push("/subir-receta");
-        }
 
         onMounted(() => {
             isLoged.value = localStorage.getItem('token') ? true : false;
@@ -85,6 +80,7 @@ export default {
             nuevaReceta,
             goHome,
             isLoged,
+            goNosotros,
         }
     }
 }
