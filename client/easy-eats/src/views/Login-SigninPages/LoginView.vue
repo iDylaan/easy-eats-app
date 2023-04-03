@@ -18,9 +18,9 @@
   </div>
 </template>
 <script>
-import FormLogin from '../../components/login-signin/FormLogin';
-import LegendLogin from '../../components/login-signin/LegendLogin';
-import Logo from '../../components/login-signin/LogoFixed';
+import FormLogin from '@/components/login-signin/FormLogin';
+import LegendLogin from '@/components/login-signin/LegendLogin';
+import Logo from '@/components/login-signin/LogoFixed';
 
 export default {
   name: "Login",

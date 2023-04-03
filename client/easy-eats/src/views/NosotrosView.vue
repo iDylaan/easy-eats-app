@@ -37,7 +37,6 @@
 import { useRouter } from 'vue-router';
 import FondoFrutas from '../components/layout/FondoFrutas';
 import Header from '../components/home/Header';
-// import Carrusel from '../components/home/Carrusel';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 
