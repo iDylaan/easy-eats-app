@@ -5,25 +5,15 @@
 @import 'base/mixins';
 @import 'base/variables';
 
+/** Layout **/
+@import 'layout/footer';
+@import 'layout/navbar';
+@import 'layout/fondo-frutas';
+
 /** Login - Signin **/
 @import 'login-signin/signin';
 @import 'login-signin/login';
 
-/** UI **/
-@import 'layout/footer';
-@import 'layout/navbar';
-@import 'layout/home';
-@import 'layout/fondo-frutas';
-@import 'layout/nosotros';
-@import 'layout/comments';
-@import 'layout/detallesReceta';
-@import 'layout/nueva-receta';
-@import 'layout/preferencias';
-@import 'layout/recetasCategoria';
-@import 'layout/recetasCategoria';
-
-// Creo que son las de romo
-@import 'recipes/main';
-@import 'preferences/preferences';
-@import 'editprorfile/editprofile';
-@import 'cruds/cruds';
+/** Vistas principales **/
+@import 'main/home';
+@import 'main/nosotros';
