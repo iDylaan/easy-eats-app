@@ -92,7 +92,8 @@ import axios from 'axios';
 export default {
     name: 'FormSignin',
     setup() {
-        const URL = 'https://easy-eats-back.fly.dev';
+        // const URL = 'https://easy-eats-back.fly.dev';
+        const URL = 'http://localhost:4000';
         const router = useRouter();
         const id_rol = 2;
         // Variables del form

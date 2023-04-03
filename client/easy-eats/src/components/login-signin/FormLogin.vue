@@ -44,7 +44,8 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 export default {
     setup() {
-        const URL = 'https://easy-eats-back.fly.dev';
+        // const URL = 'https://easy-eats-back.fly.dev';
+        const URL = 'http://127.0.0.1:4000';
         const router = useRouter(); 
         let showSinginResponsive = ref(false);
         let emailCnt = 0;
@@ -64,8 +65,8 @@ export default {
 
             window.addEventListener('change', () => handleResize);
             handleResize();
-            console.log(window.innerWidth);
-            console.log(handleResize());
+            // console.log(window.innerWidth);
+            // console.log(handleResize());
         })
         
         onUnmounted(() => {

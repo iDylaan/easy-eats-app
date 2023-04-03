@@ -55,12 +55,18 @@ export default {
         const router = useRouter();
         const isLoged = ref(false);
 
+        // Redirecciones
         const goHome = () => router.push('/');
-        const nuevaReceta = () => router.push("/subir-receta");
+        const nuevaReceta = () => {
+            if (isLoged.value) {
+                router.push("/nueva-receta");
+            } else {
+                iniciarSesion();
+            }
+        }
         const goNosotros = () => router.push("/nosotros");
-
         const iniciarSesion = () => router.push("/login");
-
+        // Cerrar sesión
         const cerrarSesion = () => {
             localStorage.removeItem('token');
             localStorage.removeItem('username');
