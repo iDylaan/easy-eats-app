@@ -4,14 +4,8 @@
         <FondoFrutas />
 
         <div class="formulario">
-            <div class="container">
-		    <form>
-			    <label for="arquivo">Choose a file:</label>
-			    <input accept=".jpg, .jpeg, .png, .gif, .pdf" class="inpdddut" name="arquivo" id="arquivo" type="file">
-			    <input value="Send" type="submit" class="inpdddut">
-		    </form>
-	    </div>
-
+           
+            
         
         </div>
 
