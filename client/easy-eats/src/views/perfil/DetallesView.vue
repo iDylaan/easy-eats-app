@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="boton">
-        <button> Editar
+        <button @click="fromPerfil"> Editar
         </button>
     </div>
     </section>
@@ -59,6 +59,7 @@
 
 
 <script>
+
 import FondoFrutas from '@/components/layout/FondoFrutas';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -68,12 +69,18 @@ import { useRouter } from 'vue-router';
 export default {
   name: "detallesPerfil",
   setup() {
+    const fromPerfil = () => router.push("/fromPerfil");
     const router = useRouter();
+
+    return{
+        fromPerfil
+    }
   },
   components: {
     Navbar,
     FondoFrutas,
-    Footer
-  }
+    Footer,
+  },
+
 }
 </script>

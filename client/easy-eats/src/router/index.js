@@ -33,7 +33,12 @@ const routes = [
     path: '/detallesPerfil',
     name: 'detallesPerfil',
     component: () => import('../views/perfil/DetallesView.vue')
-  }
+  },
+  {
+    path: '/fromPerfil',
+    name: 'fromPerfil',
+    component: () => import('../views/perfil/FromPerfil.vue')
+  },
 ]
 
 const router = createRouter({
