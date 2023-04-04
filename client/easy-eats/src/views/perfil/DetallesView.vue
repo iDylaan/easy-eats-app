@@ -36,6 +36,10 @@
                 <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
             </div>
         </div>
+        <div class="boton">
+        <button> Editar
+        </button>
+    </div>
     </section>
 
     <!-- <div class="mis-redes" style="display: block;position: fixed;bottom: 1rem;left: 1rem; opacity: 0.5; z-index: 1000;">
@@ -45,6 +49,8 @@
        
     </div>
     </div> -->
+    
+    
 
     <Footer />
 
