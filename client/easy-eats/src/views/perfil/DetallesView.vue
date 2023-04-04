@@ -32,9 +32,9 @@
                     <li><i class="icono fas fa-building"></i> Corre electronico:</li>
                 </ul>
             </div>
-            <div class="redes-sociales">
+            <!-- <div class="redes-sociales">
                 <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
-            </div>
+            </div> -->
         </div>
         <div class="boton">
         <button @click="fromPerfil"> Editar
