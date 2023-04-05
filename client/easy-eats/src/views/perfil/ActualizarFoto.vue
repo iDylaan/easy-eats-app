@@ -1,21 +1,19 @@
 <template>
-    <div class="fromPerfil">
+    <div class="actualizarFoto">
         <Navbar />
         <FondoFrutas />
-        
-        <div class="formulario">
-           
 
-            <div class="input__container">
-                <label class="input__label">Nombre de usuario</label>
-                <input placeholder="Escribe tu nombre de usuario" class="input" name="text" type="text">
-                <label class="input__label">TagLine</label>
-                <input placeholder="TagLine" class="input" name="text" type="text">
-                <label class="input__label">Fecha de nacimiento</label>
-                <input placeholder="Fecha de nacimiento" class="input" name="date" type="date">
-                <label class="input__label">Correo electronico</label>     
-                <input placeholder="example@example.com" class="input" name="email" type="email">
-                <!-- <p class="input__description">What do you want to call yourself?</p> -->
+        <div class="fromFoto">
+            <form class="form">
+                <span class="form-title">Actualizar Foto</span>
+                <p class="form-paragraph">
+                    El archivo debe ser una imagen
+                    </p>
+                <label for="file-input" class="drop-container">
+                <span class="drop-title">Arrastre una imagen</span>
+                o
+                <input type="file" accept="image/*" required="" id="file-input">
+                </label>
 
 
                 <div class="boton">
@@ -41,17 +39,18 @@
                         </path></svg></span>
                     </button>
                 </div>
+            </form>
 
 
-            </div>
             
-        
         </div>
-   
-        <!-- <Footer /> -->
+
+
     </div>
 </template>
 <script>
+
+
 import FondoFrutas from '@/components/layout/FondoFrutas';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -59,21 +58,20 @@ import Footer from '@/components/layout/Footer';
 import { useRouter } from 'vue-router';
 
 export default {
-    name: "fromPerfil",
-    setup(){
-        const router = useRouter();
-        const perfil = () => router.push("/detallesPerfil");
+  name: "actualizarFoto",
+  setup() {
+    const fromPerfil = () => router.push("/fromPerfil");
+    const router = useRouter();
 
-        return{
-            perfil,
-        }
-    },
-    components: {
+    return{
+        fromPerfil
+    }
+  },
+  components: {
     Navbar,
     FondoFrutas,
-    Footer
-  }
+    Footer,
+  },
 
-    
 }
 </script>

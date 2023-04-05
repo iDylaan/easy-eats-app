@@ -9,8 +9,8 @@
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
                     <img src="../../assets/imgs/yo.jpg" alt="img-avatar">
-                    <button type="button" class="boton-avatar">
-                        <i class="far fa-image"></i>
+                    <button type="button" class="boton-avatar" @click="actualizarFoto">
+                        <i class="far fa-image">Editar</i>
                     </button>
                 </div>
                 <!-- <button type="button" class="boton-portada">
@@ -70,10 +70,12 @@ export default {
   name: "detallesPerfil",
   setup() {
     const fromPerfil = () => router.push("/fromPerfil");
+    const actualizarFoto = () => router.push("/actualizarFoto");
     const router = useRouter();
 
     return{
-        fromPerfil
+        fromPerfil,
+        actualizarFoto
     }
   },
   components: {

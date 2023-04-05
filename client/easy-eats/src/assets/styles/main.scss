@@ -17,5 +17,6 @@
 /** Vistas principales **/
 @import 'main/home';
 @import 'main/nosotros';
-@import 'main/detallesPerfil';
-@import 'main/fromPerfil';
+@import 'main/perfil/detallesPerfil';
+@import 'main/perfil/fromPerfil';
+@import 'main/perfil/actualizarFoto';

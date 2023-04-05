@@ -39,6 +39,11 @@ const routes = [
     name: 'fromPerfil',
     component: () => import('../views/perfil/FromPerfil.vue')
   },
+  {
+    path: '/actualizarFoto',
+    name: 'actualizarFoto',
+    component: () => import('../views/perfil/ActualizarFoto.vue')
+  },
 ]
 
 const router = createRouter({
