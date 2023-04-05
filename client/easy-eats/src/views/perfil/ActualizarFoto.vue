@@ -62,9 +62,11 @@ export default {
   setup() {
     const fromPerfil = () => router.push("/fromPerfil");
     const router = useRouter();
+    const perfil = () => router.push("/detallesPerfil");
 
     return{
-        fromPerfil
+        fromPerfil,
+        perfil
     }
   },
   components: {
