@@ -44,6 +44,11 @@ const routes = [
     name: 'actualizarFoto',
     component: () => import('../views/perfil/ActualizarFoto.vue')
   },
+  {
+    path: '/recetas',
+    name: 'recetas',
+    component: () => import('../views/RecetasView.vue')
+  },
 ]
 
 const router = createRouter({

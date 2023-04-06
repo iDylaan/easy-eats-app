@@ -10,7 +10,7 @@
 <div class="options_container">
 <ul>
     <li><a @click="goHome">Inicio</a></li>
-    <li><a href="#">Recetas</a></li>
+    <li><a @click="recetas">Recetas</a></li>
     <li><a href="#">Nutrición</a></li>
     <li><a @click="goNosotros">Nosotros</a></li>
 </ul>
@@ -65,6 +65,7 @@ export default {
         const nuevaReceta = () => router.push("/subir-receta");
         const goNosotros = () => router.push("/nosotros");
         const perfil = () => router.push("/detallesPerfil");
+        const recetas = () => router.push("/recetas");
 
         const iniciarSesion = () => router.push("/login");
 
@@ -89,6 +90,7 @@ export default {
             isLoged,
             goNosotros,
             perfil,
+            recetas,
         }
     }
 }
