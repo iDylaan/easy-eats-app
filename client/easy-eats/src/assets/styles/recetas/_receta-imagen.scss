@@ -1,0 +1,60 @@
+.receta-imagen {
+    width: 100%;
+    margin: auto;
+
+    .image-section__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+
+        .image__container {
+            border: 1px solid #1d1c281d;
+            background-color: #8686ab0c;
+            padding: 10px;
+            width: 400px;
+            height: 400px;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.175s ease-in-out all;
+
+            .add-new-iamge {
+                height: 100%;
+                display: grid;
+                place-content: center;
+                font-size: 5rem;
+                opacity: 0.5;
+                transition: 0.175s ease-in-out all;
+            }
+        }
+
+        .image__container:hover {
+            background-color: #c1c1ff29;
+            
+            .add-new-iamge {
+                font-size: 5.5rem;
+                opacity: 1;
+            }
+        }
+    }
+
+    #input-add-image {
+        display: none;
+    }
+
+    #imagen {
+        max-height: 400px;
+        max-width: 400px;
+    }
+
+    .buttons-section__container {
+        display: flex;
+        gap: 20px;
+        padding: 15px 5px 10px 0px;
+        border-top: 1px solid #c9c9c9;
+        justify-content: end;
+        margin-top: 20px;
+        grid-column: 1 / 3;
+    }
+}

@@ -38,7 +38,8 @@
             <div class="forms__container">
 
                 <div class="form__container" id="registrar-receta__container">
-                    <RegistrarReceta />
+                    <!-- <RegistrarReceta /> -->
+                    <RegistrarImagen />
                 </div>
 
             </div>
@@ -57,6 +58,7 @@ import Footer from '@/components/layout/Footer';
 
 // Formularios
 import RegistrarReceta from '@/components/nueva-receta/RegistrarRecetaForm';
+import RegistrarImagen from '@/components/nueva-receta/ImagenForm';
 
 // Elementos de Vue
 import { useRouter } from 'vue-router';
@@ -82,10 +84,13 @@ export default {
         }
     },
     components: {
+        // Layout
         FondoFrutas,
         Navbar,
         Footer,
-        RegistrarReceta
+        // Formularios
+        RegistrarReceta,
+        RegistrarImagen
     }
 }
 </script>
