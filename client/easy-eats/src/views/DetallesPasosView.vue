@@ -3,21 +3,14 @@
         <FondoFrutas />
         <Navbar/>
         <div class="titleDeta">
-			<h1 style="text-align:center">Detalles y Pasos de la Receta</h1>
+			<h1 style="text-align:center">Pasos de la Receta</h1>
 		</div>
 
 		<div class="form-deta">
 			<div class="form-group">
-					<label for="estatura" class="form-label">Detalles:</label>
-					<div class="form-input">
-						<input type="tagline" class="form-control" id="tagline" name="estatura" placeholder="Estatura" required>
-					</div>
-			</div>
-
-            <div class="form-group">
-				<label for="estatura" class="form-label">Pasos de Preparación:</label>
+				<label for="pasos" class="form-label">Pasos:</label>
 				<div class="form-input">
-					<input type="tagline" class="form-control" id="tagline" name="estatura" placeholder="Estatura" required>
+					<input type="tagline" class="form-control" id="tagline" name="pasos" placeholder="Detalles" required>
 				</div>
 			</div>
 
@@ -28,7 +21,7 @@
                 </div>
             </div>
 		</div>  
-        <Footer /> 
+        <Footer/> 
     </div>
 </template>
 <script>

@@ -18,7 +18,7 @@
             0px 33.2px 38.3px rgba(0, 0, 0, 0.134),
             0px 59px 68px rgba(0, 0, 0, 0.17);
         background-color: hsla(0, 0%, 86%, 0.204);
-        background-image: url('@/assets/imgs/img.avif');
+        background:#eeab4f;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: right;
@@ -57,6 +57,7 @@
                 .form-label {
                     text-transform: uppercase;
                     font-size: 0.9rem;
+                    text-align: center;  
                 }
 
                 .form-input {
