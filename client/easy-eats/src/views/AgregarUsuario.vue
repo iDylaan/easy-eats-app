@@ -3,23 +3,30 @@
          <FondoFrutas />
          <Navbar />
          <div class="title">
-             <h1 style="text-align:center">Editar Usuario</h1>
+             <h1 style="text-align:center">Nueva Usuario</h1>
          </div>
  
          <div class="form-recet">
              <div class="form-group">
-                 <label for="nomReceta" class="form-label">Username:</label>
+                 <label for="nomReceta" class="form-label">username:</label>
                  <div class="form-input">
                      <input type="tagline" class="form-control" id="tagline" name="nomReceta" 
                          required>
                  </div>
              </div>
-             
-             
              <div class="form-group">
+                 <label for="nomReceta" class="form-label">Tagline:</label>
+                 <div class="form-input">
+                     <input type="tagline" class="form-control" id="tagline" name="nomReceta" 
+                         required>
+                 </div>
+             </div>
+            
+             
+              <div class="form-group">
                  <label for="imagen" class="form-label">Imagen:</label>
                  <div class="form-input">
-                     <input type="file" class="form-control" id="tagline" name="imagen"  required>
+                     <input type="file" class="form-control" id="tagline" name="imagen" placeholder="imagen" required>
                  </div>
              </div>
 
@@ -32,21 +39,13 @@
              </div>
 
              <div class="form-group">
-                 <label for="nomReceta" class="form-label">Correo:</label>
+                 <label for="nomReceta" class="form-label">Fecha:</label>
                  <div class="form-input">
-                     <input type="tagline" class="form-control" id="tagline" name="nomReceta" 
-                         required>
-                 </div>
-             </div>
-             <div class="form-group">
-                 <label for="nomReceta" class="form-label">Username:</label>
-                 <div class="form-input">
-                     <input type="date" class="form-control" id="tagline" name="nomReceta" 
+                     <input type="date" class="form-control" id="tagline"  placeholder="nomReceta"
                          required>
                  </div>
              </div>
 
-             
  
              <div class="options-group">
                  <div class="opciones">

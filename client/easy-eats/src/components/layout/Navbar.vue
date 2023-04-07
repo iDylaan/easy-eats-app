@@ -2,14 +2,14 @@
  
  <nav class="navbar">
 
-<div class="logo_containes">
+<div class="logo_containes" @click="goHome">
    
         <img src="../../assets/imgs//icono_fondos_pscuros.png">
     
 </div>
 <div class="options_container">
 <ul>
-    <li><a href="#">Inicio</a></li>
+    <li><a @click="goHome">Inicio</a></li>
     <li><a href="#">Recetas</a></li>
     <li><a href="#">Nutrición</a></li>
     <li><a href="#">Nosotros</a></li>
@@ -33,6 +33,10 @@
         </div>
     </button>
 
+    <button @click="nuevaReceta">
+        Nueva Receta
+    </button>
+
 </div>
 
 <!-- menu de hamburguesa -->
@@ -43,7 +47,45 @@
 
 </template>
 <script>
+import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
+
 export default {
-    
+    setup() {
+        const router = useRouter();
+        const isLoged = ref(false);
+
+        const goHome = () => {
+            router.push('/');
+        }
+
+        const iniciarSesion = () => {
+            router.push("/login");
+        }
+
+        const cerrarSesion = () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            localStorage.removeItem('tagline');
+            window.location.reload();
+        }
+
+        const nuevaReceta = () => {
+            router.push("/subir-receta");
+        }
+
+        onMounted(() => {
+            isLoged.value = localStorage.getItem('token') ? true : false;
+        })
+
+        return {
+            router,
+            iniciarSesion,
+            cerrarSesion,
+            nuevaReceta,
+            goHome,
+            isLoged,
+        }
+    }
 }
 </script>

@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
-import Login from '../views/LoginView.vue'
-import Signin from '../views/SigninView.vue'
 import Loged from '../views/LogedView.vue'
 import Nosotros from '../views/Nosotros.vue'
 
@@ -14,12 +12,12 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: Login
+    component: () => import('../views/Login-SigninPages/LoginView.vue')
   },
   {
     path: '/signin',
     name: 'signin',
-    component: Signin
+    component: () => import('../views/Login-SigninPages/SigninView.vue')
   },
   {
     path: '/loged',
@@ -45,6 +43,9 @@ const routes = [
     path: '/subir-receta',
     name: 'subir-receta',
     component: () => import('../views/SubirRecetaView.vue')
+    path: '/crudingredients',
+    name: 'crud-ingredientes',
+    component: () => import('../views/IngredientsCrud.vue')
   },
   {
     path: '/editar-perfil',
@@ -62,19 +63,45 @@ const routes = [
     component: () => import('../views/ComentsView.vue')
   },
   {
-    path: '/favorites',
-    name: 'favorites',
-    component: () => import('../views/FavoritesRecepitesView.vue')
-  },
-  {
     path: '/ingredients',
     name: 'ingredients',
     component: () => import('../views/IngredientsCrud.vue')
   },
+ 
+  {
+    path: '/agreingre',
+    name: 'agregar-ingredientes',
+    component: () => import('../views/AgregarIngrediente.vue')
+  },
+  {
+    path: '/editingre',
+    name: 'editar-ingredientes',
+    component: () => import('../views/EditarIngrediente.vue')
+  },
+  {
+    path: '/deleteingre',
+    name: 'eliminar-ingredientes',
+    component: () => import('../views/BorrarIngrediente.vue')
+  },
   {
     path: '/editusers',
-    name: 'editusers',
+    name: 'editar-usuario',
     component: () => import('../views/EditUsers.vue')
+  },
+  {
+    path: '/agregaringre',
+    name: 'agregar-ingrediente',
+    component: () => import('../views/AgregarIngrediente.vue')
+  },
+  {
+    path: '/deleteuser',
+    name: 'eliminar-usuario',
+    component: () => import('../views/EliminarUsuario.vue')
+  },
+  {
+    path: '/agregarusers',
+    name: 'agregar-usuario',
+    component: () => import('../views/AgregarUsuario.vue')
   }
 ]
 

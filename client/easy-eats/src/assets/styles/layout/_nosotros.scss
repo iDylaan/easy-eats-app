@@ -1,3 +1,39 @@
-.nosotros{
-    
+.nosotros {
+    font-family: verdana;
+    position: relative;
+
+    .title {
+        text-align: center;
+        color: #000000;
+    }
+
+    .title h1 {
+        border: 1px solid red;
+        margin: 10vh;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        font-weight: bold;
+    }
+    .vision{
+        border: 1px solid red;
+        margin: 10vh;
+        padding:10px;
+    }
+    .vision h3 {
+        border: 1px solid red;
+        // margin: 10vh;
+        // padding:10px;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        font-weight: bold;
+    }
+    .vision p{
+        padding-top: 30px;
+        border: 1px solid red;
+        text-align: justify;
+    }
+
 }

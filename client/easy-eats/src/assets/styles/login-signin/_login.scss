@@ -365,27 +365,33 @@
 
     .logo-login-signin__container {
         display: fixed;
+        position: absolute;
         width: 100%;
+        background-color: transparent;
         height: 50px;
         padding: 30px 7%;
         color: white;
+        z-index: 2;
+        opacity: 0.9;
         // border: 1px solid red;
-
+        
         .content__contianer {
             // border: 1px solid blue;
             display: flex;
             align-items: center;
             width: 100%;
-
+            
             .title__container {
                 margin-left: 20px;
                 font-size: 2rem;
                 font-weight: 500;
+                cursor: pointer;
             }
-
+            
             img {
                 width: 50px;
                 float: left;
+                cursor: pointer;
             }
         }
     }

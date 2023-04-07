@@ -115,14 +115,24 @@
         transition-property: color, background;
     }
 
-    .logo_containes{
-        // border: 1px solid red   ;
-        // height: 50px;
+    .logo_containes {
         width: 40px;
         padding: 10px 0px;
-        img{
+        cursor: pointer;
+
+        img {
             width: 100%;
         }
+    }
+
+    .options_container a {
+        cursor: pointer;
+    }
+
+
+    .profile-options {
+        display: flex;
+        gap: 10px;
     }
 
 

@@ -61,6 +61,7 @@ def get_recipes():
         }
         return jsonify(respose), 500
     
+
 @mod.route('/recipes/<int:id>', methods=["GET"])
 def get_recipe(id):
     try:
