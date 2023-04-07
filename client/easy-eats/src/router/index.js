@@ -40,9 +40,12 @@ const routes = [
     component: () => import('../views/SubirRecetaView.vue')
   },
   {
-    path: '/subir-receta',
-    name: 'subir-receta',
-    component: () => import('../views/SubirRecetaView.vue')
+    path: '/recetas-categoria',
+    name: 'rectCat',
+    component: () => import('../views/RecetasCatView.vue')
+  },
+
+  {
     path: '/crudingredients',
     name: 'crud-ingredientes',
     component: () => import('../views/IngredientsCrud.vue')

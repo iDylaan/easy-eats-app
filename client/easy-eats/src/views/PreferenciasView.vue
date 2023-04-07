@@ -1,5 +1,5 @@
 <template>
-	<div class="prefe">
+	<div class="prefere">
 		<FondoFrutas />
         <Navbar/>
 		<div class="container">
@@ -49,7 +49,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer.vue'; 
 
 export default {
-  name: "prefe",
+  name: "prefere",
   
   components: {
     Navbar,
