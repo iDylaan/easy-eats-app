@@ -85,6 +85,26 @@
         background-color: #808080;
     }
 
+    .btn-naranja {
+        outline: 1px solid orange;
+        color: orange;
+        transition: 0.2s ease-in-out all;
+    }
+    .btn-naranja:hover {
+        color: white;
+        background-color: orange;
+    }
+
+    .btn-rojo {
+        outline: 1px solid #ff4a4a;
+        color: #ff4a4a;
+        transition: 0.2s ease-in-out all;
+    }
+    .btn-rojo:hover {
+        color: white;
+        background-color: #ff4a4a;
+    }
+    
     .required__text {
         color: #ff3d3d;
     }
@@ -96,4 +116,6 @@
 
     @import 'registrar-receta';
     @import 'receta-imagen';
+    @import 'registrar-pasos';
+    @import 'intput-paso';
 }
