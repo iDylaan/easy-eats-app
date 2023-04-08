@@ -1,23 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
 import Loged from '../views/LogedView.vue'
-import Nosotros from '../views/NosotrosView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: () => import('@/views/HomeView.vue')
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/Login-SigninPages/LoginView.vue')
+    component: () => import('@/views/Login-SigninPages/LoginView.vue')
   },
   {
     path: '/signin',
     name: 'signin',
-    component: () => import('../views/Login-SigninPages/SigninView.vue')
+    component: () => import('@/views/Login-SigninPages/SigninView.vue')
   },
   {
     path: '/loged',
@@ -27,36 +26,32 @@ const routes = [
   {
     path: '/nosotros',
     name: 'nosotros',
-<<<<<<< HEAD
-    component: () => import('../views/NosotrosView.vue')
-=======
     component: () => import('@/views/NosotrosView.vue')
   },
   {
     path: '/nueva-receta',
     name: 'NuevaReceta',
     component: () => import('@/views/Recetas/NuevaRecetaView.vue')
->>>>>>> 4aaad6c7d72b656971c0530cfd4afb8d12cb99b3
   },
   {
     path: '/detallesPerfil',
     name: 'detallesPerfil',
-    component: () => import('../views/perfil/DetallesView.vue')
+    component: () => import('@/views/perfil/DetallesView.vue')
   },
   {
     path: '/fromPerfil',
     name: 'fromPerfil',
-    component: () => import('../views/perfil/FromPerfil.vue')
+    component: () => import('@/views/perfil/FromPerfil.vue')
   },
   {
     path: '/actualizarFoto',
     name: 'actualizarFoto',
-    component: () => import('../views/perfil/ActualizarFoto.vue')
+    component: () => import('@/views/perfil/ActualizarFoto.vue')
   },
   {
     path: '/recetas',
     name: 'recetas',
-    component: () => import('../views/RecetasView.vue')
+    component: () => import('@/views/RecetasView.vue')
   },
 ]
 
