@@ -44,7 +44,11 @@ const routes = [
     name: 'rectCat',
     component: () => import('../views/RecetasCatView.vue')
   },
-
+  {
+    path: '/crud-receta',
+    name: '/crudRec',
+    component: () => import('../views/CrudRecetasView.vue')
+  },
   {
     path: '/crudingredients',
     name: 'crud-ingredientes',
