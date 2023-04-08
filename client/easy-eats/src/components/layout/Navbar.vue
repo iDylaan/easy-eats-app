@@ -10,7 +10,7 @@
 <div class="options_container">
 <ul>
     <li><a @click="goHome">Inicio</a></li>
-    <li><a href="#">Recetas</a></li>
+    <li><a @click="recetas">Recetas</a></li>
     <li><a href="#">Nutrición</a></li>
     <li><a @click="goNosotros">Nosotros</a></li>
 </ul>
@@ -37,6 +37,12 @@
         Nueva Receta
     </button>
 
+    <button class="cssbuttons-io-button" @click="perfil"> Perfil
+  <div class="icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+  </div>
+</button>
+
 </div>
 
 <!-- menu de hamburguesa -->
@@ -55,18 +61,14 @@ export default {
         const router = useRouter();
         const isLoged = ref(false);
 
-        // Redirecciones
         const goHome = () => router.push('/');
-        const nuevaReceta = () => {
-            if (isLoged.value) {
-                router.push("/nueva-receta");
-            } else {
-                iniciarSesion();
-            }
-        }
+        const nuevaReceta = () => router.push("/subir-receta");
         const goNosotros = () => router.push("/nosotros");
+        const perfil = () => router.push("/detallesPerfil");
+        const recetas = () => router.push("/recetas");
+
         const iniciarSesion = () => router.push("/login");
-        // Cerrar sesión
+
         const cerrarSesion = () => {
             localStorage.removeItem('token');
             localStorage.removeItem('username');
@@ -87,6 +89,8 @@ export default {
             goHome,
             isLoged,
             goNosotros,
+            perfil,
+            recetas,
         }
     }
 }
