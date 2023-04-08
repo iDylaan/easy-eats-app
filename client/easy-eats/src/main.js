@@ -13,14 +13,20 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
      faRightToBracket, 
      faUser, 
-     faBars 
+     faBars,
+     faImage,
+     faPlus,
+     faTrashCan
     } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(
     faRightToBracket,
     faUser,
-    faBars
+    faBars,
+    faImage,
+    faPlus,
+    faTrashCan
 )
 
 
