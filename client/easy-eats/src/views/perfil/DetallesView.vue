@@ -15,23 +15,26 @@
             <div class="perfil-usuario-header">
                 <div class="perfil-usuario-portada">
                     <div class="perfil-usuario-avatar">
-                        <img :src="avatarUrl" alt="">
+                        <div class="perfil-usuario-image">
+                            <img :src="avatarUrl" alt="">
+                        </div>
                         <button type="button" class="boton-avatar" @click="showFotoForm">
-                            <i class="far fa-image">Editar</i>
+                            <font-awesome-icon icon="fa-solid fa-pen" />
                         </button>
                     </div>
                 </div>
             </div>
             <div class="perfil-usuario-body">
                 <div class="perfil-usuario-bio">
-                    <h3 class="titulo">{{ user.username }}<strong>#</strong>
-                        <span class="tagline">{{ user.tagline }}</span>
-                    </h3>
+                    <h3 class="titulo">{{ user.username }}</h3>
                 </div>
                 <div class="perfil-usuario-footer">
                     <ul class="lista-datos">
-                        <li v-if="user.name !== ''"><i class="icono fas fa-map-signs"></i> Nombre completo: <strong>{{
-                            user.name }}</strong></li>
+                        <li><i class="icono fas fa-building"></i> Usuario: <strong>{{ user.username }}#{{ user.tagline }}</strong></li>
+                        <li v-if="user.name !== ''"><i class="icono fas fa-map-signs"></i> 
+                            Nombre completo: 
+                            <strong>{{user.name }}</strong>
+                        </li>
                         <li><i class="icono fas fa-building"></i> Corre electrónico: <strong>{{ user.email }}</strong></li>
                         <li><i class="icono fas fa-briefcase"></i> Edad: <strong>{{ user.age_years }} años</strong> y
                             <strong>{{ user.age_months }} meses</strong>
@@ -97,15 +100,11 @@ export default {
 
             let decoded = jwtDecode(localStorage.getItem('token'));
 
-            // await nextTick();
-            await init(decoded.user_id);
+
+            await cargarDatosUsuario(decoded['user_id']);
+            await cargarImagen(decoded['user_id']);
         })
 
-
-        const init = async (id_user) => {
-            await cargarImagen(id_user);
-            await cargarDatosUsuario(id_user);
-        }
 
         const cargarImagen = async (id_user) => {
             const ROUTE = '/pic_user';
@@ -113,23 +112,17 @@ export default {
             try {
                 const response = await axios({
                     method: 'GET',
-                    url: APIURL + ROUTE + '/' + id_user,
-                    responseType: 'blob',
+                    url: APIURL + ROUTE + '/' + id_user
                 })
 
-                if (response.data instanceof Blob) {
-                    // Crear objeto URL a partir del Blob recibido
-                    const objectUrl = URL.createObjectURL(response.data);
-
-                    if (objectUrl) {
-                        avatarUrl.value = objectUrl;
-                    } else {
-                        console.error('Error al crear el objeto URL');
-                    }
-
-                } else {
-                    alert('No se pudo obtener la imagen');
+                if (response.data.status === 200) {
+                    avatarUrl.value = `data:image/png;base64,${response.data.data.image}`
                 }
+
+                if (response.data.status === 404) {
+                    // alert('No hay imagen');
+                }
+
             } catch (error) {
                 alert('Ha ocurrido un error al cargar la imagen del usuario');
                 // TODO: Quitar los console.log
@@ -211,6 +204,7 @@ export default {
         const fromPerfil = () => router.push("/fromPerfil");
 
         return {
+            avatarUrl,
             fromPerfil,
             hideFotoForm,
             showFotoForm,

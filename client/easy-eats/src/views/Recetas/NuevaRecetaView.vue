@@ -38,8 +38,8 @@
             <div class="forms__container">
 
                 <div class="form__container" id="registrar-receta__container">
-                    <!-- <RegistrarReceta />
-                    <RegistrarImagen /> -->
+                    <!-- <RegistrarReceta /> -->
+                    <!-- <RegistrarImagen /> -->
                     <!-- <RegistrarPasos /> -->
                     <RegistrarIngredientes />
                 </div>

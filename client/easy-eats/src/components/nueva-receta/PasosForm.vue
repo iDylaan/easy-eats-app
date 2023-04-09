@@ -1,5 +1,5 @@
 <template>
-    <div class="registrar-ingredientes">
+    <div class="registrar-pasos">
         <form @submit.prevent="handleSubmit">
             <div class="intrucciones__container">
                 <p>Describe los pasos a seguir para preparar tu receta</p>
@@ -8,7 +8,7 @@
             <div class="pasos__container">
 
                 <div v-for="(paso, index) in pasos" :key="index" class="inputs-pasos__container">
-                    <InputPaso :data="paso" @eliminar="eliminarPaso(index)"></InputPaso>
+                    <InputPaso :data="paso" @eliminar="eliminarPaso(index)"/>
                 </div>
 
                 <div class="nuevo-paso-button__container">
@@ -54,9 +54,7 @@ export default defineComponent({
             event.preventDefault();
         }
 
-        const goHome = () => {
-            router.push('/');
-        }
+        const goHome = () => router.push('/');
 
         return {
             goHome,

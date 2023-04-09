@@ -2,15 +2,24 @@
     <div class="actualizarFoto">
 
         <div class="fromFoto">
-            <form class="form">
+            <form class="form" enctype="multipart/form-data">
                 <span class="form-title">Actualizar Foto</span>
+
+                <div class="avatar-image__container">
+                    <div class="perfil-usuario-avatar">
+                        <div class="perfil-usuario-image">
+                            <img :src="avatarUrl" alt="">
+                        </div>
+                    </div>
+                </div>
+
                 <p class="form-paragraph">
                     El archivo debe ser una imagen
-                    </p>
+                </p>
                 <label for="file-input" class="drop-container">
-                <span class="drop-title">Arrastre una imagen</span>
-                o
-                <input type="file" accept="image/*" required="" id="file-input">
+                    <span class="drop-title">Arrastre una imagen</span>
+                    o
+                    <input type="file" accept=".png, .jpg, .jpeg" multiple name="image" id="file-input">
                 </label>
 
 
@@ -18,10 +27,12 @@
                     <button>
                         <div class="svg-wrapper-1">
                             <div class="svg-wrapper">
-                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z" fill="currentColor"></path>
-                            </svg>
+                                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                        fill="currentColor"></path>
+                                </svg>
                             </div>
                         </div>
                         <span>Guardar</span>
@@ -30,17 +41,21 @@
 
 
                 <div class="botonCancelar">
-                    
-                    <button class="noselect" @click="perfil">
-                        <span class="text" >Cancelar</span>
-                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
-                        </path></svg></span>
+
+                    <button class="noselect" @click.prevent="handleClick" @click="ocultarForm">
+                        <span class="text">Cancelar</span>
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
+                                </path>
+                            </svg></span>
                     </button>
                 </div>
             </form>
 
 
-            
+
         </div>
     </div>
 </template>
@@ -48,12 +63,26 @@
 import { useRouter } from 'vue-router';
 
 export default {
-  name: "actualizarFoto",
-  setup() {
+    name: "actualizarFoto",
+    setup() {
+        // const router = useRouter(); 
 
-    return{
+
+        const handleClick = (event) => {
+            event.preventDefault();
+        }
+
+        const ocultarForm = () => {
+            // handleClick(e)
+            document.querySelector('.actualizar-perfil__container').style.display = 'none';
+        }
+
+
+        return {
+            handleClick,
+            ocultarForm
+        }
     }
-  }
 
 }
 </script>

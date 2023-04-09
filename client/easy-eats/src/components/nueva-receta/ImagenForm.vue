@@ -1,7 +1,6 @@
 <template>
     <div class="receta-imagen">
-        <form>
-
+        <form enctype="multipart/form-data">
             <h4>Selecciona una imagen para tu receta</h4>
             <div class="image-section__container">
                 <div class="image__container">

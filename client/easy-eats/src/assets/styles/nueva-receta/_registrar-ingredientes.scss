@@ -2,6 +2,18 @@
     width: 100%;
     margin: auto;
 
+    .intrucciones__container {
+        padding: 5px;
+        margin-bottom: 20px;
+    }
+
+    .ingredientes__container {
+        width: 100%;
+    }
+
+    .nuevo-ingrediente-button__container {
+        margin-top: 20px;
+    }
 
     .buttons-section__container {
         display: flex;
@@ -10,6 +22,5 @@
         border-top: 1px solid #c9c9c9;
         justify-content: end;
         margin-top: 20px;
-        grid-column: 1 / 3;
     }
 }

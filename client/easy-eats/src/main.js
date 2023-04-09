@@ -16,7 +16,8 @@ import {
      faBars,
      faImage,
      faPlus,
-     faTrashCan
+     faTrashCan,
+     faPen
     } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
@@ -26,7 +27,8 @@ library.add(
     faBars,
     faImage,
     faPlus,
-    faTrashCan
+    faTrashCan,
+    faPen
 )
 
 

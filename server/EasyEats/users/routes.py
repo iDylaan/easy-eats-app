@@ -1,4 +1,4 @@
-import io
+import io, base64
 from datetime import datetime
 from flask import Blueprint, request, jsonify, send_file
 from flask_cors import CORS
@@ -389,17 +389,26 @@ def get_pic_user(id_user):
         
         result = query(SQL_STRINGS.GET_USER_PIC, id_user, True)
         if result["status"] != "OK":
-            return jsonify({"message": "Error al obtener la imagen", "status": 500}), 500
+            return jsonify({"message": "Error al obtener la imagen", "status": 500}), 200
         
         if not result["data"]:
-            return jsonify({'message': 'Imagen no encontrada', "status": 404}), 404
+            return jsonify({'message': 'Imagen no encontrada', "status": 404}), 200
         
         image_bit = result['data']["image_bit"]
-
-        img_io = io.BytesIO(image_bit)
-        img_io.seek(0)
         
-        return send_file(img_io, mimetype='image/png')
+        if image_bit is None:
+            return jsonify({'message': 'Imagen no encontrada', "status": 404}), 200
+        
+        encoded_image = base64.b64encode(image_bit).decode('utf-8')
+        
+        response = {
+            "status": 200,
+            "data": {
+                "image": encoded_image
+            }
+        }
+        
+        return jsonify(response), 200
         
     except Exception as e:
         print("Ha ocurrido un error en @get_pic_user/: {} en la linea {}".format(e, e.__traceback__.tb_lineno))
@@ -421,7 +430,6 @@ def save_pic_user(id_user):
             respose = {
                 "message": "Error inesperado en el servidor",
                 "status": 500,
-                "data": None
             }
             return jsonify(respose), 500
         
