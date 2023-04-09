@@ -2,7 +2,7 @@
     <div class="fromPerfil">
         <Navbar />
         <FondoFrutas />
-        
+
         <div class="formulario">
            
 
@@ -41,14 +41,8 @@
                         </path></svg></span>
                     </button>
                 </div>
-
-
             </div>
-            
-        
         </div>
-   
-        <!-- <Footer /> -->
     </div>
 </template>
 <script>
@@ -71,7 +65,7 @@ export default {
     components: {
     Navbar,
     FondoFrutas,
-    Footer
+    Footer,
   }
 
     

@@ -40,7 +40,8 @@
                 <div class="form__container" id="registrar-receta__container">
                     <!-- <RegistrarReceta />
                     <RegistrarImagen /> -->
-                    <RegistrarPasos />
+                    <!-- <RegistrarPasos /> -->
+                    <RegistrarIngredientes />
                 </div>
 
             </div>
@@ -61,6 +62,7 @@ import Footer from '@/components/layout/Footer';
 import RegistrarReceta from '@/components/nueva-receta/RegistrarRecetaForm';
 import RegistrarImagen from '@/components/nueva-receta/ImagenForm';
 import RegistrarPasos from '@/components/nueva-receta/PasosForm';
+import RegistrarIngredientes from '@/components/nueva-receta/IngredientesForm';
 
 // Elementos de Vue
 import { useRouter } from 'vue-router';
@@ -93,7 +95,8 @@ export default {
         // Formularios
         RegistrarReceta,
         RegistrarImagen,
-        RegistrarPasos
+        RegistrarPasos,
+        RegistrarIngredientes
     }
 }
 </script>

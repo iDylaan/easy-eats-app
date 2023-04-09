@@ -5,8 +5,8 @@
     </div>
 </template>
 <script>
-import LogedPage from '../components/login-signin/LogedPage';
-import AdminPage from '../components/login-signin/AdminPage';
+import LogedPage from '@/components/login-signin/LogedPage';
+import AdminPage from '@/components/login-signin/AdminPage';
 import jwtDecode from 'jwt-decode'
 import { ref, onMounted } from 'vue';
 

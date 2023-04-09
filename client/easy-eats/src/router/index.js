@@ -44,11 +44,6 @@ const routes = [
     component: () => import('@/views/perfil/FromPerfil.vue')
   },
   {
-    path: '/actualizarFoto',
-    name: 'actualizarFoto',
-    component: () => import('@/views/perfil/ActualizarFoto.vue')
-  },
-  {
     path: '/recetas',
     name: 'recetas',
     component: () => import('@/views/RecetasView.vue')

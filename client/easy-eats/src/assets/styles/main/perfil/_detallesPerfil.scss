@@ -20,7 +20,37 @@
         color: #404040;
         font-family: "Arial", Segoe UI, Tahoma, sans-serifl, Helvetica Neue, Helvetica;
     }
-    
+
+    // Estilos para aparecer el formulario y quitarlo
+    .actualizar-perfil__container {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+        display: grid;
+        place-content: center;
+        display: none;
+
+        .bg-toggle {
+            position: absolute;
+            z-index: -1;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000000;
+            opacity: 0.8;
+        }
+
+        .form-actualizar__container {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+            display: grid;
+            place-content: center;
+        }
+    }
+
+
     /*=====================================
     estilos de la utilidad
     Copiar esto
@@ -143,7 +173,7 @@
     }
     
     .seccion-perfil-usuario .lista-datos {
-        width: 50%;
+        width: 100%;
         list-style: none;
     }
     

@@ -437,7 +437,7 @@ def save_pic_user(id_user):
             image.save(img_byte_arr, format='PNG')
             img_byte_arr = img_byte_arr.getvalue()
             
-            response = sql(SQL_STRINGS.SQL_SAVE_pic_user, (filename, img_byte_arr, id_user))
+            response = sql(SQL_STRINGS.SQL_SAVE_PICPROFILE, (filename, img_byte_arr, id_user))
             if response["status"] != "OK":
                 return jsonify({"message": "Error al agregar la imagen", "status": 500}), 500
             

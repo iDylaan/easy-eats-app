@@ -1,5 +1,5 @@
 <template>
-    <div class="registrar-pasos">
+    <div class="registrar-ingredientes">
         <form @submit.prevent="handleSubmit">
             <div class="intrucciones__container">
                 <p>Describe los pasos a seguir para preparar tu receta</p>
@@ -31,7 +31,7 @@ import { useRouter } from 'vue-router';
 import { onMounted, ref, defineAsyncComponent, defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'RegistrarRecetaForm',
+    name: 'PasosForm',
     setup() {
         const router = useRouter();
         const pasos = ref([]);

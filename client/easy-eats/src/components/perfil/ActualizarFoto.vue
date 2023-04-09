@@ -1,7 +1,5 @@
 <template>
     <div class="actualizarFoto">
-        <Navbar />
-        <FondoFrutas />
 
         <div class="fromFoto">
             <form class="form">
@@ -44,36 +42,18 @@
 
             
         </div>
-
-
     </div>
 </template>
 <script>
-
-
-import FondoFrutas from '@/components/layout/FondoFrutas';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-
 import { useRouter } from 'vue-router';
 
 export default {
   name: "actualizarFoto",
   setup() {
-    const fromPerfil = () => router.push("/fromPerfil");
-    const router = useRouter();
-    const perfil = () => router.push("/detallesPerfil");
 
     return{
-        fromPerfil,
-        perfil
     }
-  },
-  components: {
-    Navbar,
-    FondoFrutas,
-    Footer,
-  },
+  }
 
 }
 </script>

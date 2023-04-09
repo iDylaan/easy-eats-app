@@ -20,7 +20,7 @@ def gen_jwt(user_id, user_role):
     try:
         payload = {
             "user_id": user_id,
-            "is_admin": True if user_role == 2 else False,
+            "is_admin": 'false' if user_role == 2 else 'false',
             "exp": datetime.datetime.utcnow() + datetime.timedelta(seconds=(60*60*24*1)) # ? seconds * minutes * hours * days
         }
         return jwt.encode(payload, app.config['SECRET_JWT_KEY'], algorithm='HS256')

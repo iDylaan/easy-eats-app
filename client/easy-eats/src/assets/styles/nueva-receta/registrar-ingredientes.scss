@@ -1,0 +1,15 @@
+.registrar-ingredientes {
+    width: 100%;
+    margin: auto;
+
+
+    .buttons-section__container {
+        display: flex;
+        gap: 20px;
+        padding: 15px 5px 10px 0px;
+        border-top: 1px solid #c9c9c9;
+        justify-content: end;
+        margin-top: 20px;
+        grid-column: 1 / 3;
+    }
+}
