@@ -7,7 +7,7 @@
         <div class="actualizar-perfil__container">
             <div class="form-actualizar__container">
                 <span class="bg-toggle" @click="hideFotoForm"></span>
-                <FormActualizaFoto />
+                <FormActualizaFoto :user_id="user_id?.value" />
             </div>
         </div>
 
@@ -73,9 +73,9 @@ export default {
     setup() {
         const router = useRouter();
         const isLoged = ref(false);
-        const imageAdapter = ref('');
         // Datos del usuario
         const avatarUrl = ref('');
+        const user_id = ref(null);
         // Declaramos la URL de la API
         const URL = 'http://127.0.0.1:4000'; // TODO: Cambiar a la IP pública de la API en producción
         const user = ref({
@@ -89,6 +89,8 @@ export default {
             age_years: null,
             age_months: null,
         })
+        const imageAdapter = ref('');
+
 
 
         onMounted(async () => {
@@ -99,24 +101,31 @@ export default {
             }
 
             let decoded = jwtDecode(localStorage.getItem('token'));
-
-
+            
             await cargarDatosUsuario(decoded['user_id']);
             await cargarImagen(decoded['user_id']);
+            await cargarUserId(decoded['user_id']);
         })
 
+        const cargarUserId = async (id) => user_id.value = id;
 
-        const cargarImagen = async (id_user) => {
+        const cargarImagen = async (user_id) => {
             const ROUTE = '/pic_user';
 
             try {
                 const response = await axios({
                     method: 'GET',
-                    url: URL + ROUTE + '/' + id_user
+                    url: URL + ROUTE + '/' + user_id
                 })
 
                 if (response.data.status === 200) {
-                    avatarUrl.value = `data:image/png;base64,${response.data.data.image}`
+                    const data = response.data.data;
+
+                    imageAdapter.value = data.width > data.height 
+                    ? 'contain'
+                    : 'cover';
+
+                    avatarUrl.value = `data:image/png;base64,${data.image}`
                 }
 
                 if (response.data.status === 404) {
@@ -130,13 +139,13 @@ export default {
             }
         }
 
-        const cargarDatosUsuario = async (id_user) => {
+        const cargarDatosUsuario = async (user_id) => {
             const ROUTE = '/users';
 
             try {
                 const response = await axios({
                     method: 'GET',
-                    url: URL + ROUTE + '/' + id_user,
+                    url: URL + ROUTE + '/' + user_id,
                 })
                 const result = response.data;
 
@@ -208,7 +217,9 @@ export default {
             fromPerfil,
             hideFotoForm,
             showFotoForm,
-            user
+            user,
+            imageAdapter,
+            user_id
         }
     },
     components: {

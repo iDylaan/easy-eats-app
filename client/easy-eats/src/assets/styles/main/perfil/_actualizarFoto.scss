@@ -1,4 +1,13 @@
 .actualizarFoto {
+
+  .contain {
+    object-fit: contain;
+  }
+
+  .cover {
+    object-fit: cover;
+  }
+
   .fromFoto {
     align-items: center;
 

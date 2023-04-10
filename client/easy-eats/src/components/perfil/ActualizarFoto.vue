@@ -8,7 +8,7 @@
                 <div class="avatar-image__container">
                     <div class="perfil-usuario-avatar">
                         <div class="perfil-usuario-image">
-                            <img :src="avatarUrl" alt="">
+                            <img src="" id="imagen" alt="" :class="imageAdapter">
                         </div>
                     </div>
                 </div>
@@ -19,12 +19,13 @@
                 <label for="file-input" class="drop-container">
                     <span class="drop-title">Arrastre una imagen</span>
                     o
-                    <input type="file" accept=".png, .jpg, .jpeg" multiple name="image" id="file-input">
+                    <input @input="mostrarImagen" type="file" accept=".png, .jpg, .jpeg" multiple name="image"
+                        id="file-input">
                 </label>
 
 
                 <div class="boton">
-                    <button>
+                    <button @click="guardarImagen" @click.prevent="handleClick">
                         <div class="svg-wrapper-1">
                             <div class="svg-wrapper">
                                 <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -61,15 +62,28 @@
 </template>
 <script>
 import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
+
+import axios from 'axios';
+import jwtDecode from 'jwt-decode'
+
 
 export default {
     name: "actualizarFoto",
-    setup() {
+      props: {
+        user_id: {
+            type: Number,
+            required: true
+        }
+    },
+    setup(props) {
         // const router = useRouter(); 
+        const imageAdapter = ref('');
+        const user_id = ref(props.user_id);
 
 
-        const handleClick = (event) => {
-            event.preventDefault();
+        const handleClick = (e) => {
+            e.preventDefault();
         }
 
         const ocultarForm = () => {
@@ -77,10 +91,57 @@ export default {
             document.querySelector('.actualizar-perfil__container').style.display = 'none';
         }
 
+        const mostrarImagen = (e) => {
+            const files = e.target.files;
+            if (files.length > 0) {
+                const file = files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onloadend = () => {
+                    const img = new Image();
+                    img.src = reader.result;
+                    img.onload = () => {
+                        imageAdapter.value = img.width > img.height
+                            ? 'contain'
+                            : 'cover';
+                        document.getElementById('imagen').src = reader.result;
+                    };
+                };
+            }
+        };
+
+
+        const guardarImagen = async () => {
+            const input = document.querySelector('#file-input');
+            const file = input.files[0];
+            const formData = new FormData();
+            formData.append('image', file);
+
+            try {
+                const response = await axios({
+                    method: 'POST',
+                    url: URL + '/pic_user/' + user_id,
+                    data: formData,
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                console.log(response);
+                
+            } catch (error) {
+                alert('Error al subir la imagen');
+                console.log(error);
+            }
+        }
+
+
 
         return {
             handleClick,
-            ocultarForm
+            ocultarForm,
+            mostrarImagen,
+            imageAdapter,
+            guardarImagen
         }
     }
 

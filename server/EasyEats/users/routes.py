@@ -1,9 +1,8 @@
-import io, base64
+import io, base64, uuid
 from datetime import datetime
 from flask import Blueprint, request, jsonify, send_file
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
 from PIL import Image as PILImage
 from .schemas import user_schema
 from .sql_strings import Sql_Strings as SQL_STRINGS
@@ -395,16 +394,24 @@ def get_pic_user(id_user):
             return jsonify({'message': 'Imagen no encontrada', "status": 404}), 200
         
         image_bit = result['data']["image_bit"]
-        
+
         if image_bit is None:
             return jsonify({'message': 'Imagen no encontrada', "status": 404}), 200
-        
-        encoded_image = base64.b64encode(image_bit).decode('utf-8')
-        
+
+        encoded_image = base64.b64encode(image_bit)
+        decoded_image = base64.b64decode(encoded_image)
+
+        image = PILImage.open(io.BytesIO(decoded_image))
+        image.format = 'PNG'
+        width, height = image.size
+
+        encoded_image_str = encoded_image.decode('utf-8')
         response = {
             "status": 200,
             "data": {
-                "image": encoded_image
+                "image": encoded_image_str,
+                "width": width,
+                "height": height
             }
         }
         
@@ -438,7 +445,7 @@ def save_pic_user(id_user):
         filename = None
         img_byte_arr = None
         if file:
-            filename = secure_filename(file.filename)
+            filename = str(uuid.uuid4()) + '.' + file.filename.split('.')[-1]
             image = PILImage.open(file.stream)
             
             img_byte_arr = io.BytesIO()
