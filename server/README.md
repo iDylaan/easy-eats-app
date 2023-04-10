@@ -20,3 +20,12 @@ python EASY-EATS-APP.py
 
 # Detenerlo
 ❯ docker stop (id del contenedor)
+
+# Deploy a produccion
+flyctl deploy
+
+# Entrar a consola 
+flyctl ssh console
+
+# Obtener IP Publica desde consola
+curl ifconfig.me
