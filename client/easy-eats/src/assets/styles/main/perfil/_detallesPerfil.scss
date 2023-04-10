@@ -125,13 +125,20 @@
             justify-content: center;
             width: 180px;
             height: 180px;
+            
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 
-    .seccion-perfil-usuario .perfil-usuario-avatar img {
-        width: 100%;
-        position: relative;
-        border-radius: 50%;
+    .contain {
+        object-fit: contain;
+    }
+    .cover {
+        object-fit: cover;
     }
 
     // pestaña para editar foto de perfil

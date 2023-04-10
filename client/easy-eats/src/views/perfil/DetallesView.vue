@@ -16,7 +16,7 @@
                 <div class="perfil-usuario-portada">
                     <div class="perfil-usuario-avatar">
                         <div class="perfil-usuario-image">
-                            <img :src="avatarUrl" alt="">
+                            <img :src="avatarUrl" alt="" :class="imageAdapter">
                         </div>
                         <button type="button" class="boton-avatar" @click="showFotoForm">
                             <font-awesome-icon icon="fa-solid fa-pen" />
@@ -30,10 +30,11 @@
                 </div>
                 <div class="perfil-usuario-footer">
                     <ul class="lista-datos">
-                        <li><i class="icono fas fa-building"></i> Usuario: <strong>{{ user.username }}#{{ user.tagline }}</strong></li>
-                        <li v-if="user.name !== ''"><i class="icono fas fa-map-signs"></i> 
-                            Nombre completo: 
-                            <strong>{{user.name }}</strong>
+                        <li><i class="icono fas fa-building"></i> Usuario: <strong>{{ user.username }}#{{ user.tagline
+                        }}</strong></li>
+                        <li v-if="user.name !== ''"><i class="icono fas fa-map-signs"></i>
+                            Nombre completo:
+                            <strong>{{ user.name }}</strong>
                         </li>
                         <li><i class="icono fas fa-building"></i> Corre electrónico: <strong>{{ user.email }}</strong></li>
                         <li><i class="icono fas fa-briefcase"></i> Edad: <strong>{{ user.age_years }} años</strong> y
@@ -66,18 +67,17 @@ import { onMounted, ref, toDisplayString } from 'vue';
 
 import axios from 'axios';
 import jwtDecode from 'jwt-decode'
-// import { URL } from 'url';
 
 export default {
     name: "detallesPerfil",
     setup() {
         const router = useRouter();
         const isLoged = ref(false);
+        const imageAdapter = ref('');
         // Datos del usuario
         const avatarUrl = ref('');
-        // Declaramos la APIURL de la API
-        const APIURL = 'http://127.0.0.1:4000'; // TODO: Cambiar a la IP pública de la API en producción
-        const URL = window.URL || window.webkitURL;
+        // Declaramos la URL de la API
+        const URL = 'http://127.0.0.1:4000'; // TODO: Cambiar a la IP pública de la API en producción
         const user = ref({
             date_of_birth: null,
             email: null,
@@ -112,7 +112,7 @@ export default {
             try {
                 const response = await axios({
                     method: 'GET',
-                    url: APIURL + ROUTE + '/' + id_user
+                    url: URL + ROUTE + '/' + id_user
                 })
 
                 if (response.data.status === 200) {
@@ -136,7 +136,7 @@ export default {
             try {
                 const response = await axios({
                     method: 'GET',
-                    url: APIURL + ROUTE + '/' + id_user,
+                    url: URL + ROUTE + '/' + id_user,
                 })
                 const result = response.data;
 
@@ -156,7 +156,7 @@ export default {
                     let fecha_de_nacimiento = new Date(data.date_of_birth);
                     // Fecha de nacimiento con formato dd/mm/aaaa
                     user.value.date_of_birth =
-                        fecha_de_nacimiento.getDate().toString().padStart(2, '0') + '/' +
+                        (fecha_de_nacimiento.getDate() + 1).toString().padStart(2, '0') + '/' +
                         (fecha_de_nacimiento.getMonth() + 1).toString().padStart(2, '0') + '/' +
                         fecha_de_nacimiento.getFullYear();
 
