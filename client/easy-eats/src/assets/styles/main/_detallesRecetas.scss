@@ -28,7 +28,7 @@
 
 
         .nombre-receta {
-            border: 3px solid red;
+            // border: 3px solid red;
             margin: 60px 25px;
 
             h1 {
@@ -38,7 +38,7 @@
         }
 
         .img {
-            border: 3px solid #fbff00;
+            // border: 3px solid #fbff00;
             width: 500px;
             margin: auto;
             border-radius: 10px;
@@ -46,32 +46,43 @@
         }
 
         .descripcion {
-            border: 3px solid rgb(26, 255, 0);
+            // border: 3px solid rgb(26, 255, 0);
             text-align: justify;
             margin: 50px 0px 50px 0px;
             padding: 15px;
         }
 
         .ingredientes {
-            border: 3px solid rgb(0, 213, 255);
+            // border: 3px solid rgb(0, 213, 255);
             text-align: justify;
             margin: 50px 0px 50px 0px;
             padding: 15px;
 
             h3 {
-                border: 3px solid #ff0000;
+                // border: 3px solid #ff0000;
                 margin: 0px 0px 50px 0px;
             }
         }
 
         .procedimiento {
-            border: 3px solid rgb(255, 0, 221);
+            // border: 3px solid rgb(255, 0, 221);
             text-align: justify;
             margin: 50px 0px 50px 0px;
             padding: 15px;
 
             h3 {
-                border: 3px solid #ff0000;
+                // border: 3px solid #ff0000;
+                margin: 0px 0px 50px 0px;
+            }
+        }
+        .nutricion {
+            // border: 3px solid rgb(255, 0, 221);
+            text-align: justify;
+            margin: 50px 0px 50px 0px;
+            padding: 15px;
+
+            h3 {
+                // border: 3px solid #ff0000;
                 margin: 0px 0px 50px 0px;
             }
         }

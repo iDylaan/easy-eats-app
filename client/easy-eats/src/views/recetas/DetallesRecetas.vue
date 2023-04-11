@@ -25,6 +25,10 @@
                 <h3>Procedimiento</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed eligendi repellendus ea commodi at, non dolores accusantium sunt atque delectus natus quis quam impedit labore velit dicta odit, reiciendis porro!</p>
             </div>
+            <div class="nutricion">
+                <h3>Informacion Nutrimental</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed eligendi repellendus ea commodi at, non dolores accusantium sunt atque delectus natus quis quam impedit labore velit dicta odit, reiciendis porro!</p>
+            </div>
             <!-- <div>
                 <button @click="generatePDF">Generar PDF</button>
             </div> -->
