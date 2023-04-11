@@ -52,9 +52,8 @@ import FondoFrutas from '@/components/layout/FondoFrutas';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
-import html2pdf from 'html2pdf.js';
-import { setUncaughtExceptionCaptureCallback } from 'process';
-// import { useRouter } from 'vue-router';
+// import html2pdf from 'html2pdf.js';
+// import { setUncaughtExceptionCaptureCallback } from 'process';
 
 export default {
   name: "detallesRecetas",
