@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="recetas">
+    <div class="recetas" @click="detallesRecetas">
       <div class="card">
     <div class="card-image"></div>
     <div class="category"> Pizza </div>
@@ -22,6 +22,9 @@
         <!-- <div class="author"> By <span class="name">Abi</span> 4 days ago</div> -->
     </div>
 </div>
+
+
+ 
     </div>
 
 
