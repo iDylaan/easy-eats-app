@@ -1,5 +1,74 @@
-.detallesRecetas{
-    .nombre-receta{
-        margin-top: 60px;
+.detallesRecetas {
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: verdana;
+    }
+    .card-detalles {
+        width: 550px;
+        backdrop-filter: blur(25px);
+        padding: 20px;
+        border-radius: 20px;
+        background-color: #cdbeabc0;
+        border: 1px solid #c5c3b774;
+        box-shadow:
+            0px 0.9px 1.1px rgba(0, 0, 0, 0.036),
+            0px 2px 2.3px rgba(0, 0, 0, 0.053),
+            0px 3.4px 3.9px rgba(0, 0, 0, 0.065),
+            0px 5.1px 5.9px rgba(0, 0, 0, 0.075),
+            0px 7.4px 8.5px rgba(0, 0, 0, 0.085),
+            0px 10.5px 12.1px rgba(0, 0, 0, 0.095),
+            0px 14.8px 17.1px rgba(0, 0, 0, 0.105),
+            0px 21.5px 24.8px rgba(0, 0, 0, 0.117),
+            0px 33.2px 38.3px rgba(0, 0, 0, 0.134),
+            0px 59px 68px rgba(0, 0, 0, 0.17);
+        margin-top: 100px;
+
+
+        .nombre-receta {
+            border: 3px solid red;
+            margin: 60px 25px;
+
+            h1 {
+                text-align: center;
+                font-size: 300%;
+            }
+        }
+
+        .img {
+            border: 3px solid #fbff00;
+            width: 500px;
+            margin: auto;
+        }
+
+        .descripcion {
+            border: 3px solid rgb(26, 255, 0);
+            text-align: justify;
+            margin: 50px 0px 50px 0px;
+        }
+
+        .ingredientes {
+            border: 3px solid rgb(0, 213, 255);
+            text-align: justify;
+            margin: 50px 0px 50px 0px;
+
+            h3 {
+                border: 3px solid #ff0000;
+                margin: 0px 0px 50px 0px;
+            }
+        }
+
+        .procedimiento {
+            border: 3px solid rgb(255, 0, 221);
+            text-align: justify;
+            margin: 50px 0px 50px 0px;
+
+            h3 {
+                border: 3px solid #ff0000;
+                margin: 0px 0px 50px 0px;
+            }
+        }
     }
 }
