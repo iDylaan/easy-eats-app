@@ -25,6 +25,9 @@
                 <h3>Procedimiento</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed eligendi repellendus ea commodi at, non dolores accusantium sunt atque delectus natus quis quam impedit labore velit dicta odit, reiciendis porro!</p>
             </div>
+            <!-- <div>
+                <button @click="generatePDF">Generar PDF</button>
+            </div> -->
        
         </div>
 
@@ -39,10 +42,13 @@ import FondoFrutas from '@/components/layout/FondoFrutas';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
+import html2pdf from 'html2pdf.js';
+import { setUncaughtExceptionCaptureCallback } from 'process';
 // import { useRouter } from 'vue-router';
 
 export default {
   name: "detallesRecetas",
+  
   setup() {
 
     return{
@@ -54,6 +60,13 @@ export default {
     FondoFrutas,
     Footer,
   },
-
+//   Generar pedef setUncaughtExceptionCaptureCallback..
+//   methods: {
+//     generatePDF() {
+//       const element = document.getElementById('pdf-content');
+//       html2pdf().from(element).save();
+//     }
+//   }
+  
 }
 </script>
