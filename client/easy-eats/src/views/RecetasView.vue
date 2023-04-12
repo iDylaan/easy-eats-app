@@ -27,42 +27,6 @@
         <RecetaCard @click="detallesRecetas"/>
         <RecetaCard @click="detallesRecetas"/>
         <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
-        <RecetaCard @click="detallesRecetas"/>
       </div>
 
       <Footer />
