@@ -14,15 +14,58 @@
           </div>
         </div>
 
-          <div class="recetas" @click="detallesRecetas">
-            <div class="card">
-          <div class="card-image"></div>
-          <div class="category"> Pizza </div>
-          <div class="heading">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam laborum neque expedita est dolor aliquid modi veritatis temporibus nulla totam, consequuntur laudantium odio ut natus eaque tenetur delectus ipsum in quidem perferendis quis laboriosam dolores at. Repudiandae, sed id. Similique ea consequatur officia, laborum saepe voluptatibus facilis numquam itaque temporibus?
-          </div>
+      <div class="content-recipess">
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
+        <RecetaCard @click="detallesRecetas"/>
       </div>
-    </div>
 
+      <Footer />
 
   </div>
 </template>
@@ -32,6 +75,7 @@ import { useRouter } from 'vue-router';
 import FondoFrutas from '../components/layout/FondoFrutas';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import RecetaCard from '../components/layout/RecetaCard';
 
 
 export default {
@@ -49,6 +93,7 @@ export default {
     Navbar,
     FondoFrutas,
     Footer,
+    RecetaCard
   }
 }
 </script>
