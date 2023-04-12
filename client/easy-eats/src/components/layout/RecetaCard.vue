@@ -1,7 +1,7 @@
 <template lang="">
 
     <div class="RecetaCard">
-        <div class="recetas" @click="detallesRecetas">
+        <div class="recetas">
         <div class="card">
         <div class="card-image"></div>
         <div class="category"> Pizza </div>
@@ -10,18 +10,14 @@
     </div>
 </template>
 <script>
-import { useRouter } from 'vue-router';
 
 
 export default {
   name: "RecetaCard",
   setup() {
-    const router = useRouter();
-    const detallesRecetas = () => router.push("/detallesRecetas");
 
     return{
-      router,
-      detallesRecetas
+      
     }
   },
   components: {
